@@ -1,10 +1,10 @@
+import React from "react";
+import "./styles/reset.scss";
 
-function App() {
+export default function App() {
 	return (
-		<div className='App'>
+		<div className="App">
 			<h1>Hello</h1>
 		</div>
 	);
 }
-
-export default App;

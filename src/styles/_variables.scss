@@ -1,0 +1,86 @@
+//====================== COLORS ==========================
+$color-white: #ffffff;
+
+$color-red-light: #ff4e43;
+
+$color-silver: #aaaaaa;
+
+$color-neon-blue: #8d5af6;
+
+$color-gray-light: #3b3b3d;
+$color-gray: #292929;
+$color-gray-dark: #222222;
+
+$color-transparent-1: rgba(0, 0, 0, 0.25);
+$color-transparent-2: rgba(0, 0, 0, 0.5);
+$color-transparent-3: rgba(0, 0, 0, 0.75);
+$color-black: #000000;
+//====================== SPACING (step = 4px = 0.25em) =========================
+$spacing-xxx-atomic: 0.25em; //					 4px
+$spacing-xx-atomic: 0.5em; //					 8px
+$spacing-x-atomic: 0.75em; //					 12px
+$spacing-atomic: 1em; //					 	 16px
+$spacing-atomic-x: 1.25em; //					 20px
+$spacing-atomic-xx: 1.5em; //					 24px
+$spacing-atomic-xxx: 1.75em; //					 28px
+$spacing-atomic-increased: 2em; //				 32px
+
+$spacing-xxx-micro: 2.25em; //					 36px
+$spacing-xx-micro: 2.5em; //					 40px
+$spacing-x-micro: 2.75em; //					 44px
+$spacing-micro: 3em; //					 		 48px
+$spacing-micro-x: 3.25em; //					 52px
+$spacing-micro-xx: 3.5em; //					 56px
+$spacing-micro-xxx: 3.75em; //					 60px
+$spacing-micro-increased: 4em; //				 64px
+
+$spacing-xxx-small: 4.25em; //					 68px
+$spacing-xx-small: 4.5em; //					 72px
+$spacing-x-small: 4.75em; //					 76px
+$spacing-small: 5em; //					 		 80px
+$spacing-small-x: 5.25em; //					 84px
+$spacing-small-xx: 5.5em; //					 88px
+$spacing-small-xxx: 5.75em; //					 92px
+$spacing-small-increased: 6em; //				 96px
+
+$spacing-xxx-medium: 6.25em; //					 100px
+$spacing-xx-medium: 6.5em; //					 104px
+$spacing-x-medium: 6.75em; //					 108px
+$spacing-medium: 7em; //					 	 112px
+$spacing-medium-x: 7.25em; //					 116px
+$spacing-medium-xx: 7.5em; //					 120px
+$spacing-medium-xxx: 7.75em; //					 124px
+$spacing-medium-increased: 8em; //				 128px
+
+$spacing-xxx-large: 8.25em; //					 132px
+$spacing-xx-large: 8.5em; //					 136px
+$spacing-x-large: 8.75em; //					 140px
+$spacing-large: 9em; //							 144px
+$spacing-large-x: 9.25em; //					 148px
+$spacing-large-xx: 9.5em; //					 152px
+$spacing-large-xxx: 9.75em; //					 156px
+$spacing-large-increased: 10em; //				 160px
+
+$width-small: 12.5em; //					 	 200px
+$width-medium: 18.75em; //					 	 300px
+$width-large: 25em; //					 		 400px
+//====================== TEXT ============================
+$text-size-x-atomic: 0.5em; //					 8px
+$text-size-atomic: 0.625em; //					 10px
+$text-size-atomic-x: 0.75em; //					 12px
+
+$text-size-x-micro: 0.875em; //					 14px
+$text-size-micro: 1em; //						 16px
+$text-size-micro-x: 1.125em; //					 18px
+
+$text-size-x-small: 1.25em; //					 20px
+$text-size-small: 1.375em; //					 22px
+$text-size-small-x: 1.5em; //					 24px
+
+$text-size-x-medium: 1.625em; //				 26px
+$text-size-medium: 1.75em; //					 28px
+$text-size-medium-x: 1.875em; //				 30px
+
+$text-size-x-large: 2em; //					 	 32px
+$text-size-large: 2.125em; //					 34px
+$text-size-large-x: 2.25em; //					 36px
