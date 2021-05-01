@@ -1,26 +1,26 @@
 // this is a resetting to the styling of whole site, it shouldn't be readable
 
 * {
-	font-family: "Fira Code";
+  font-family: 'Fira Code';
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-	list-style: none;
+  list-style: none;
 }
 
 a {
-	text-decoration: none;
-	color: unset;
+  text-decoration: none;
+  color: unset;
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
