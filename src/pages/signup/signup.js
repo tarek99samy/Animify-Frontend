@@ -12,7 +12,7 @@ const SignUp = (props) => {
 
   return (
     <div className='container'>
-      <h1>signup here</h1>
+      <h1>login here</h1>
     </div>
   );
 };
