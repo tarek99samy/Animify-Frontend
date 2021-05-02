@@ -50,7 +50,7 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
-    "no-undef": "off",
+    "no-undef": "error",
     "no-unreachable": "warn"
   }
 }
