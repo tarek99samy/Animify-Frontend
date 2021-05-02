@@ -12,15 +12,7 @@ export default function App() {
     <BrowserRouter>
       <Switch>
         <UserContextProvider>
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={SignUp} />
-          {/* to use private routes, delete this comment and put your code here
-						<PrivateRoute exact path="/...">
-							<Component />
-						</PrivateRoute>
-					*/}
-          <Route exact path='/notfound' component={NotFound} />
-          <Redirect to='/notfound' />
+          <h1>hello</h1>
         </UserContextProvider>
       </Switch>
     </BrowserRouter>
