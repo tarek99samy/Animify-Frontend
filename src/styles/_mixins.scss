@@ -27,7 +27,7 @@
   justify-content: $justifyContent;
 }
 
-@mixin divider($height: 1px, $color, $width) {
+@mixin divider($color, $width, $height: 1px) {
   border-top: $height solid $color;
   width: $width;
 }

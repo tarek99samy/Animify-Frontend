@@ -12,7 +12,11 @@ export default function App() {
     <BrowserRouter>
       <Switch>
         <UserContextProvider>
-          <h1>hello</h1>
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={SignUp} />
+
+          {/* <Route exact path='/notfound' component={NotFound} />
+          <Redirect to='/notfound' /> */}
         </UserContextProvider>
       </Switch>
     </BrowserRouter>
