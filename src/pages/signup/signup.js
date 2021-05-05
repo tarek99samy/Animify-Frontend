@@ -11,7 +11,7 @@ const SignUp = () => {
     confirmPassword: ''
   });
   const [showErrors, setShowErrors] = useState([false, false, false]);
-  const [state, dispatch] = useContext(userContext);
+  const { state, dispatch } = useContext(userContext);
 
   useEffect(() => {
     if (state.isLoggedIn) {
@@ -44,7 +44,7 @@ const SignUp = () => {
       <span className='signup__title'>Sign Up to Animify</span>
       <form className='container signup__form' onSubmit={handleSubmit}>
         <div className='row signup__form__row'>
-          <div className='col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12'>
+          <div className='col-xl-6 col-lg-6 col-md-9 col-sm-12 col-xs-12'>
             <input
               type='text'
               className='form-control'
@@ -58,7 +58,7 @@ const SignUp = () => {
         </div>
 
         <div className='row signup__form__row'>
-          <div className='col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12'>
+          <div className='col-xl-6 col-lg-6 col-md-9 col-sm-12 col-xs-12'>
             <input
               type='email'
               className='form-control'
@@ -73,7 +73,7 @@ const SignUp = () => {
         </div>
 
         <div className='row signup__form__row'>
-          <div className='col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12'>
+          <div className='col-xl-6 col-lg-6 col-md-9 col-sm-12 col-xs-12'>
             <input
               type='password'
               placeholder='Password'
@@ -92,7 +92,7 @@ const SignUp = () => {
         </div>
 
         <div className='row signup__form__row'>
-          <div className='col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12'>
+          <div className='col-xl-6 col-lg-6 col-md-9 col-sm-12 col-xs-12'>
             <input
               type='password'
               placeholder='Confirm password'
