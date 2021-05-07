@@ -12,9 +12,35 @@
 }
 
 .home_cards {
-  padding: $spacing-atomic;
-  // overflow: hidden;
-  // overflow-x: scroll;
+  padding: $spacing-xx-atomic;
+  display: grid;
+  grid-template-columns: $spacing-x-atomic;
+  grid-template-rows: minmax(150px, 1fr);
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  scroll-snap-type: x proximity;
+
+  &:before,
+  &:after {
+    content: '';
+    width: $spacing-x-atomic;
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: $spacing-xxx-atomic;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $color-transparent-1;
+    border-radius: $spacing-xx-atomic;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-transparent-3;
+  }
 
   .home__card {
     margin: $spacing-xxx-atomic;
@@ -25,6 +51,8 @@
     color: $color-white;
     width: $spacing-large-x;
     height: $width-small;
+    display: flex;
+    justify-content: center;
 
     &:hover {
       background-color: $color-gray-light;
