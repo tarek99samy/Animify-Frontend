@@ -7,8 +7,7 @@
 
 .show__more {
   color: $color-neon-blue;
-  margin: 0;
-  padding: $spacing-xxx-atomic $spacing-atomic-xxx;
+  margin: 0 $spacing-x-atomic 0 0;
 }
 
 .home_cards {
@@ -52,7 +51,6 @@
     width: $spacing-large-x;
     height: $width-small;
     display: flex;
-    justify-content: center;
 
     &:hover {
       background-color: $color-gray-light;
