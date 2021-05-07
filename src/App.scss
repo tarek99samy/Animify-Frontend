@@ -1,0 +1,23 @@
+@import './styles/_variables.scss';
+
+.contain {
+  margin: auto 0;
+  background: $color-gray-dark;
+  min-height: 100vh;
+
+  .sidebar,
+  .main {
+    padding: $spacing-x-atomic;
+  }
+
+  .main {
+    margin-left: $width-small;
+  }
+
+  .sidebar {
+    max-width: $width-small;
+    color: $color-white;
+    border-right: 2px solid $color-gray-light;
+    float: left;
+  }
+}

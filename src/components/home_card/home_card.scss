@@ -1,0 +1,43 @@
+@import '../../styles/_variables.scss';
+
+.section__name {
+  color: $color-white;
+  font-weight: bold;
+}
+
+.show__more {
+  color: $color-neon-blue;
+  margin: 0;
+  padding: $spacing-xxx-atomic $spacing-atomic-xxx;
+}
+
+.home_cards {
+  padding: $spacing-atomic;
+  // overflow: hidden;
+  // overflow-x: scroll;
+
+  .home__card {
+    margin: $spacing-xxx-atomic;
+    padding: $spacing-xx-atomic;
+    border: 0em;
+    border-radius: 0%;
+    background-color: $color-gray-dark;
+    color: $color-white;
+    width: $spacing-large-x;
+    height: $width-small;
+
+    &:hover {
+      background-color: $color-gray-light;
+    }
+
+    .card__img {
+      border-radius: $spacing-xx-atomic;
+      height: 100%;
+      width: 100%;
+    }
+
+    .card__body-txt {
+      margin: $spacing-xxx-atomic;
+    }
+  }
+}
