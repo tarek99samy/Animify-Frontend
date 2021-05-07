@@ -38,10 +38,6 @@ const animes = [
   {
     link: 'http://source.unsplash.com/rz3eCYGgGSc',
     name: 'anime1'
-  },
-  {
-    link: 'http://source.unsplash.com/rz3eCYGgGSc',
-    name: 'anime1'
   }
 ];
 

@@ -11,13 +11,15 @@
 }
 
 .home_cards {
-  padding: $spacing-xx-atomic;
   display: grid;
-  grid-template-columns: $spacing-x-atomic;
+  grid-gap: $spacing-x-atomic;
+  grid-template-columns: $spacing-xxx-atomic;
   grid-template-rows: minmax(150px, 1fr);
   grid-auto-flow: column;
+  grid-auto-columns: $spacing-large-x;
   overflow-x: scroll;
   scroll-snap-type: x proximity;
+  padding: $spacing-xx-atomic;
 
   &:before,
   &:after {
@@ -51,7 +53,7 @@
     width: $spacing-large-x;
     height: $width-small;
     display: flex;
-
+    flex-direction: column;
     &:hover {
       background-color: $color-gray-light;
     }
