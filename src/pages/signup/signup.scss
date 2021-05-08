@@ -1,0 +1,45 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.signup {
+  @include mix.area(block, absolute, 100%, 100%, vars.$spacing-atomic 0, 0, vars.$color-gray);
+  @include mix.flexArea(column, center, center);
+
+  &__title {
+    @include mix.text(vars.$color-red-light, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$spacing-atomic-x);
+    text-align: center;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  &__form {
+    margin: vars.$spacing-atomic-xxx 0;
+
+    &__row {
+      @include mix.flexArea(column, center, center);
+      margin: vars.$spacing-atomic-xxx 0;
+      width: 100%;
+    }
+
+    &__submit {
+      background-color: vars.$color-neon-blue;
+      color: vars.$color-black;
+      font-weight: vars.$text-weight-bold;
+      border: none;
+    }
+
+    &__submit:focus {
+      background-color: vars.$color-neon-blue;
+      outline: none;
+    }
+
+    &__submit:hover {
+      color: vars.$color-black;
+    }
+
+    &__error {
+      margin-top: vars.$spacing-x-atomic;
+      @include mix.text(vars.$color-white, vars.$text-size-micro, vars.$text-weight-light, vars.$spacing-atomic-x);
+    }
+  }
+}
