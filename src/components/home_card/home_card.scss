@@ -1,72 +1,74 @@
 @use '../../styles/variables' as vars;
 @use '../../styles/mixins' as mix;
 
-.section__name {
-  @include mix.text(vars.$color-white, vars.$text-size-small-x, bold, vars.$spacing-xxx-atomic);
-  margin-left: vars.$spacing-xxx-atomic;
-}
-
-.show__more {
-  color: vars.$color-neon-blue;
-  margin: 0 vars.$spacing-x-atomic 0 0;
-}
-
-.home_cards {
-  @include mix.gridArea(
-    column,
-    vars.$spacing-x-atomic,
-    vars.$spacing-large-x,
-    vars.$spacing-large-x,
-    vars.$spacing-xxx-atomic
-  );
-  overflow-x: scroll;
-  padding: vars.$spacing-xx-atomic;
-
-  &:before,
-  &:after {
-    content: '';
-    width: vars.$spacing-x-atomic;
+.home-cards {
+  &__title {
+    @include mix.text(vars.$color-white, vars.$text-size-small-x, bold, vars.$spacing-xxx-atomic);
+    margin-left: vars.$spacing-xxx-atomic;
   }
 
-  &::-webkit-scrollbar {
-    width: vars.$spacing-xxx-atomic;
+  &__more {
+    color: vars.$color-neon-blue;
+    margin: 0 vars.$spacing-x-atomic 0 0;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: vars.$color-transparent-1;
-    border-radius: vars.$spacing-xx-atomic;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: vars.$color-transparent-3;
-  }
-
-  .home__card {
-    @include mix.flexArea(column, start, center);
-    @include mix.borderedArea(0, vars.$color-gray-dark, 0);
-    @include mix.area(
-      flex,
-      relative,
+  &__wrapper {
+    @include mix.gridArea(
+      column,
+      vars.$spacing-x-atomic,
       vars.$spacing-large-x,
-      vars.$width-small,
-      vars.$spacing-xx-atomic,
-      vars.$spacing-xxx-atomic,
-      vars.$color-gray-dark
+      vars.$spacing-large-x,
+      vars.$spacing-xxx-atomic
     );
-    color: vars.$color-white;
+    overflow-x: scroll;
+    padding: vars.$spacing-xx-atomic;
 
-    &:hover {
-      background-color: vars.$color-gray-light;
+    &:before,
+    &:after {
+      content: '';
+      width: vars.$spacing-x-atomic;
     }
 
-    .card__img {
+    &::-webkit-scrollbar {
+      width: vars.$spacing-xxx-atomic;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: vars.$color-transparent-1;
       border-radius: vars.$spacing-xx-atomic;
-      height: 100%;
-      width: 100%;
     }
 
-    .card__body-txt {
-      margin: vars.$spacing-xxx-atomic;
+    &::-webkit-scrollbar-thumb:hover {
+      background: vars.$color-transparent-3;
+    }
+
+    .home-card {
+      @include mix.flexArea(column, start, center);
+      @include mix.borderedArea(0, vars.$color-gray-dark, 0);
+      @include mix.area(
+        flex,
+        relative,
+        vars.$spacing-large-x,
+        vars.$width-small,
+        vars.$spacing-xx-atomic,
+        vars.$spacing-xxx-atomic,
+        vars.$color-gray-dark
+      );
+      color: vars.$color-white;
+
+      &:hover {
+        background-color: vars.$color-gray-light;
+      }
+
+      &__img {
+        border-radius: vars.$spacing-xx-atomic;
+        height: 100%;
+        width: 100%;
+      }
+
+      &__txt {
+        margin: vars.$spacing-xxx-atomic;
+      }
     }
   }
 }
