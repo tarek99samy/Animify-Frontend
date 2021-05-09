@@ -27,6 +27,15 @@
   justify-content: $justifyContent;
 }
 
+@mixin gridArea($direction, $gap, $autoColumns, $templateRows, $templateColumns) {
+  display: grid;
+  grid-gap: $gap;
+  grid-auto-flow: $direction;
+  grid-auto-columns: $autoColumns;
+  grid-template-rows: minmax($templateRows, 1fr);
+  grid-template-columns: $templateColumns;
+}
+
 @mixin divider($height: 1px, $color, $width) {
   border-top: $height solid $color;
   width: $width;
