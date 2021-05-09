@@ -59,6 +59,7 @@
     "react/no-unknown-property": "warn",
     "jsx-a11y/label-has-associated-control": "off",
     "consistent-return": "off",
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+    "react/no-array-index-key": "warn"
   }
 }
