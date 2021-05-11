@@ -1,0 +1,29 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.sidebar {
+  @include mix.area(flex, fixed, vars.$width-small, 100vh, 0, 0, vars.$color-gray);
+
+  &__title {
+    @include mix.text(vars.$color-neon-blue, vars.$spacing-atomic-xx, bold, vars.$spacing-x-atomic);
+    padding: vars.$spacing-atomic-xxx;
+  }
+
+  &__item {
+    color: vars.$color-silver;
+    width: vars.$width-small;
+    padding: vars.$spacing-xxx-atomic;
+
+    &:hover {
+      background-color: vars.$color-gray-light;
+    }
+
+    &__link:hover {
+      color: vars.$color-neon-blue;
+    }
+
+    &__icon {
+      margin-right: vars.$spacing-atomic;
+    }
+  }
+}
