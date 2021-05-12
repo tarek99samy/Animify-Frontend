@@ -14,25 +14,25 @@ function SideBar() {
         <li className='nav-item sidebar__item'>
           <Link to='/' className='nav-link sidebar__item__link'>
             <i className='fa fa-home sidebar__item__icon'></i>
-            <span className='sidebar_item__text'>Home</span>
+            <span className='sidebar__item__text'>Home</span>
           </Link>
         </li>
         <li className='nav-item sidebar__item'>
           <Link to='/search' className='nav-link sidebar__item__link'>
             <i className='fa fa-search sidebar__item__icon'></i>
-            <span className='sidebar_item__text'>Search</span>
+            <span className='sidebar__item__text'>Search</span>
           </Link>
         </li>
         <li className='nav-item sidebar__item'>
           <Link to='/library' className='nav-link sidebar__item__link'>
             <i className='fa fa-bookmark sidebar__item__icon'></i>
-            <span className='sidebar_item__text'>Library</span>
+            <span className='sidebar__item__text'>Library</span>
           </Link>
         </li>
         <li className='nav-item sidebar__item'>
           <Link to='/settings' className='nav-link sidebar__item__link'>
             <i className='fa fa-cog sidebar__item__icon'></i>
-            <span className='sidebar_item__text'>Settings</span>
+            <span className='sidebar__item__text'>Settings</span>
           </Link>
         </li>
       </ul>

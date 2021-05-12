@@ -11,7 +11,7 @@
 
   &__item {
     color: vars.$color-silver;
-    width: vars.$width-small;
+    width: 100%;
     padding: vars.$spacing-xxx-atomic;
 
     &:hover {
@@ -25,5 +25,28 @@
     &__icon {
       margin-right: vars.$spacing-atomic;
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .sidebar {
+    @include mix.area(flex, fixed, vars.$spacing-micro-xxx, 100vh, 0, 0, vars.$color-gray);
+    padding-top: vars.$spacing-x-medium;
+
+    &__title {
+      display: none;
+    }
+
+    &__item {
+      &__text {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    display: none;
   }
 }
