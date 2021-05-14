@@ -16,6 +16,7 @@
 
     &:hover {
       background-color: vars.$color-gray-light;
+      width: 100%;
     }
 
     &__link:hover {
@@ -30,7 +31,7 @@
 
 @media screen and (max-width: 1000px) {
   .sidebar {
-    @include mix.area(flex, fixed, vars.$spacing-micro-xxx, 100vh, 0, 0, vars.$color-gray);
+    @include mix.area(flex, fixed, vars.$spacing-x-small, 100vh, 0, 0, vars.$color-gray);
     padding-top: vars.$spacing-x-medium;
 
     &__title {
@@ -38,6 +39,9 @@
     }
 
     &__item {
+      &__icon {
+        margin: 0 vars.$spacing-xx-atomic;
+      }
       &__text {
         display: none;
       }
