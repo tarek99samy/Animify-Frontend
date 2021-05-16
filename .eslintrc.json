@@ -60,6 +60,8 @@
     "jsx-a11y/label-has-associated-control": "off",
     "consistent-return": "off",
     "react/destructuring-assignment": "off",
-    "react/no-array-index-key": "warn"
+    "react/no-array-index-key": "warn",
+    "object-shorthand": "warn",
+    "import/prefer-default-export": "warn"
   }
 }

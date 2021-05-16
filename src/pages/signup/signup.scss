@@ -41,5 +41,15 @@
       margin-top: vars.$spacing-x-atomic;
       @include mix.text(vars.$color-white, vars.$text-size-micro, vars.$text-weight-light, vars.$spacing-atomic-x);
     }
+
+    &__redirection {
+      margin-top: vars.$spacing-xxx-atomic;
+      @include mix.text(vars.$color-silver, vars.$text-size-micro-x, vars.$text-weight-light, vars.$spacing-atomic-x);
+    }
+
+    &__redirection:hover {
+      color: vars.$color-neon-blue;
+      text-decoration: underline;
+    }
   }
 }
