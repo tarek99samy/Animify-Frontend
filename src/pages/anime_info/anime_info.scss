@@ -1,0 +1,22 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.info {
+  @include mix.area(block, absolute, 100%, 100%, vars.$spacing-atomic 0, 0, vars.$color-gray);
+  @include mix.flexArea(column, center, center);
+
+  &__banner {
+    &__background {
+    }
+    &__image {
+    }
+    &__content {
+      &__title {
+      }
+      &__subtitle {
+      }
+      &__link {
+      }
+    }
+  }
+}
