@@ -2,20 +2,58 @@
 @use '../../styles/mixins' as mix;
 
 .info {
-  @include mix.area(block, absolute, 100%, 100%, vars.$spacing-atomic 0, 0, vars.$color-gray);
-  @include mix.flexArea(column, center, center);
+  @include mix.area(block, absolute, 100%, 100%, 0, 0, vars.$color-gray);
 
   &__banner {
+    height: vars.$width-medium;
+    @include mix.flexArea(row, flex-end, flex-start);
+
+    &__overlay {
+      background-color: vars.$color-transparent-2;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      padding: 0;
+      z-index: 1;
+    }
+
     &__background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      width: 100%;
+      height: vars.$width-medium;
+      object-fit: cover;
+      padding: 0;
     }
-    &__image {
-    }
+
     &__content {
-      &__title {
+      @include mix.flexArea(row, flex-start, flex-start);
+      z-index: 1;
+      padding: 0 vars.$spacing-atomic vars.$spacing-atomic;
+
+      &__img {
+        width: vars.$width-small;
+        height: vars.$width-small;
+        object-fit: cover;
+        object-position: center;
       }
-      &__subtitle {
-      }
-      &__link {
+
+      &__controls {
+        @include mix.flexArea(column, flex-start, flex-start);
+        margin-left: vars.$spacing-atomic;
+        height: 100%;
+
+        &__title {
+          @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+        }
+        &__subtitle {
+          @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+        }
+        &__link {
+          color: vars.$color-white;
+        }
       }
     }
   }
