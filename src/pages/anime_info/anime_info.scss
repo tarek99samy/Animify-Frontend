@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .info {
-  @include mix.area(block, absolute, 100%, 100%, 0, 0, vars.$color-gray);
+  @include mix.area(block, unset, 100%, 100%, 0, 0, vars.$color-gray);
 
   &__banner {
     height: vars.$width-medium;
@@ -54,6 +54,27 @@
         &__link {
           color: vars.$color-white;
         }
+      }
+    }
+  }
+
+  &__details {
+    &__title {
+      @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+      margin: vars.$spacing-atomic-x 0;
+    }
+
+    &__row {
+      margin: 0 vars.$spacing-atomic-x;
+      @include mix.flexArea(row, center, space-between);
+
+      &__key {
+        @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-light, vars.$text-size-small);
+      }
+
+      &__value {
+        @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-light, vars.$text-size-small);
+        text-align: end;
       }
     }
   }

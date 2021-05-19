@@ -19,10 +19,10 @@ const AnimeInfo = ({ match }) => {
     description: '',
     statistics: [],
     characters: [],
-    information: {},
+    information: [],
     relatedAnimes: []
   });
-  console.log(match.params);
+
   useEffect(() => {
     axios
       .get(`${API_BASE_URL}/listings/anime-info?listingServer=${match.params.listingId}&id=${match.params.animeId}`)
@@ -35,7 +35,9 @@ const AnimeInfo = ({ match }) => {
           description: response.data.synopsis,
           statistics: response.data.statistics.ratings,
           characters: response.data.charachters,
-          information: response.data.information,
+          information: Object.keys(response.data.information).map((key) => {
+            return { key, value: response.data.information[key] };
+          }),
           relatedAnimes: response.data.relatedAnimes
         });
       })
@@ -43,7 +45,7 @@ const AnimeInfo = ({ match }) => {
         console.log(error);
       });
   }, []);
-
+  console.log(data.information);
   return (
     <div className='container-fluid info'>
       <div className='row info__banner'>
@@ -65,15 +67,25 @@ const AnimeInfo = ({ match }) => {
         </div>
       </div>
       <Expand text={data.description} />
-      <Divider />
+      <Divider fullWidth={false} />
       <Upcoming />
-
       <Statistics statistics={data.statistics} />
-
-      <Characters />
-
-      {/* info -- inplace */}
-
+      <Divider fullWidth={false} />
+      <Characters actors={data.characters} />
+      <div className='container-fluid info__details'>
+        <div className='info__details__title'>Information</div>
+        {data.information.map((item, index) => (
+          <div key={index}>
+            <div className='info__details__row'>
+              <span className='col-6 info__details__row__key'>{item.key}</span>
+              <span className='col-6 info__details__row__value'>
+                {item.key === 'genres' ? `${item.value[0]} ${item.value[1]}` : item.value}
+              </span>
+            </div>
+            <Divider fullWidth={1} />
+          </div>
+        ))}
+      </div>
       {/* related -- HomeCard */}
       {/* <HomeCard /> */}
     </div>
