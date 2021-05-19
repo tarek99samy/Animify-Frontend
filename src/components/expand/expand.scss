@@ -1,0 +1,31 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.expand {
+  padding: 0;
+
+  &__header {
+    @include mix.flexArea(row, center, space-between);
+    &__title {
+      @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+    }
+
+    &__control {
+      @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+    }
+
+    &__control:hover {
+      color: vars.$color-white;
+    }
+
+    &__control:focus {
+      box-shadow: none;
+    }
+  }
+
+  &__content {
+    &__text {
+      @include mix.text(vars.$color-white, vars.$text-size-micro, vars.$text-weight-light, vars.$text-size-small);
+    }
+  }
+}

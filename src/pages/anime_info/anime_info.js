@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Characters from '../../components/characters/characters';
+import Divider from '../../components/divider/divider';
 import Expand from '../../components/expand/expand';
 import HomeCard from '../../components/home_card/home_card';
 import Statistics from '../../components/statistics/statistics';
@@ -63,11 +64,16 @@ const AnimeInfo = ({ match }) => {
           </div>
         </div>
       </div>
-      <Expand />
+      <Expand text={data.description} />
+      <Divider />
       <Upcoming />
-      <Statistics />
+
+      <Statistics statistics={data.statistics} />
+
       <Characters />
+
       {/* info -- inplace */}
+
       {/* related -- HomeCard */}
       {/* <HomeCard /> */}
     </div>

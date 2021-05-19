@@ -1,0 +1,71 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.statistics {
+  &__title {
+    @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+    margin-bottom: vars.$spacing-atomic;
+  }
+
+  &__content {
+    @include mix.flexArea(row, center, space-between);
+
+    &__score {
+      @include mix.flexArea(column, center, center);
+
+      &__label {
+        @include mix.text(vars.$color-silver, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+      }
+
+      &__value {
+        @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+      }
+    }
+
+    &__ratings {
+      @include mix.flexArea(row, flex-end, space-between);
+
+      .rating {
+        &__label {
+          @include mix.text(vars.$color-silver, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+        }
+
+        &__value {
+          width: vars.$spacing-x-atomic;
+          background-color: vars.$color-silver;
+          border-radius: vars.$spacing-x-atomic;
+        }
+        &__value--10 {
+          height: vars.$spacing-xxx-atomic;
+        }
+        &__value--20 {
+          height: vars.$spacing-xx-atomic;
+        }
+        &__value--30 {
+          height: vars.$spacing-x-atomic;
+        }
+        &__value--40 {
+          height: vars.$spacing-atomic;
+        }
+        &__value--50 {
+          height: vars.$spacing-atomic-x;
+        }
+        &__value--60 {
+          height: vars.$spacing-atomic-xx;
+        }
+        &__value--70 {
+          height: vars.$spacing-atomic-xxx;
+        }
+        &__value--80 {
+          height: vars.$spacing-atomic-increased;
+        }
+        &__value--90 {
+          height: vars.$spacing-xxx-micro;
+        }
+        &__value--100 {
+          height: vars.$spacing-xx-micro;
+        }
+      }
+    }
+  }
+}
