@@ -62,6 +62,7 @@
     "react/destructuring-assignment": "off",
     "react/no-array-index-key": "warn",
     "object-shorthand": "warn",
-    "import/prefer-default-export": "warn"
+    "import/prefer-default-export": "warn",
+    "no-nested-ternary": "off"
   }
 }

@@ -1,17 +1,20 @@
+import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { userContext } from '../../context/user_context';
 import { API_BASE_URL } from '../../utils/consts';
 import './login.scss';
 
-const Login = (props) => {
+const Login = () => {
   const [data, setData] = useState({
     userIdentifier: '',
     password: ''
   });
   const { state, dispatch } = useContext(userContext);
+  let history = useHistory();
 
   useEffect(() => {
+    console.log(state);
     if (state.isLoggedIn) {
       return <Redirect to='/' />;
     }
@@ -23,26 +26,23 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data);
-    // axios
-    //   .post(`${API_BASE_URL}/auth/login`, {
-    //     data: data
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //     dispatch({
-    //       type: 'login',
-    //       payload: {
-    //         info: response.info,
-    //         token: response.token
-    //       }
-    //     });
-    // 		 return <Redirect to='/' />;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     alert('An error occured, please try again');
-    //   });
+    axios
+      .post(`${API_BASE_URL}/auth/login`, data)
+      .then((response) => {
+        dispatch({
+          type: 'login',
+          payload: {
+            info: { userIdentifier: data.userIdentifier },
+            token: response.data.access_token
+          }
+        });
+        console.log(response);
+        history.push({ pathname: '/' });
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('An error occured, please try again');
+      });
   };
 
   return (
