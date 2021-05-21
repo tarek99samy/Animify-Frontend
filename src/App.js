@@ -6,6 +6,7 @@ import Login from './pages/login/login';
 import SignUp from './pages/signup/signup';
 import NotFound from './pages/not_found/not_found';
 import './styles/reset.scss';
+import Home from './pages/home/home';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <UserContextProvider>
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />
+          <Route exact path='/' component={Home} />
 
           {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
