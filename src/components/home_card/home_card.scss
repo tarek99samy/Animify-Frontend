@@ -55,6 +55,7 @@
         vars.$color-gray
       );
       color: vars.$color-white;
+      overflow: hidden;
 
       &:hover {
         background-color: vars.$color-gray-light;

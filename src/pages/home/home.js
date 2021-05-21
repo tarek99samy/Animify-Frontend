@@ -11,12 +11,27 @@ function Home() {
   const [trendingAnime, setTrendingAnime] = useState([]);
   const [animeSchedule, setAnimeSchedule] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const date = new Date();
+  const timestamp = Math.floor(date.getTime() / 1000.0);
 
+  function trimName(arr) {
+    const newArr = [];
+    for (let i = 0; i < arr.length; i += 1) {
+      const newName = arr[i].name.slice(0, 22);
+      console.log(newName);
+      newArr.push({
+        name: newName,
+        gotoURL: arr[i].gotoURL,
+        artwork: arr[i].artwork
+      });
+    }
+    return newArr;
+  }
   useEffect(() => {
     axios
       .get('http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-trending?listingServer=0&page=1&perPage=8')
       .then((response) => {
-        setTrendingAnime(response.data.items);
+        setTrendingAnime(trimName(response.data.items));
         console.log(trendingAnime);
       })
       .catch((error) => {
@@ -28,8 +43,20 @@ function Home() {
         'http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-seasonal?listingServer=0&page=1&perPage=8&seasonYear=2021&season=0'
       )
       .then((response) => {
-        setSeasonalAnime(response.data.items);
+        setSeasonalAnime(trimName(response.data.items));
         console.log(seasonalAnime);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    axios
+      .get(
+        `http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-schedule?listingServer=0&page=1&perPage=8&date=${timestamp}`
+      )
+      .then((response) => {
+        setAnimeSchedule(trimName(response.data.items));
+        console.log(animeSchedule);
       })
       .catch((error) => {
         console.log(error);
@@ -39,6 +66,7 @@ function Home() {
     <div>
       <SideBar />
       <div className='main'>
+        <HomeCard name='This Week' list={animeSchedule} />
         <HomeCard name='Seasonal Anime' list={seasonalAnime} />
         <HomeCard name='Trending Anime' list={trendingAnime} />
 

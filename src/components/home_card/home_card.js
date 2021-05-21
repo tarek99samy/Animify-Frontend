@@ -11,8 +11,8 @@ const HomeCard = (props) => {
       </div>
       <div className='row home-cards__wrapper card-group'>
         {props.list.map((anime) => (
-          <div className='card home-card'>
-            <img src={anime.artwork} className='home-card__img' alt='animeImg' />
+          <div className='card home-card' key={anime.gotoURL}>
+            <img src={anime.artwork} className='home-card__img card-img-top fluid-img' alt='animeImg' />
             <div>
               <span className='home-card__txt'>{anime.name}</span>
             </div>
