@@ -14,7 +14,6 @@ export default function App() {
         <UserContextProvider>
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />
-
           {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
         </UserContextProvider>

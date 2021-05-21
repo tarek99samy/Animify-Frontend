@@ -1,0 +1,41 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.navbar {
+  @include mix.area(flex, fixed, 100%, vars.$spacing-micro-x, 0, vars.$width-small, vars.$color-gray);
+  margin: 0 vars.$width-small;
+
+  &__search {
+    @include mix.borderedArea(0, vars.$color-gray-light, vars.$spacing-xxx-atomic);
+    @include mix.area(
+      flex,
+      fixed,
+      vars.$width-large,
+      vars.$spacing-atomic-increased,
+      vars.$spacing-xxx-atomic,
+      0,
+      vars.$color-gray-light
+    );
+    margin: 0 vars.$spacing-xx-atomic;
+    color: vars.$color-silver;
+
+    &::-webkit-search-cancel-button {
+      -webkit-appearance: none;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .navbar {
+    margin: 0 vars.$spacing-x-small;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .navbar {
+    margin: 0;
+  }
+}
