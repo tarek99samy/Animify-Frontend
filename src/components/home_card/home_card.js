@@ -10,8 +10,8 @@ const HomeCard = (props) => {
         <span className='home-cards__more mt-3'>View More</span>
       </div>
       <div className='row home-cards__wrapper card-group'>
-        {props.list.map((anime) => (
-          <div className='card home-card' key={anime.gotoURL}>
+        {props.list.map((anime, index) => (
+          <div className='card home-card' key={index}>
             <img src={anime.artwork} className='home-card__img card-img-top fluid-img' alt='animeImg' />
             <div>
               <span className='home-card__txt'>{anime.name}</span>

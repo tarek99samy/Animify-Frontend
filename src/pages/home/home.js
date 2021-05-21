@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 import SideBar from '../../components/side_bar/side_bar';
+import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
 import './home.scss';
 
@@ -18,7 +19,6 @@ function Home() {
     const newArr = [];
     for (let i = 0; i < arr.length; i += 1) {
       const newName = arr[i].name.slice(0, 22);
-      console.log(newName);
       newArr.push({
         name: newName,
         gotoURL: arr[i].gotoURL,
@@ -32,7 +32,6 @@ function Home() {
       .get('http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-trending?listingServer=0&page=1&perPage=8')
       .then((response) => {
         setTrendingAnime(trimName(response.data.items));
-        console.log(trendingAnime);
       })
       .catch((error) => {
         console.log(error);
@@ -44,7 +43,6 @@ function Home() {
       )
       .then((response) => {
         setSeasonalAnime(trimName(response.data.items));
-        console.log(seasonalAnime);
       })
       .catch((error) => {
         console.log(error);
@@ -56,7 +54,6 @@ function Home() {
       )
       .then((response) => {
         setAnimeSchedule(trimName(response.data.items));
-        console.log(animeSchedule);
       })
       .catch((error) => {
         console.log(error);
@@ -65,13 +62,11 @@ function Home() {
   return (
     <div>
       <SideBar />
+      <NavBar />
       <div className='main'>
         <HomeCard name='This Week' list={animeSchedule} />
         <HomeCard name='Seasonal Anime' list={seasonalAnime} />
         <HomeCard name='Trending Anime' list={trendingAnime} />
-
-        {/* <HomeCard />
-        <HomeCard /> */}
       </div>
     </div>
   );
