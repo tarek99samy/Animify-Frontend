@@ -1,0 +1,113 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.info {
+  @include mix.area(block, unset, 100%, 100%, 0, 0, vars.$color-gray);
+
+  &__banner {
+    height: vars.$width-medium;
+    margin: 0;
+    @include mix.flexArea(row, flex-end, flex-start);
+
+    &__overlay {
+      background-color: vars.$color-transparent-2;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      padding: 0;
+      z-index: 1;
+    }
+
+    &__background {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      width: 100%;
+      height: vars.$width-medium;
+      object-fit: cover;
+      padding: 0;
+    }
+
+    &__content {
+      @include mix.flexArea(row, flex-start, flex-start);
+      z-index: 1;
+      padding: 0 vars.$spacing-atomic vars.$spacing-atomic;
+
+      &__img {
+        width: vars.$width-small;
+        height: vars.$width-small;
+        object-fit: cover;
+        object-position: center;
+
+        @media (max-width: 767px) {
+          width: 10em;
+          height: 10em;
+        }
+
+        @media (max-width: 424px) {
+          width: 5em;
+          height: 7em;
+        }
+      }
+
+      &__controls {
+        @include mix.flexArea(column, flex-start, flex-start);
+        margin-left: vars.$spacing-atomic;
+        height: 100%;
+
+        &__title {
+          @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+        }
+        &__subtitle {
+          @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+        }
+        &__link {
+          @include mix.text(vars.$color-black, vars.$text-size-x-micro, vars.$text-weight-bold, vars.$text-size-small);
+          background-color: vars.$color-neon-blue;
+
+          border-bottom-left-radius: vars.$spacing-atomic;
+          -webkit-border-bottom-left-radius: vars.$spacing-atomic;
+          -moz-border-bottom-left-radius: vars.$spacing-atomic;
+          border-bottom-right-radius: vars.$spacing-atomic;
+          -webkit-border-bottom-right-radius: vars.$spacing-atomic;
+          -moz-border-bottom-right-radius: vars.$spacing-atomic;
+          border-top-left-radius: vars.$spacing-atomic;
+          -webkit-border-top-left-radius: vars.$spacing-atomic;
+          -moz-border-top-left-radius: vars.$spacing-atomic;
+          border-top-right-radius: vars.$spacing-atomic;
+          -webkit-border-top-right-radius: vars.$spacing-atomic;
+          -moz-border-top-right-radius: vars.$spacing-atomic;
+        }
+        &__link:hover {
+          color: vars.$color-black;
+        }
+      }
+
+      @media (max-width: 767px) {
+        padding: 0 vars.$spacing-atomic vars.$spacing-xxx-atomic;
+      }
+    }
+  }
+
+  &__details {
+    &__title {
+      @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+      margin: vars.$spacing-atomic-x 0;
+    }
+
+    &__row {
+      margin: 0 vars.$spacing-atomic-x;
+      @include mix.flexArea(row, center, space-between);
+
+      &__key {
+        @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-light, vars.$text-size-small);
+      }
+
+      &__value {
+        @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-light, vars.$text-size-small);
+        text-align: end;
+      }
+    }
+  }
+}

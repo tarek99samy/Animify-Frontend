@@ -32,7 +32,7 @@ const userReducer = (state, action) => {
 };
 
 export const UserContextProvider = (props) => {
-  const [state, disptch] = useReducer(userReducer, initialState);
+  const [state, dispatch] = useReducer(userReducer, initialState);
 
-  return <userContext.Provider value={{ state, disptch }}>{props.children}</userContext.Provider>;
+  return <userContext.Provider value={{ state, dispatch }}>{props.children}</userContext.Provider>;
 };

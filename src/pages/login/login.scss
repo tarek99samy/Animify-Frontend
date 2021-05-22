@@ -38,4 +38,17 @@
       color: vars.$color-black;
     }
   }
+
+  &__info {
+    @include mix.text(vars.$color-white, vars.$text-size-micro, vars.$text-weight-light, vars.$spacing-atomic-x);
+  }
+
+  &__redirection {
+    @include mix.text(vars.$color-silver, vars.$text-size-micro-x, vars.$text-weight-light, vars.$spacing-atomic-x);
+  }
+
+  &__redirection:hover {
+    color: vars.$color-neon-blue;
+    text-decoration: underline;
+  }
 }

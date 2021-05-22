@@ -1,0 +1,11 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.divider {
+  @include mix.divider(1px, vars.$color-silver, 96%);
+  margin: vars.$spacing-atomic 0;
+
+  &--100 {
+    width: 100%;
+  }
+}

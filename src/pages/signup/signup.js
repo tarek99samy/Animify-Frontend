@@ -1,17 +1,22 @@
+import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 import { userContext } from '../../context/user_context';
+import { API_BASE_URL } from '../../utils/consts';
 import './signup.scss';
 
 const SignUp = () => {
   const [data, setData] = useState({
     username: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
   const [showErrors, setShowErrors] = useState([false, false, false]);
-  const { state, dispatch } = useContext(userContext);
+  const { state } = useContext(userContext);
+  let history = useHistory();
 
   useEffect(() => {
     if (state.isLoggedIn) {
@@ -32,11 +37,23 @@ const SignUp = () => {
       !passwordRegExp.test(data.password),
       data.password !== data.confirmPassword
     ];
+    console.log(data);
     setShowErrors(validation);
     if (validation.includes(true)) {
       return;
     }
-    console.log(data);
+    delete data.confirmPassword;
+
+    axios
+      .post(`${API_BASE_URL}/user`, data)
+      .then((response) => {
+        console.log(response);
+        history.push({ pathname: '/login' });
+      })
+      .catch((error) => {
+        console.log(error);
+        alert('An error occured, try again in a while');
+      });
   };
 
   return (
@@ -50,6 +67,34 @@ const SignUp = () => {
               className='form-control'
               placeholder='User Name'
               name='username'
+              minLength='2'
+              required
+              onChange={handleFieldChange}
+            />
+          </div>
+        </div>
+
+        <div className='row signup__form__row'>
+          <div className='col-xl-6 col-lg-6 col-md-9 col-sm-12 col-xs-12'>
+            <input
+              type='text'
+              className='form-control'
+              placeholder='First Name'
+              name='firstName'
+              minLength='2'
+              required
+              onChange={handleFieldChange}
+            />
+          </div>
+        </div>
+
+        <div className='row signup__form__row'>
+          <div className='col-xl-6 col-lg-6 col-md-9 col-sm-12 col-xs-12'>
+            <input
+              type='text'
+              className='form-control'
+              placeholder='Last Name'
+              name='lastName'
               minLength='2'
               required
               onChange={handleFieldChange}
@@ -108,6 +153,16 @@ const SignUp = () => {
 
         <div className='row signup__form__row'>
           <input type='submit' className='btn signup__form__submit col-4 col-lg-2 col-md-2' value='Sign Up' />
+        </div>
+
+        <div className='row signup__form__row'>
+          <span className='col-9 signup__form__error'>
+            Already have an account?{' '}
+            <Link to='/login' className='col-9 signup__form__redirection'>
+              Login
+            </Link>{' '}
+            now
+          </span>
         </div>
       </form>
     </div>
