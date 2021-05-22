@@ -1,0 +1,40 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.cards {
+  margin: 0;
+  margin-left: vars.$width-small;
+}
+.card {
+  @include mix.area(
+    flex,
+    relative,
+    vars.$width-medium,
+    vars.$spacing-large-increased,
+    vars.$spacing-x-atomic,
+    vars.$spacing-xxx-atomic,
+    vars.$color-gray-light
+  );
+  color: vars.$color-white;
+
+  &__img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__text {
+    margin-top: vars.$spacing-xxx-large;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .cards {
+    margin: 0 vars.$spacing-x-small;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cards {
+    margin: 0;
+  }
+}

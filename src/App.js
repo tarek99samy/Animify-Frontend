@@ -8,6 +8,7 @@ import ResetPassword from './pages/reset_password/reset_password';
 import NotFound from './pages/not_found/not_found';
 import AnimeInfo from './pages/anime_info/anime_info';
 import './styles/reset.scss';
+import Home from './pages/home/home';
 
 export default function App() {
   return (
@@ -18,7 +19,7 @@ export default function App() {
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/reset-password' component={ResetPassword} />
           <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
-
+          <Route exact path='/' component={Home} />
           {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
         </UserContextProvider>

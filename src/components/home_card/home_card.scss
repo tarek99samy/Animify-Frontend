@@ -48,13 +48,14 @@
       @include mix.area(
         flex,
         relative,
-        vars.$spacing-large-x,
-        vars.$width-small,
+        vars.$width-medium,
+        vars.$width-small-x,
         vars.$spacing-xx-atomic,
         vars.$spacing-xxx-atomic,
-        vars.$color-gray-dark
+        vars.$color-gray
       );
       color: vars.$color-white;
+      overflow: hidden;
 
       &:hover {
         background-color: vars.$color-gray-light;
@@ -62,7 +63,7 @@
 
       &__img {
         border-radius: vars.$spacing-xx-atomic;
-        height: 100%;
+        height: vars.$spacing-large;
         width: 100%;
       }
 
