@@ -6,6 +6,7 @@
 
   &__banner {
     height: vars.$width-medium;
+    margin: 0;
     @include mix.flexArea(row, flex-end, flex-start);
 
     &__overlay {
@@ -38,6 +39,16 @@
         height: vars.$width-small;
         object-fit: cover;
         object-position: center;
+
+        @media (max-width: 767px) {
+          width: 10em;
+          height: 10em;
+        }
+
+        @media (max-width: 424px) {
+          width: 5em;
+          height: 7em;
+        }
       }
 
       &__controls {
@@ -52,8 +63,29 @@
           @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
         }
         &__link {
-          color: vars.$color-white;
+          @include mix.text(vars.$color-black, vars.$text-size-x-micro, vars.$text-weight-bold, vars.$text-size-small);
+          background-color: vars.$color-neon-blue;
+
+          border-bottom-left-radius: vars.$spacing-atomic;
+          -webkit-border-bottom-left-radius: vars.$spacing-atomic;
+          -moz-border-bottom-left-radius: vars.$spacing-atomic;
+          border-bottom-right-radius: vars.$spacing-atomic;
+          -webkit-border-bottom-right-radius: vars.$spacing-atomic;
+          -moz-border-bottom-right-radius: vars.$spacing-atomic;
+          border-top-left-radius: vars.$spacing-atomic;
+          -webkit-border-top-left-radius: vars.$spacing-atomic;
+          -moz-border-top-left-radius: vars.$spacing-atomic;
+          border-top-right-radius: vars.$spacing-atomic;
+          -webkit-border-top-right-radius: vars.$spacing-atomic;
+          -moz-border-top-right-radius: vars.$spacing-atomic;
         }
+        &__link:hover {
+          color: vars.$color-black;
+        }
+      }
+
+      @media (max-width: 767px) {
+        padding: 0 vars.$spacing-atomic vars.$spacing-xxx-atomic;
       }
     }
   }

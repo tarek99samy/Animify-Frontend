@@ -4,6 +4,8 @@
 .characters {
   &__title {
     @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+    margin: 0;
+    padding: vars.$spacing-xx-atomic 0 0;
   }
 
   &__content {
@@ -25,6 +27,8 @@
       &__name {
         @include mix.text(vars.$color-white, vars.$text-size-x-micro, vars.$text-weight-light, vars.$text-size-small);
         width: 100%;
+        text-align: center;
+        padding: vars.$spacing-atomic 0;
       }
     }
   }

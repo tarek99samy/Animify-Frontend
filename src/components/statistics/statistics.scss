@@ -4,7 +4,7 @@
 .statistics {
   &__title {
     @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
-    margin-bottom: vars.$spacing-atomic;
+    margin: 0 0 vars.$spacing-atomic;
   }
 
   &__content {
@@ -27,7 +27,7 @@
 
       .rating {
         &__label {
-          @include mix.text(vars.$color-silver, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+          @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-bold, vars.$text-size-small);
         }
 
         &__value {
@@ -65,6 +65,10 @@
         &__value--100 {
           height: vars.$spacing-xx-micro;
         }
+      }
+
+      @media (max-width: 768px) {
+        margin-top: vars.$spacing-atomic;
       }
     }
   }

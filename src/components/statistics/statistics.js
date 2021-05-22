@@ -50,11 +50,11 @@ const Statistics = ({ statistics }) => {
     <div className='container-fluid statistics'>
       <div className='row statistics__title'>Ratings & Statistics</div>
       <div className='row statistics__content'>
-        <div className='col-2 statistics__content__score'>
+        <div className='col-12 col-md-5 col-xl-3 statistics__content__score'>
           <span className='statistics__content__score__value'>{(+average).toPrecision(4)}</span>
           <span className='statistics__content__score__label'>Average Score</span>
         </div>
-        <div className='col-xl-5 col-md-7  statistics__content__ratings'>
+        <div className='col-12 col-md-6 col-xl-4 statistics__content__ratings'>
           {rates.map((rating, index) => (
             <div className='rating' key={index}>
               <div className={`rating__value rating__value--${rating.value}`}></div>

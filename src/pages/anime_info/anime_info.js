@@ -54,12 +54,12 @@ const AnimeInfo = ({ match }) => {
         <img src={data.backgroundImgUrl} alt='background' className='info__banner__background' />
 
         <div className='container-fluid info__banner__content'>
-          <img src={data.bannerImgUrl} alt='banner' className='col-3 info__banner__content__img' />
-          <div className='col-8 info__banner__content__controls'>
+          <img src={data.bannerImgUrl} alt='banner' className='col-auto info__banner__content__img' />
+          <div className='col-auto info__banner__content__controls'>
             <span className='info__banner__content__controls__title'>{data.title}</span>
             <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
             <Link to='/eposides'>
-              <button type='button' className='btn info__banner__content__controls__link'>
+              <button type='button' className='btn btn-primary info__banner__content__controls__link'>
                 VIEW EPOSIDES
               </button>
             </Link>
