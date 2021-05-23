@@ -1,0 +1,21 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.main {
+  margin-left: vars.$width-small;
+  padding-top: vars.$spacing-micro-x;
+  background-color: vars.$color-gray-dark;
+  height: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .main {
+    margin: 0 0 0 vars.$spacing-x-small;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    margin: 0;
+  }
+}

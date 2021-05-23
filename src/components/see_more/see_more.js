@@ -9,7 +9,7 @@ function SeeMore(props) {
           <div className='card col'>
             <div className='row g-0'>
               <div className='col-8'>
-                <img src={anime.link} alt='animeimage' className='card__img' />
+                <img src={anime.artwork} alt='animeimage' className='card__img' />
               </div>
               <div className='col-4'>
                 <div className='card-body'>

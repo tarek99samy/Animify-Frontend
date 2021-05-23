@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-
 import SideBar from '../../components/side_bar/side_bar';
 import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
@@ -21,8 +20,7 @@ function Home() {
       const newName = arr[i].name.slice(0, 22);
       newArr.push({
         name: newName,
-        gotoURL: arr[i].gotoURL,
-        artwork: arr[i].artwork
+        ...arr[i]
       });
     }
     return newArr;
@@ -64,9 +62,9 @@ function Home() {
       <SideBar />
       <NavBar />
       <div className='main'>
-        <HomeCard name='This Week' list={animeSchedule} />
-        <HomeCard name='Seasonal Anime' list={seasonalAnime} />
-        <HomeCard name='Trending Anime' list={trendingAnime} />
+        <HomeCard name='This Week' list={animeSchedule} route='anime-schedule'/>
+        <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime'/>
+        <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime'/>
       </div>
     </div>
   );
