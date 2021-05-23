@@ -10,7 +10,7 @@ const ResetPassword = () => {
   const [data, setData] = useState({ email: '', otp: '', password: '' });
   const [resetStage, setResetStage] = useState(1);
   const { state } = useContext(userContext);
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     if (state.isLoggedIn) {

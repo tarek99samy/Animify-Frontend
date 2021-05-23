@@ -9,7 +9,7 @@ const Statistics = ({ statistics }) => {
     let probability = 0;
     let sum = 0;
     let maxAmount = 0;
-    let weights = [];
+    const weights = [];
 
     statistics.forEach((elm) => {
       probability += +elm.score * +elm.amount;

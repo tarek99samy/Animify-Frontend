@@ -9,6 +9,8 @@ import NotFound from './pages/not_found/not_found';
 import AnimeInfo from './pages/anime_info/anime_info';
 import './styles/reset.scss';
 import Home from './pages/home/home';
+import Trending from './pages/trending_anime/trending_anime';
+import Seasonal from './pages/seasonal_anime/seasonal_anime';
 
 export default function App() {
   return (
@@ -20,6 +22,9 @@ export default function App() {
           <Route exact path='/reset-password' component={ResetPassword} />
           <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
           <Route exact path='/' component={Home} />
+          <Route exact path='/trending-anime' component={Trending} />
+          <Route exact path='/seasonal-anime' component={Seasonal} />
+
           {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
         </UserContextProvider>
