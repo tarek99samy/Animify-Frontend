@@ -5,6 +5,7 @@ import SideBar from '../../components/side_bar/side_bar';
 import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
 import './home.scss';
+import trimName from '../../utils/trim_name';
 
 function Home() {
   const [seasonalAnime, setSeasonalAnime] = useState([]);
@@ -14,17 +15,6 @@ function Home() {
   const date = new Date();
   const timestamp = Math.floor(date.getTime() / 1000.0);
 
-  function trimName(arr) {
-    const newArr = [];
-    for (let i = 0; i < arr.length; i += 1) {
-      const newName = arr[i].name.slice(0, 22);
-      newArr.push({
-        name: newName,
-        ...arr[i]
-      });
-    }
-    return newArr;
-  }
   useEffect(() => {
     axios
       .get('http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-trending?listingServer=0&page=1&perPage=8')
@@ -62,9 +52,9 @@ function Home() {
       <SideBar />
       <NavBar />
       <div className='main'>
-        <HomeCard name='This Week' list={animeSchedule} route='anime-schedule'/>
-        <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime'/>
-        <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime'/>
+        <HomeCard name='This Week' list={animeSchedule} route='anime-schedule' />
+        <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' />
+        <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime' />
       </div>
     </div>
   );

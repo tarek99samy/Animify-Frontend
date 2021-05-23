@@ -11,7 +11,7 @@ const Login = () => {
     password: ''
   });
   const { state, dispatch } = useContext(userContext);
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     console.log(state);

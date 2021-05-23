@@ -16,7 +16,7 @@ const SignUp = () => {
   });
   const [showErrors, setShowErrors] = useState([false, false, false]);
   const { state } = useContext(userContext);
-  let history = useHistory();
+  const history = useHistory();
 
   useEffect(() => {
     if (state.isLoggedIn) {

@@ -14,12 +14,14 @@ const HomeCard = (props) => {
       <div className='row home-cards__wrapper card-group'>
         {props.list.map((anime, index) => (
           <Link to={`/anime-info/0/${anime.gotoURL}`}>
-            <div className='card home-card' key={index}>
-              <img src={anime.artwork} className='home-card__img card-img-top fluid-img' alt='animeImg' />
-              <div>
-                <span className='home-card__txt'>{anime.name}</span>
+            <fragment>
+              <div className='card home-card' key={index}>
+                <img src={anime.artwork} className='home-card__img card-img-top fluid-img' alt='animeImg' />
+                <div>
+                  <span className='home-card__txt'>{anime.name}</span>
+                </div>
               </div>
-            </div>
+            </fragment>
           </Link>
         ))}
       </div>

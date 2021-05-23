@@ -6,6 +6,7 @@
   padding-top: vars.$spacing-micro-x;
   background-color: vars.$color-gray-dark;
   height: 100%;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 1000px) {
