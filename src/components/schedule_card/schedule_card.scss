@@ -26,6 +26,21 @@
     background-size:cover;
   }
 
+  &__eposide {
+    @include mix.area(
+      inline-block,
+      absolute,
+      vars.$spacing-x-small,
+      vars.$spacing-atomic-xx,
+      0,
+      0,
+      vars.$color-gray-light
+      );
+    left: 30px;
+    top:120px;
+    border-radius: 8px;
+  }
+
   &__date {
     @include mix.text(
       vars.$color-neon-blue,
