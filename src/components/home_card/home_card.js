@@ -7,9 +7,11 @@ const HomeCard = (props) => {
     <div className='container-fluid home-cards'>
       <div className='d-flex justify-content-between'>
         <span className='home-cards__title ml-4 mt-4'>{props.name}</span>
-        <Link to={props.route}>
-          <span className='home-cards__more mt-3'>View More</span>
-        </Link>
+        {props.showSeeMore !== false ? (
+          <Link to={props.route}>
+            <span className='home-cards__more mt-3'>View More</span>
+          </Link>
+        ) : null}
       </div>
       <div className='row home-cards__wrapper card-group'>
         {props.list.map((anime, index) => (

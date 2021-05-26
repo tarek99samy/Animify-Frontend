@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import { userContext } from '../../context/user_context';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { getGlobalState } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './signup.scss';
 
@@ -12,15 +12,16 @@ const SignUp = () => {
     lastName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    role: 'user'
   });
   const [showErrors, setShowErrors] = useState([false, false, false]);
-  const { state } = useContext(userContext);
   const history = useHistory();
 
   useEffect(() => {
-    if (state.isLoggedIn) {
-      return <Redirect to='/' />;
+    const currentState = getGlobalState();
+    if (currentState.token.length > 0) {
+      history.push({ pathname: '/' });
     }
   }, []);
 
@@ -37,7 +38,6 @@ const SignUp = () => {
       !passwordRegExp.test(data.password),
       data.password !== data.confirmPassword
     ];
-    console.log(data);
     setShowErrors(validation);
     if (validation.includes(true)) {
       return;
@@ -46,10 +46,7 @@ const SignUp = () => {
 
     axios
       .post(`${API_BASE_URL}/user`, data)
-      .then((response) => {
-        console.log(response);
-        history.push({ pathname: '/login' });
-      })
+      .then(() => history.push({ pathname: '/login' }))
       .catch((error) => {
         console.log(error);
         alert('An error occured, try again in a while');

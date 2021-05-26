@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import { userContext } from '../../context/user_context';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { getGlobalState, setGlobalState } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './login.scss';
 
@@ -10,13 +10,12 @@ const Login = () => {
     userIdentifier: '',
     password: ''
   });
-  const { state, dispatch } = useContext(userContext);
   const history = useHistory();
 
   useEffect(() => {
-    console.log(state);
-    if (state.isLoggedIn) {
-      return <Redirect to='/' />;
+    const currentState = getGlobalState();
+    if (currentState.token.length > 0) {
+      history.push({ pathname: '/' });
     }
   }, []);
 
@@ -29,19 +28,16 @@ const Login = () => {
     axios
       .post(`${API_BASE_URL}/auth/login`, data)
       .then((response) => {
-        dispatch({
-          type: 'login',
-          payload: {
-            info: { userIdentifier: data.userIdentifier },
-            token: response.data.access_token
-          }
+        setGlobalState({
+          info: { userIdentifier: data.userIdentifier },
+          token: response.data.access_token
         });
-        console.log(response);
         history.push({ pathname: '/' });
       })
       .catch((error) => {
         console.log(error);
         alert('An error occured, please try again');
+        history.push({ pathname: '/login' });
       });
   };
 

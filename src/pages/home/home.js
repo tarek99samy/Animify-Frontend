@@ -4,8 +4,8 @@ import axios from 'axios';
 import SideBar from '../../components/side_bar/side_bar';
 import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
-import './home.scss';
 import trimName from '../../utils/trim_name';
+import './home.scss';
 
 function Home() {
   const [seasonalAnime, setSeasonalAnime] = useState([]);

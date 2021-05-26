@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/private_route/private_route';
-import { UserContextProvider } from './context/user_context';
 import Login from './pages/login/login';
 import SignUp from './pages/signup/signup';
 import ResetPassword from './pages/reset_password/reset_password';
@@ -16,18 +15,16 @@ export default function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <UserContextProvider>
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={SignUp} />
-          <Route exact path='/reset-password' component={ResetPassword} />
-          <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
-          <Route exact path='/' component={Home} />
-          <Route exact path='/trending-anime' component={Trending} />
-          <Route exact path='/seasonal-anime' component={Seasonal} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={SignUp} />
+        <Route exact path='/reset-password' component={ResetPassword} />
+        <PrivateRoute exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
+        <PrivateRoute exact path='/' component={Home} />
+        <PrivateRoute exact path='/trending-anime' component={Trending} />
+        <PrivateRoute exact path='/seasonal-anime' component={Seasonal} />
 
-          {/* <Route exact path='/notfound' component={NotFound} />
+        {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
-        </UserContextProvider>
       </Switch>
     </BrowserRouter>
   );

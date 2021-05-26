@@ -1,22 +1,26 @@
 /* eslint no-nested-ternary: "off" */
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
-import { userContext } from '../../context/user_context';
+import { getGlobalState } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './reset_password.scss';
 
 const ResetPassword = () => {
   const [data, setData] = useState({ email: '', otp: '', password: '' });
   const [resetStage, setResetStage] = useState(1);
-  const { state } = useContext(userContext);
+  const [state, setState] = useState({});
   const history = useHistory();
 
   useEffect(() => {
-    if (state.isLoggedIn) {
-      return <Redirect to='/' />;
-    }
+    setState(getGlobalState());
   }, []);
+
+  useEffect(() => {
+    if (state.token === '') {
+      return <Redirect to='/login' />;
+    }
+  }, [state]);
 
   const handleFieldChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
@@ -59,6 +63,8 @@ const ResetPassword = () => {
       sendNewPassword();
     }
   };
+
+  console.log(state);
 
   return (
     <div className='reset'>
