@@ -18,10 +18,10 @@ export default function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/reset-password' component={ResetPassword} />
-        <PrivateRoute exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
-        <PrivateRoute exact path='/' component={Home} />
-        <PrivateRoute exact path='/trending-anime' component={Trending} />
-        <PrivateRoute exact path='/seasonal-anime' component={Seasonal} />
+        <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/trending-anime' component={Trending} />
+        <Route exact path='/seasonal-anime' component={Seasonal} />
 
         {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
