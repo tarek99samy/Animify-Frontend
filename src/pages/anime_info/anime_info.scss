@@ -86,6 +86,7 @@
 
       @media (max-width: 767px) {
         padding: 0 vars.$spacing-atomic vars.$spacing-xxx-atomic;
+        align-items: flex-end;
       }
     }
   }
