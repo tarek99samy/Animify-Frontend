@@ -1,20 +1,21 @@
 @use '../../styles/variables' as vars;
 @use '../../styles/mixins' as mix;
 
-.home-cards {
+.schedule {
   &__title {
-    @include mix.text(vars.$color-white, vars.$text-size-small-x, bold, vars.$spacing-xxx-atomic);
+    @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+    margin: 0;
   }
 
   &__more {
     color: vars.$color-neon-blue;
   }
 
-  &__wrapper {
+  &__content {
     @include mix.gridArea(
       column,
       vars.$spacing-x-atomic,
-      vars.$spacing-large-x,
+      vars.$width-medium-xxx,
       vars.$spacing-large-x,
       vars.$spacing-xxx-atomic
     );
@@ -40,36 +41,6 @@
     &::-webkit-scrollbar-thumb {
       background-color: vars.$color-silver;
       border-radius: vars.$spacing-xx-atomic;
-    }
-
-    .home-card {
-      @include mix.flexArea(column, start, center);
-      @include mix.borderedArea(0, vars.$color-gray-dark, 0);
-      @include mix.area(
-        flex,
-        relative,
-        vars.$width-medium,
-        vars.$width-small-x,
-        vars.$spacing-xx-atomic,
-        vars.$spacing-xxx-atomic,
-        vars.$color-gray
-      );
-      color: vars.$color-white;
-      overflow: hidden;
-
-      &:hover {
-        background-color: vars.$color-gray-light;
-      }
-
-      &__img {
-        border-radius: vars.$spacing-xx-atomic;
-        height: vars.$spacing-large;
-        width: 100%;
-      }
-
-      &__txt {
-        margin: vars.$spacing-xxx-atomic;
-      }
     }
   }
 }
