@@ -4,9 +4,9 @@ import './see_more.scss';
 function SeeMore(props) {
   return (
     <div className='container cards'>
-      <div className='row cards__row justify-content-center'>
+      <div className='row g-1 cards__row justify-content-center'>
         {props.list.map((anime) => (
-          <div className='col-sm-6 col-md-4 seemore__card'>
+          <div className='col-6 col-md-4 seemore__card'>
             <div lassName='card'>
             <div className='row'>
               <div className='col-6'>

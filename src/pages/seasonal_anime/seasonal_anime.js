@@ -13,7 +13,7 @@ function Seasonal() {
   useEffect(() => {
     axios
       .get(
-        'http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-seasonal?listingServer=0&page=1&perPage=8&seasonYear=2021&season=0'
+        'http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-seasonal?listingServer=0&page=1&perPage=12&seasonYear=2021&season=0'
       )
       .then((response) => {
         setSeasonalAnime(trimName(response.data.items, 20));
@@ -28,6 +28,7 @@ function Seasonal() {
       <SideBar />
       <NavBar />
       <div className='main'>
+        <span className='main__title m-2'> Seasonal Anime </span>
         <SeeMore list={seasonalAnime} />
       </div>
     </div>

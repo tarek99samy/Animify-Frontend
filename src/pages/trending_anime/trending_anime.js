@@ -12,7 +12,7 @@ function Trending() {
 
   useEffect(() => {
     axios
-      .get('http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-trending?listingServer=0&page=1&perPage=8')
+      .get('http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-trending?listingServer=0&page=1&perPage=12')
       .then((response) => {
         setTrendingAnime(trimName(response.data.items));
         setIsLoading(false);
@@ -26,6 +26,7 @@ function Trending() {
       <SideBar />
       <NavBar />
       <div className='main'>
+        <span className='main__title m-2'> Trending Anime </span>
         <SeeMore list={trendingAnime} />
       </div>
     </div>

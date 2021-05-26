@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .cards {
-  margin: vars.$spacing-atomic-x;
+  margin: 0 vars.$spacing-atomic-x;
 }
 .seemore__card {
   @include mix.area(
@@ -28,7 +28,7 @@
 
 @media screen and (max-width: 1000px) {
   .cards {
-    margin: 0 vars.$spacing-x-small;
+    margin: 0 vars.$spacing-atomic-x 0 vars.$spacing-x-small;
   }
 }
 
