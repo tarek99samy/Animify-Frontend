@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import SideBar from '../../components/side_bar/side_bar';
-import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
 import trimName from '../../utils/trim_name';
 import './home.scss';
@@ -49,8 +47,6 @@ function Home() {
   }, []);
   return (
     <div>
-      <SideBar />
-      <NavBar />
       <div className='main'>
         <HomeCard name='This Week' list={animeSchedule} route='anime-schedule' />
         <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' />
