@@ -17,7 +17,7 @@ const HomeCard = (props) => {
         {props.list.map((anime, index) => (
           <Link to={`/anime-info/0/${anime.gotoURL}`} className='home-card card'>
             <div key={index}>
-              <img src={anime.artwork} className='home-card__img card-img-top fluid-img' alt='animeImg' />
+              <img src={anime.artwork} className='home-card__img fluid-img' alt='animeImg' />
               <div>
                 <span className='home-card__txt'>{anime.name}</span>
               </div>

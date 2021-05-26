@@ -1,0 +1,61 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.cards {
+  margin: vars.$spacing-atomic-x;
+}
+.schedule__card  {
+  @include mix.area(
+    flex,
+    relative,
+    vars.$width-medium-xxx,
+    vars.$spacing-large-increased,
+    vars.$spacing-xx-atomic,
+    vars.$spacing-xxx-atomic,
+    vars.$color-gray-light
+    );
+    color: vars.$color-white;
+    width: vars.$width-medium-xxx;
+
+  &__img {
+    height: vars.$spacing-x-large;
+    width: vars.$spacing-medium;
+    background-size:cover;
+  }
+
+  &__date {
+    @include mix.text(
+      vars.$color-neon-blue,
+      vars.$text-size-atomic-x,
+      vars.$text-weight-bold,
+      vars.$spacing-xx-atomic)
+  }
+
+  &__text {
+    margin-top: vars.$spacing-xxx-large;
+  }
+
+  &__synopsis {
+    @include mix.text(
+      vars.$color-silver,
+      vars.$text-size-atomic-x,
+      vars.$text-weight-light,
+      vars.$spacing-xx-atomic);
+  }
+}
+
+.card-body {
+  padding: vars.$spacing-xxx-atomic;
+}
+
+@media screen and (max-width: 1000px) {
+  .cards {
+    margin: 0 vars.$spacing-x-small;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cards {
+    margin: 0;
+  }
+}
