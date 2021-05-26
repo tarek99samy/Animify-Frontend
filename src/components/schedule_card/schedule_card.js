@@ -1,14 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import epochTimeConverter from '../../utils/epoch_time_converter';
-import trimName from '../../utils/trim_name';
 import './schedule_card.scss';
 
 function ScheduleCard(props) {
   return (
     <div className='container cards'>
       <div className='row row-cols-1 cards__row'>
-        {props.list.map((anime) => (
-          <div className='card schedule__card col'>
+        {props.list.map((anime,index) => (
+          <Link to={`/anime-info/0/${anime.gotoURL}`} className='card schedule__card col' key={index}>
+          <div>
             <div className='row g-0'>
               <div className='col-4 schedule__card__col'>
                 <img src={anime.artwork} alt='animeimage' className='schedule__card__img' />
@@ -22,6 +23,7 @@ function ScheduleCard(props) {
               </div>
             </div>
           </div>
+          </Link>
         ))}
       </div>
     </div>

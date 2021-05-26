@@ -12,10 +12,13 @@
     vars.$spacing-large-increased,
     vars.$spacing-xx-atomic,
     vars.$spacing-xxx-atomic,
-    vars.$color-gray-light
+    vars.$color-gray
     );
     color: vars.$color-white;
-    width: vars.$width-medium-xxx;
+
+  &:hover {
+    background-color: vars.$color-gray-light;
+  }
 
   &__img {
     height: vars.$spacing-x-large;
@@ -33,6 +36,9 @@
 
   &__text {
     margin-top: vars.$spacing-xxx-large;
+    &:hover {
+      color: vars.$color-white;
+    }
   }
 
   &__synopsis {
@@ -47,7 +53,9 @@
 .card-body {
   padding: vars.$spacing-xxx-atomic;
 }
-
+a:hover {
+  color: vars.$color-white;
+}
 @media screen and (max-width: 1000px) {
   .cards {
     margin: 0 vars.$spacing-x-small;
