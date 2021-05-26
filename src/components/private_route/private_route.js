@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import { userContext } from '../../context/user_context';
+import React, { useEffect } from 'react';
+import { Route, useHistory } from 'react-router-dom';
+import { getGlobalState } from '../../utils/state_manager';
 
 export default function PrivateRoute({ children, ...rest }) {
-  const [state, dispatch] = useContext(userContext);
+  const history = useHistory();
 
-  return (
-    <Route
-      {...rest}
-      render={() => {
-        return state.isLoggedIn ? children : <Redirect to='/login' />;
-      }}
-    />
-  );
+  useEffect(() => {
+    const currentState = getGlobalState();
+    if (currentState.token.length > 0) {
+      history.push({ pathname: '/' });
+    }
+  }, []);
+
+  return <Route {...rest} render={() => children} />;
 }

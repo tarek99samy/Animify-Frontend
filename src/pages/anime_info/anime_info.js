@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Characters from '../../components/characters/characters';
 import Divider from '../../components/divider/divider';
 import Expand from '../../components/expand/expand';
@@ -23,6 +23,12 @@ const AnimeInfo = ({ match }) => {
     relatedAnimes: []
   });
 
+  const formatInformation = (information) => {
+    return Object.keys(information).map((key) => {
+      return { key, value: information[key] };
+    });
+  };
+
   useEffect(() => {
     axios
       .get(`${API_BASE_URL}/listings/anime-info?listingServer=${match.params.listingId}&id=${match.params.animeId}`)
@@ -35,17 +41,15 @@ const AnimeInfo = ({ match }) => {
           description: response.data.synopsis,
           statistics: response.data.statistics.ratings,
           characters: response.data.charachters,
-          information: Object.keys(response.data.information).map((key) => {
-            return { key, value: response.data.information[key] };
-          }),
+          information: formatInformation(response.data.information),
           relatedAnimes: response.data.relatedAnimes
         });
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  console.log(data.information);
+  }, [match.params]);
+
   return (
     <div className='container-fluid info'>
       <div className='row info__banner'>
@@ -86,8 +90,7 @@ const AnimeInfo = ({ match }) => {
           </div>
         ))}
       </div>
-      {/* related -- HomeCard */}
-      {/* <HomeCard /> */}
+      <HomeCard name='Related Animes' list={data.relatedAnimes} route='anime-schedule' />
     </div>
   );
 };
