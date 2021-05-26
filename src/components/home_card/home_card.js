@@ -4,9 +4,9 @@ import './home_card.scss';
 
 const HomeCard = (props) => {
   return (
-    <div className='container-fluid home-cards'>
+    <div className='container-fluid home-cards mt-3'>
       <div className='d-flex justify-content-between'>
-        <span className='home-cards__title ml-4 mt-4'>{props.name}</span>
+        <span className='home-cards__title ml-4 mt-3'>{props.name}</span>
         {props.showSeeMore !== false ? (
           <Link to={props.route}>
             <span className='home-cards__more mt-3'>View More</span>

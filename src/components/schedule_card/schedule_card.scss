@@ -4,7 +4,7 @@
 .cards {
   margin: vars.$spacing-atomic-x;
 }
-.schedule__card  {
+.schedule__card {
   @include mix.area(
     flex,
     relative,
@@ -13,8 +13,8 @@
     vars.$spacing-xx-atomic,
     vars.$spacing-xxx-atomic,
     vars.$color-gray
-    );
-    color: vars.$color-white;
+  );
+  color: vars.$color-white;
 
   &:hover {
     background-color: vars.$color-gray-light;
@@ -23,7 +23,7 @@
   &__img {
     height: vars.$spacing-x-large;
     width: vars.$spacing-medium;
-    background-size:cover;
+    background-size: cover;
   }
 
   &__eposide {
@@ -35,18 +35,14 @@
       0,
       0,
       vars.$color-gray-light
-      );
-    left: 30px;
-    top:120px;
-    border-radius: 8px;
+    );
+    left: vars.$spacing-atomic-xxx;
+    top: vars.$spacing-medium-xx;
+    border-radius: vars.$spacing-xx-atomic;
   }
 
   &__date {
-    @include mix.text(
-      vars.$color-neon-blue,
-      vars.$text-size-atomic-x,
-      vars.$text-weight-bold,
-      vars.$spacing-xx-atomic)
+    @include mix.text(vars.$color-neon-blue, vars.$text-size-atomic-x, vars.$text-weight-bold, vars.$spacing-xx-atomic);
   }
 
   &__text {
@@ -57,11 +53,7 @@
   }
 
   &__synopsis {
-    @include mix.text(
-      vars.$color-silver,
-      vars.$text-size-atomic-x,
-      vars.$text-weight-light,
-      vars.$spacing-xx-atomic);
+    @include mix.text(vars.$color-silver, vars.$text-size-atomic-x, vars.$text-weight-light, vars.$spacing-xx-atomic);
   }
 }
 

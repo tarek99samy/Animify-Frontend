@@ -4,7 +4,7 @@ import axios from 'axios';
 import SideBar from '../../components/side_bar/side_bar';
 import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
-import ScheduleCard from '../../components/schedule_card/schedule_card';
+import ScrollableSchedule from '../../components/scrollable_schedule/scrollable_schedule';
 import trimName from '../../utils/trim_name';
 import './home.scss';
 
@@ -42,7 +42,7 @@ function Home() {
         `http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-schedule?listingServer=0&page=1&perPage=8&date=${timestamp}`
       )
       .then((response) => {
-        setAnimeSchedule(trimName(response.data.items,20,true));
+        setAnimeSchedule(trimName(response.data.items, 20, true));
       })
       .catch((error) => {
         console.log(error);
@@ -53,8 +53,7 @@ function Home() {
       <SideBar />
       <NavBar />
       <div className='main'>
-        <ScheduleCard list={animeSchedule} route='anime-schedule'/>
-        <HomeCard name='This Week' list={animeSchedule} route='anime-schedule' />
+        <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
         <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' />
         <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime' />
       </div>

@@ -6,9 +6,9 @@ function trimName(arr, charNum = 20, isSchedule = false, synopsisNum = 85) {
     if (arr[i].name.length > charNum) {
       newName = arr[i].name.slice(0, charNum);
     }
-    if (isSchedule && arr[i].synopsis != null &&arr[i].synopsis.length >synopsisNum) {
-      let newSynopsis = arr[i].synopsis.slice(0,synopsisNum);
-      newSynopsis +='..';
+    if (isSchedule && arr[i].synopsis != null && arr[i].synopsis.length > synopsisNum) {
+      let newSynopsis = arr[i].synopsis.slice(0, synopsisNum);
+      newSynopsis += '..';
       newArr.push({
         ...arr[i],
         name: newName,
