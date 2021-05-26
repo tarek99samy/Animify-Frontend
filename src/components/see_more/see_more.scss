@@ -3,7 +3,6 @@
 
 .cards {
   margin: vars.$spacing-atomic-x;
-  //margin-left: vars.$spacing-atomic-x;
 }
 .seemore__card {
   @include mix.area(
@@ -18,9 +17,8 @@
   color: vars.$color-white;
 
   &__img {
-    height: 100%;
-    width: 100%;
-    max-height: vars.$spacing-xx-large;
+    height: vars.$spacing-xx-large;
+    width: vars.$spacing-x-large;
   }
 
   &__text {
