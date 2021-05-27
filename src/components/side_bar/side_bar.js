@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import React, { useEffect, useState } from 'react';
 import { isLoggedIn } from '../../utils/state_manager';
 import SideBarElement from './side_bar_element';
 import './side_bar.scss';
@@ -32,7 +31,6 @@ const sideBarList = items.map((item, index) => {
   return <SideBarElement item={item} key={index} />;
 });
 function SideBar() {
-
   return (
     <div className='sidebar flex-column'>
       <div>
@@ -42,15 +40,14 @@ function SideBar() {
       </div>
       <ul className='nav flex-column sidebar__list'>
         {sideBarList}
-        { isLoggedIn()?(
-
+        {isLoggedIn() ? (
           <li className='nav-item sidebar__item'>
-          <Link to='/' className='nav-link sidebar__item__link'>
-            <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
-            <span className='sidebar__item__text'>Logout</span>
-          </Link>
-        </li>
-        ):null}
+            <Link to='/' className='nav-link sidebar__item__link'>
+              <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
+              <span className='sidebar__item__text'>Logout</span>
+            </Link>
+          </li>
+        ) : null}
       </ul>
     </div>
   );

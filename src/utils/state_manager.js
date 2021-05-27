@@ -7,6 +7,6 @@ export const getGlobalState = () => {
 };
 
 export const isLoggedIn = () => {
-  if(getGlobalState() != null) return true;
+  if (getGlobalState() != null) return true;
   return false;
-}
+};
