@@ -5,3 +5,8 @@ export const setGlobalState = (state) => {
 export const getGlobalState = () => {
   return JSON.parse(localStorage.getItem('userState'));
 };
+
+export const isLoggedIn = () => {
+  if (getGlobalState() != null) return true;
+  return false;
+};

@@ -27,16 +27,81 @@
       outline: none;
     }
   }
+
+  &__buttons--login,
+  &__buttons--logout {
+    margin-left: 65vw;
+  }
+
+  &__username {
+    background-color: vars.$color-gray-dark;
+    border-radius: vars.$spacing-xxx-small;
+    color: vars.$color-white;
+    padding: vars.$spacing-xxx-atomic vars.$spacing-xx-atomic;
+  }
+
+  &__icon {
+    margin-left: vars.$spacing-x-atomic;
+    color: vars.$color-silver;
+
+    &:hover {
+      color: vars.$color-neon-blue;
+    }
+  }
+
+  &__usericon {
+    display: none;
+  }
+
+  &__loginbtn {
+    color: vars.$color-neon-blue;
+    &:hover {
+      color: vars.$color-neon-blue;
+    }
+  }
+
+  &__signbtn {
+    background-color: vars.$color-neon-blue;
+    padding: vars.$spacing-xxx-atomic vars.$spacing-xxx-atomic;
+    color: vars.$color-white;
+  }
 }
 
 @media screen and (max-width: 1000px) {
   .navbar {
     margin: 0 vars.$spacing-x-small;
+    &__search {
+      width: vars.$width-medium;
+    }
   }
 }
 
 @media screen and (max-width: 700px) {
   .navbar {
     margin: 0;
+    &__search {
+      width: vars.$width-small;
+    }
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .navbar {
+    margin: 0;
+    &__search {
+      width: vars.$spacing-large-increased-x;
+    }
+    &__buttons--login {
+      margin-left: 70vw;
+    }
+    &__buttons--logout {
+      margin-left: 50vw;
+    }
+    &__username {
+      display: none;
+    }
+    &__usericon {
+      display: inline;
+    }
   }
 }
