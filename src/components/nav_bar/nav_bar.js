@@ -1,13 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/state_manager';
 import './nav_bar.scss';
 
 function NavBar() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const history = useHistory();
+  const handleClickOnSearch = (event) => {
+    if (event.charCode == 13) {
+      history.replace({ pathname: `/search-result/0/${searchQuery}` });
+    }
+  };
+  const handleFieldChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
   return (
     <div>
       <nav className='navbar'>
-        <input type='search' className='navbar__search' placeholder='Search for animes' />
+        <input
+          type='search'
+          className='navbar__search'
+          placeholder='Search for animes'
+          name='searchQuery'
+          autoComplete='off'
+          onKeyPress={handleClickOnSearch}
+          onChange={handleFieldChange}
+        />
         {isLoggedIn() ? (
           <div className='navbar__buttons--login'>
             <Link to='/profile'>

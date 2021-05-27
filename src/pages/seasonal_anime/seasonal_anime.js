@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SideBar from '../../components/side_bar/side_bar';
-import NavBar from '../../components/nav_bar/nav_bar';
 import SeeMore from '../../components/see_more/see_more';
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
@@ -23,13 +21,8 @@ function Seasonal() {
       });
   }, []);
   return (
-    <div>
-      <SideBar />
-      <NavBar />
-      <div className='main'>
-        <span className='main__title m-2'> Seasonal Anime </span>
-        <SeeMore list={seasonalAnime} />
-      </div>
+    <div className='main'>
+      <SeeMore list={seasonalAnime} />
     </div>
   );
 }

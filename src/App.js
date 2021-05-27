@@ -11,10 +11,15 @@ import Home from './pages/home/home';
 import Trending from './pages/trending_anime/trending_anime';
 import Seasonal from './pages/seasonal_anime/seasonal_anime';
 import AnimeSchedule from './pages/anime_schedule/anime_schedule';
+import SearchResult from './pages/search_results/search_results';
+import SideBar from './components/side_bar/side_bar';
+import NavBar from './components/nav_bar/nav_bar';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <SideBar />
+      <NavBar />
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
@@ -24,6 +29,7 @@ export default function App() {
         <Route exact path='/trending-anime' component={Trending} />
         <Route exact path='/seasonal-anime' component={Seasonal} />
         <Route exact path='/anime-schedule' component={AnimeSchedule} />
+        <Route exact path='/search-result/:sourceID/:query' component={SearchResult} />
 
         {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
