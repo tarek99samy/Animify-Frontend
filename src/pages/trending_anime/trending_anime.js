@@ -3,8 +3,9 @@ import axios from 'axios';
 import SideBar from '../../components/side_bar/side_bar';
 import NavBar from '../../components/nav_bar/nav_bar';
 import SeeMore from '../../components/see_more/see_more';
-import './trending_anime.scss';
 import trimName from '../../utils/trim_name';
+import { API_BASE_URL } from '../../utils/consts';
+import './trending_anime.scss';
 
 function Trending() {
   const [trendingAnime, setTrendingAnime] = useState([]);
@@ -12,7 +13,7 @@ function Trending() {
 
   useEffect(() => {
     axios
-      .get('http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-trending?listingServer=0&page=1&perPage=12')
+      .get(`${API_BASE_URL}/listings/anime-trending?listingServer=0&page=1&perPage=12`)
       .then((response) => {
         setTrendingAnime(trimName(response.data.items));
         setIsLoading(false);
