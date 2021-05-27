@@ -6,6 +6,7 @@ import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
 import ScrollableSchedule from '../../components/scrollable_schedule/scrollable_schedule';
 import trimName from '../../utils/trim_name';
+import { API_BASE_URL } from '../../utils/consts';
 import './home.scss';
 
 function Home() {
@@ -18,7 +19,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get('http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-trending?listingServer=0&page=1&perPage=8')
+      .get(`${API_BASE_URL}/listings/anime-trending?listingServer=0&page=1&perPage=8`)
       .then((response) => {
         setTrendingAnime(trimName(response.data.items));
       })
@@ -28,7 +29,7 @@ function Home() {
 
     axios
       .get(
-        'http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-seasonal?listingServer=0&page=1&perPage=8&seasonYear=2021&season=0'
+        `${API_BASE_URL}/listings/anime-seasonal?listingServer=0&page=1&perPage=8&seasonYear=2021&season=0`
       )
       .then((response) => {
         setSeasonalAnime(trimName(response.data.items));
@@ -39,7 +40,7 @@ function Home() {
 
     axios
       .get(
-        `http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-schedule?listingServer=0&page=1&perPage=8&date=${timestamp}`
+        `${API_BASE_URL}/listings/anime-schedule?listingServer=0&page=1&perPage=8&date=${timestamp}`
       )
       .then((response) => {
         setAnimeSchedule(trimName(response.data.items, 20, true));
