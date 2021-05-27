@@ -28,7 +28,8 @@
     }
   }
 
-  &__buttons {
+  &__buttons--login,
+  &__buttons--logout {
     margin-left: 65vw;
   }
 
@@ -51,6 +52,19 @@
   &__usericon {
     display: none;
   }
+
+  &__loginbtn {
+    color: vars.$color-neon-blue;
+    &:hover {
+      color: vars.$color-neon-blue;
+    }
+  }
+
+  &__signbtn {
+    background-color: vars.$color-neon-blue;
+    padding: vars.$spacing-xxx-atomic vars.$spacing-xxx-atomic;
+    color: vars.$color-white;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -71,13 +85,18 @@
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 510px) {
   .navbar {
     margin: 0;
-    &__buttons {
+    &__search {
+      width: vars.$spacing-large-increased-x;
+    }
+    &__buttons--login {
       margin-left: 70vw;
     }
-
+    &__buttons--logout {
+      margin-left: 50vw;
+    }
     &__username {
       display: none;
     }
