@@ -2,10 +2,9 @@
 @use '../../styles/mixins' as mix;
 
 .cards {
-  margin: vars.$spacing-atomic-x;
-  //margin-left: vars.$spacing-atomic-x;
+  margin: 0 vars.$spacing-atomic-x;
 }
-.card {
+.seemore__card {
   @include mix.area(
     flex,
     relative,
@@ -18,9 +17,8 @@
   color: vars.$color-white;
 
   &__img {
-    height: 100%;
-    width: 100%;
-    max-height: vars.$spacing-xx-large;
+    height: vars.$spacing-xx-large;
+    width: vars.$spacing-x-large;
   }
 
   &__text {
@@ -30,7 +28,7 @@
 
 @media screen and (max-width: 1000px) {
   .cards {
-    margin: 0 vars.$spacing-x-small;
+    margin: 0 vars.$spacing-atomic-x 0 vars.$spacing-x-small;
   }
 }
 

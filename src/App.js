@@ -11,6 +11,7 @@ import './styles/reset.scss';
 import Home from './pages/home/home';
 import Trending from './pages/trending_anime/trending_anime';
 import Seasonal from './pages/seasonal_anime/seasonal_anime';
+import AnimeSchedule from './pages/anime_schedule/anime_schedule';
 
 export default function App() {
   return (
@@ -19,11 +20,12 @@ export default function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/reset-password' component={ResetPassword} />
-        <PrivateRoute exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
-        <PrivateRoute exact path='/anime-source/:sourceServer/:gotoURL' component={AnimeSource} />
-        <PrivateRoute exact path='/' component={Home} />
-        <PrivateRoute exact path='/trending-anime' component={Trending} />
-        <PrivateRoute exact path='/seasonal-anime' component={Seasonal} />
+        <Route exact path='/anime-source/:sourceServer/:gotoURL' component={AnimeSource} />
+        <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
+        <Route exact path='/' component={Home} />
+        <Route exact path='/trending-anime' component={Trending} />
+        <Route exact path='/seasonal-anime' component={Seasonal} />
+        <Route exact path='/anime-schedule' component={AnimeSchedule} />
 
         {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
