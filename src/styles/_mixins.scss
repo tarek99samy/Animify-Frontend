@@ -41,7 +41,7 @@
   width: $width;
 }
 
-@mixin mainContent($marginLeft,$paddingTop,$backgroundColor,$smallMargin) {
+@mixin mainContent($marginLeft, $paddingTop, $backgroundColor, $smallMargin) {
   margin-left: $marginLeft;
   padding-top: $paddingTop;
   background-color: $backgroundColor;

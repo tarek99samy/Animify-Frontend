@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { isLoggedIn } from '../../utils/state_manager';
+import { isLoggedIn, logout } from '../../utils/state_manager';
 import SideBarElement from './side_bar_element';
 import './side_bar.scss';
 
@@ -42,7 +42,7 @@ function SideBar() {
         {sideBarList}
         {isLoggedIn() ? (
           <li className='nav-item sidebar__item'>
-            <Link to='/' className='nav-link sidebar__item__link'>
+            <Link to='/' className='nav-link sidebar__item__link' onClick={logout()}>
               <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
               <span className='sidebar__item__text'>Logout</span>
             </Link>

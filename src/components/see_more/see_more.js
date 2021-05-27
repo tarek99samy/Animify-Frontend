@@ -5,7 +5,7 @@ function SeeMore(props) {
   return (
     <div className='container cards'>
       <div className='row g-1 cards__row justify-content-center'>
-        {props.list.map((anime,index) => (
+        {props.list.map((anime, index) => (
           <div className='col-6 col-md-4 seemore__card' key={index}>
             <div className='row'>
               <div className='col-6'>

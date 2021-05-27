@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { getGlobalState } from '../../utils/state_manager';
+import { isLoggedIn } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './signup.scss';
 
@@ -19,8 +19,7 @@ const SignUp = () => {
   const history = useHistory();
 
   useEffect(() => {
-    const currentState = getGlobalState();
-    if (currentState.token.length > 0) {
+    if (isLoggedIn()) {
       history.push({ pathname: '/' });
     }
   }, []);

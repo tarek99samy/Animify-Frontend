@@ -28,9 +28,7 @@ function Home() {
       });
 
     axios
-      .get(
-        `${API_BASE_URL}/listings/anime-seasonal?listingServer=0&page=1&perPage=8&seasonYear=2021&season=0`
-      )
+      .get(`${API_BASE_URL}/listings/anime-seasonal?listingServer=0&page=1&perPage=8&seasonYear=2021&season=0`)
       .then((response) => {
         setSeasonalAnime(trimName(response.data.items));
       })
@@ -39,9 +37,7 @@ function Home() {
       });
 
     axios
-      .get(
-        `${API_BASE_URL}/listings/anime-schedule?listingServer=0&page=1&perPage=8&date=${timestamp}`
-      )
+      .get(`${API_BASE_URL}/listings/anime-schedule?listingServer=0&page=1&perPage=8&date=${timestamp}`)
       .then((response) => {
         setAnimeSchedule(trimName(response.data.items, 20, true));
       })

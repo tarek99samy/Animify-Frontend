@@ -10,3 +10,7 @@ export const isLoggedIn = () => {
   if (getGlobalState() != null) return true;
   return false;
 };
+
+export const logout = () => {
+  localStorage.removeItem('userState');
+};
