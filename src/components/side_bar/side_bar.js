@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { isLoggedIn } from '../../utils/state_manager';
 import SideBarElement from './side_bar_element';
 import './side_bar.scss';
 
@@ -37,7 +38,17 @@ function SideBar() {
           <h4 className='sidebar__title'>Animify</h4>
         </Link>
       </div>
-      <ul className='nav flex-column sidebar__list'>{sideBarList}</ul>
+      <ul className='nav flex-column sidebar__list'>
+        {sideBarList}
+        {isLoggedIn() ? (
+          <li className='nav-item sidebar__item'>
+            <Link to='/' className='nav-link sidebar__item__link'>
+              <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
+              <span className='sidebar__item__text'>Logout</span>
+            </Link>
+          </li>
+        ) : null}
+      </ul>
     </div>
   );
 }
