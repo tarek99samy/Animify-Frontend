@@ -40,3 +40,17 @@
   border-top: $height solid $color;
   width: $width;
 }
+
+@mixin mainContent($marginLeft,$paddingTop,$backgroundColor,$smallMargin) {
+  margin-left: $marginLeft;
+  padding-top: $paddingTop;
+  background-color: $backgroundColor;
+  height: 100%;
+  min-height: 100vh;
+  @media screen and (max-width: 1000px) {
+    margin: 0 0 0 $smallMargin;
+  }
+  @media screen and (max-width: 700px) {
+    margin: 0;
+  }
+}
