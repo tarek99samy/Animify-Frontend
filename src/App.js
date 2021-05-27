@@ -12,10 +12,14 @@ import Home from './pages/home/home';
 import Trending from './pages/trending_anime/trending_anime';
 import Seasonal from './pages/seasonal_anime/seasonal_anime';
 import AnimeSchedule from './pages/anime_schedule/anime_schedule';
+import SideBar from './components/side_bar/side_bar';
+import NavBar from './components/nav_bar/nav_bar';
 
 export default function App() {
   return (
     <BrowserRouter>
+      <SideBar />
+      <NavBar />
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
