@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/state_manager';
 import './nav_bar.scss';
 
 function NavBar() {
   const [searchQuery, setSearchQuery] = useState('');
-
-  const params = useParams();
-
   const history = useHistory();
-  console.log(history);
-  // if(history.location.pathname.includes('/search-result')) {
-  //   setSearchQuery(params.query);
-  // }
   const handleClickOnSearch = (event) => {
-    console.log(event);
     if (event.charCode == 13) {
       history.replace({ pathname: `/search-result/0/${searchQuery}` });
     }
@@ -31,6 +23,7 @@ function NavBar() {
           className='navbar__search'
           placeholder='Search for animes'
           name='searchQuery'
+          autoComplete='off'
           onKeyPress={handleClickOnSearch}
           onChange={handleFieldChange}
         />

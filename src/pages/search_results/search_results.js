@@ -25,14 +25,10 @@ function SearchResult() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [params]);
   return (
-    <div>
-      {/* <SideBar />
-      <NavBar /> */}
-      <div className='main'>
-        <SeeMore list={result} />
-      </div>
+    <div className='main'>
+      <SeeMore list={result} />
     </div>
   );
 }
