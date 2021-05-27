@@ -9,20 +9,20 @@ function NavBar() {
   const params = useParams();
 
   const history = useHistory();
-  console.log(history)
+  console.log(history);
   // if(history.location.pathname.includes('/search-result')) {
   //   setSearchQuery(params.query);
   // }
   const handleClickOnSearch = (event) => {
     console.log(event);
-    if(event.charCode==13){
+    if (event.charCode == 13) {
       history.replace({ pathname: `/search-result/0/${searchQuery}` });
     }
-  }
+  };
   const handleFieldChange = (event) => {
     console.log(event.target.value);
-    setSearchQuery( event.target.value );
-  }
+    setSearchQuery(event.target.value);
+  };
   return (
     <div>
       <nav className='navbar'>

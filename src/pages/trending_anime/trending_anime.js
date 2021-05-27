@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SideBar from '../../components/side_bar/side_bar';
-import NavBar from '../../components/nav_bar/nav_bar';
 import SeeMore from '../../components/see_more/see_more';
-import './trending_anime.scss';
 import trimName from '../../utils/trim_name';
+import './trending_anime.scss';
 
 function Trending() {
   const [trendingAnime, setTrendingAnime] = useState([]);
@@ -22,12 +20,8 @@ function Trending() {
       });
   }, []);
   return (
-    <div>
-      <SideBar />
-      <NavBar />
-      <div className='main'>
-        <SeeMore list={trendingAnime} />
-      </div>
+    <div className='main'>
+      <SeeMore list={trendingAnime} />
     </div>
   );
 }

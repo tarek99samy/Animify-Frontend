@@ -15,7 +15,9 @@ function SearchResult() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/source/anime-search?sourceServer=${params.sourceID}&page=1&perPage=12&query=${params.query}`)
+      .get(
+        `${API_BASE_URL}/source/anime-search?sourceServer=${params.sourceID}&page=1&perPage=12&query=${params.query}`
+      )
       .then((response) => {
         setResult(trimName(response.data.items));
         setIsLoading(false);
@@ -26,8 +28,8 @@ function SearchResult() {
   }, []);
   return (
     <div>
-      <SideBar />
-      <NavBar />
+      {/* <SideBar />
+      <NavBar /> */}
       <div className='main'>
         <SeeMore list={result} />
       </div>

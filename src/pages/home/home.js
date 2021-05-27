@@ -50,8 +50,8 @@ function Home() {
   }, []);
   return (
     <div>
-      <SideBar />
-      <NavBar />
+      {/* <SideBar />
+      <NavBar /> */}
       <div className='main'>
         <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
         <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' />
