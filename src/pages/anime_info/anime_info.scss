@@ -2,37 +2,50 @@
 @use '../../styles/mixins' as mix;
 
 .info {
-  @include mix.area(block, unset, 100%, 100%, 0, 0, vars.$color-gray);
+  padding: 0;
+  width: auto;
+  @include mix.mainContent(vars.$width-small, vars.$spacing-micro-x, vars.$color-gray, vars.$spacing-x-small);
+
+  &__wrapper {
+    width: auto;
+  }
 
   &__banner {
     height: vars.$width-medium;
     margin: 0;
     @include mix.flexArea(row, flex-end, flex-start);
 
+    @media (max-width: 576px) {
+      align-items: center;
+      justify-content: space-between;
+    }
+
     &__overlay {
       background-color: vars.$color-transparent-2;
       width: 100%;
       height: 100%;
-      position: absolute;
+      position: relative;
       padding: 0;
       z-index: 1;
     }
 
     &__background {
-      position: absolute;
       left: 0;
-      top: 0;
+      top: vars.$spacing-micro-x;
       z-index: 0;
       width: 100%;
       height: vars.$width-medium;
       object-fit: cover;
       padding: 0;
+      position: absolute;
     }
 
     &__content {
       @include mix.flexArea(row, flex-start, flex-start);
-      z-index: 1;
+      z-index: 2;
       padding: 0 vars.$spacing-atomic vars.$spacing-atomic;
+      position: absolute;
+      width: auto;
 
       &__img {
         width: vars.$width-small;
@@ -41,13 +54,13 @@
         object-position: center;
 
         @media (max-width: 767px) {
-          width: 10em;
-          height: 10em;
+          width: vars.$spacing-large-increased;
+          height: vars.$spacing-large-increased;
         }
 
         @media (max-width: 424px) {
-          width: 5em;
-          height: 7em;
+          width: vars.$spacing-small-increased;
+          height: vars.$spacing-large-increased;
         }
       }
 
@@ -58,10 +71,20 @@
 
         &__title {
           @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+
+          @media (max-width: 576px) {
+            font-size: vars.$text-size-micro;
+          }
         }
+
         &__subtitle {
           @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
+
+          @media (max-width: 576px) {
+            font-size: vars.$text-size-micro;
+          }
         }
+
         &__link {
           @include mix.text(vars.$color-black, vars.$text-size-x-micro, vars.$text-weight-bold, vars.$text-size-small);
           background-color: vars.$color-neon-blue;
@@ -85,7 +108,7 @@
       }
 
       @media (max-width: 767px) {
-        padding: 0 vars.$spacing-atomic vars.$spacing-xxx-atomic;
+        padding-right: 0;
         align-items: flex-end;
       }
     }

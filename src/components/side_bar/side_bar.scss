@@ -3,6 +3,7 @@
 
 .sidebar {
   @include mix.area(flex, fixed, vars.$width-small, 100vh, 0, 0, vars.$color-gray);
+  z-index: 1;
 
   &__title {
     @include mix.text(vars.$color-neon-blue, vars.$spacing-atomic-xx, bold, vars.$spacing-x-atomic);

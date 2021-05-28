@@ -25,7 +25,14 @@ const AnimeInfo = ({ match }) => {
 
   const formatInformation = (information) => {
     return Object.keys(information).map((key) => {
-      return { key, value: information[key] };
+      let value = information[key];
+      if (Array.isArray(value)) {
+        if (value.length === 0) value = ['No genere'];
+        else value = [value[0], value[1]];
+      } else if (value === 'null/null/null') value = 'not specified';
+      else if (value === null) value = 0;
+
+      return { key, value };
     });
   };
 
@@ -52,45 +59,45 @@ const AnimeInfo = ({ match }) => {
 
   return (
     <div className='container-fluid info'>
-      <div className='row info__banner'>
-        <div className='info__banner__overlay'></div>
+      <div className='info__wrapper'>
+        <div className='row info__banner'>
+          <div className='info__banner__overlay'></div>
 
-        <img src={data.backgroundImgUrl} alt='background' className='info__banner__background' />
+          <img src={data.backgroundImgUrl} alt='background' className='info__banner__background' />
 
-        <div className='container-fluid info__banner__content'>
-          <img src={data.bannerImgUrl} alt='banner' className='col-4 col-md-auto info__banner__content__img' />
-          <div className='col-6 col-sm-5 info__banner__content__controls'>
-            <span className='info__banner__content__controls__title'>{data.title}</span>
-            <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
-            <Link to='/eposides'>
-              <button type='button' className='btn btn-primary info__banner__content__controls__link'>
-                VIEW EPOSIDES
-              </button>
-            </Link>
+          <div className='container-fluid info__banner__content'>
+            <img src={data.bannerImgUrl} alt='banner' className='col-4 col-md-auto info__banner__content__img' />
+            <div className='col-6 col-sm-5 info__banner__content__controls'>
+              <span className='info__banner__content__controls__title'>{data.title}</span>
+              <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
+              <Link to='/eposides'>
+                <button type='button' className='btn btn-primary info__banner__content__controls__link'>
+                  VIEW EPOSIDES
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-      <Expand text={data.description} />
-      <Divider fullWidth={false} />
-      <Upcoming />
-      <Statistics statistics={data.statistics} />
-      <Divider fullWidth={false} />
-      <Characters actors={data.characters} />
-      <div className='container-fluid info__details'>
-        <div className='info__details__title'>Information</div>
-        {data.information.map((item, index) => (
-          <div key={index}>
-            <div className='info__details__row'>
-              <span className='col-6 info__details__row__key'>{item.key}</span>
-              <span className='col-6 info__details__row__value'>
-                {item.key === 'genres' ? `${item.value[0]} ${item.value[1]}` : item.value}
-              </span>
+        <Expand text={data.description} />
+        <Divider fullWidth={false} />
+        <Upcoming />
+        <Statistics statistics={data.statistics} />
+        <Divider fullWidth={false} />
+        <Characters actors={data.characters} />
+        <div className='container-fluid info__details'>
+          <div className='info__details__title'>Information</div>
+          {data.information.map((item, index) => (
+            <div key={index}>
+              <div className='info__details__row'>
+                <span className='col-6 info__details__row__key'>{item.key}</span>
+                <span className='col-6 info__details__row__value'>{item.value}</span>
+              </div>
+              <Divider fullWidth={1} />
             </div>
-            <Divider fullWidth={1} />
-          </div>
-        ))}
+          ))}
+        </div>
+        <HomeCard name='Related Animes' list={data.relatedAnimes} route='anime-schedule' showSeeMore={false} />
       </div>
-      <HomeCard name='Related Animes' list={data.relatedAnimes} route='anime-schedule' showSeeMore={false} />
     </div>
   );
 };

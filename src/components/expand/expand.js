@@ -12,7 +12,7 @@ const Expand = ({ text }) => {
     <div className='container-fluid expand'>
       <div className='row expand__header'>
         <span className='col-auto expand__header__title'>Synopsis</span>
-        <button className='col-5 col-lg-1 btn expand__header__control' type='button' onClick={handleExpand}>
+        <button className='col-5 col-lg-3 btn expand__header__control' type='button' onClick={handleExpand}>
           {isExpanded ? 'Collapse' : 'Expand'}
         </button>
       </div>
