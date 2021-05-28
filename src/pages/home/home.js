@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
-import SideBar from '../../components/side_bar/side_bar';
-import NavBar from '../../components/nav_bar/nav_bar';
 import HomeCard from '../../components/home_card/home_card';
 import ScrollableSchedule from '../../components/scrollable_schedule/scrollable_schedule';
 import trimName from '../../utils/trim_name';
@@ -46,14 +43,10 @@ function Home() {
       });
   }, []);
   return (
-    <div>
-      {/* <SideBar />
-      <NavBar /> */}
-      <div className='main'>
-        <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
-        <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' />
-        <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime' />
-      </div>
+    <div className='main'>
+      <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
+      <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' />
+      <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime' />
     </div>
   );
 }
