@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/state_manager';
+import hideBars from '../../utils/hideBars';
 import './nav_bar.scss';
 
 function NavBar() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [hideValue, setHideValue] = useState('');
   const history = useHistory();
+  const location = useLocation();
   const handleClickOnSearch = (event) => {
     if (event.charCode == 13) {
       history.replace({ pathname: `/search-result/0/${searchQuery}` });
     }
   };
+  useEffect(() => {
+    setHideValue(hideBars(location.pathname));
+  }, [location]);
   const handleFieldChange = (event) => {
     setSearchQuery(event.target.value);
   };
   return (
-    <div>
+    <div className={`${hideValue}`}>
       <nav className='navbar'>
         <input
           type='search'

@@ -1,7 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { isLoggedIn, logout } from '../../utils/state_manager';
 import SideBarElement from './side_bar_element';
+import hideBars from '../../utils/hideBars';
 import './side_bar.scss';
 
 const items = [
@@ -31,8 +32,13 @@ const sideBarList = items.map((item, index) => {
   return <SideBarElement item={item} key={index} />;
 });
 function SideBar() {
+  const [hideValue, setHideValue] = useState('');
+  const location = useLocation();
+  useEffect(() => {
+    setHideValue(hideBars(location.pathname));
+  }, [location]);
   return (
-    <div className='sidebar flex-column'>
+    <div className={`sidebar flex-column ${hideValue}`}>
       <div>
         <Link to='/'>
           <h4 className='sidebar__title'>Animify</h4>
