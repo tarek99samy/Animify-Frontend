@@ -25,7 +25,7 @@ export default function App() {
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/reset-password' component={ResetPassword} />
-        <Route exact path='/anime-source/:sourceServer/:gotoURL' component={AnimeSource} />
+        <Route exact path='/anime-source/:sourceServer/category/:gotoURL' component={AnimeSource} />
         <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
         <Route exact path='/' component={Home} />
         <Route exact path='/trending-anime' component={Trending} />
