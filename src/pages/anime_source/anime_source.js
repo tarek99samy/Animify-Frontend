@@ -43,19 +43,19 @@ const AnimeSource = ({ match }) => {
   }, [match.params]);
 
   return (
-    <div className='container-fluid info'>
-      <div className='row info__banner'>
-        <div className='info__banner__overlay'></div>
+    <div className='container-fluid source'>
+      <div className='row source__banner'>
+        <div className='source__banner__overlay'></div>
 
-        <img src={data.backgroundImgUrl} alt='background' className='info__banner__background' />
+        <img src={data.backgroundImgUrl} alt='background' className='source__banner__background' />
 
-        <div className='container-fluid info__banner__content'>
-          <img src={data.bannerImgUrl} alt='banner' className='col-4 col-md-auto info__banner__content__img' />
-          <div className='col-6 col-sm-5 info__banner__content__controls'>
-            <span className='info__banner__content__controls__title'>{data.title}</span>
-            <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
+        <div className='container-fluid source__banner__content'>
+          <img src={data.bannerImgUrl} alt='banner' className='col-4 col-md-auto source__banner__content__img' />
+          <div className='col-6 col-sm-5 source__banner__content__controls'>
+            <span className='source__banner__content__controls__title'>{data.title}</span>
+            <span className='source__banner__content__controls__subtitle'>{data.subtitle}</span>
             <Link to='/eposides'>
-              <button type='button' className='btn btn-primary info__banner__content__controls__link'>
+              <button type='button' className='btn btn-primary source__banner__content__controls__link'>
                 VIEW EPOSIDES
               </button>
             </Link>
@@ -68,13 +68,13 @@ const AnimeSource = ({ match }) => {
       <Statistics statistics={data.statistics} />
       <Divider fullWidth={false} />
       <Characters actors={data.characters} />
-      <div className='container-fluid info__details'>
-        <div className='info__details__title'>Information</div>
+      <div className='container-fluid source__details'>
+        <div className='source__details__title'>Information</div>
         {data.information.map((item, index) => (
           <div key={index}>
-            <div className='info__details__row'>
-              <span className='col-6 info__details__row__key'>{item.key}</span>
-              <span className='col-6 info__details__row__value'>
+            <div className='source__details__row'>
+              <span className='col-6 source__details__row__key'>{item.key}</span>
+              <span className='col-6 source__details__row__value'>
                 {item.key === 'genres' ? `${item.value[0]} ${item.value[1]}` : item.value}
               </span>
             </div>

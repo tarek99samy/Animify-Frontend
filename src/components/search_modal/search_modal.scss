@@ -1,0 +1,36 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.search__modal {
+  margin: 0;
+
+  &__body {
+    @include mix.flexArea(row, center, space-evenly);
+    padding: vars.$spacing-atomic-x;
+
+    &__card {
+      border-color: vars.$color-black;
+      margin: vars.$spacing-atomic;
+      padding: 0;
+      transition: transform 0.4s ease-in-out;
+
+      &__img {
+        max-height: vars.$width-medium;
+      }
+
+      &__title {
+        @include mix.text(vars.$color-black, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$text-size-micro-x);
+      }
+    }
+
+    &__card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 vars.$spacing-atomic-increased vars.$spacing-xxx-atomic vars.$color-neon-blue;
+    }
+  }
+}
+
+.modal {
+  top: vars.$spacing-micro-xx;
+  height: 93%;
+}

@@ -5,6 +5,7 @@ import Characters from '../../components/characters/characters';
 import Divider from '../../components/divider/divider';
 import Expand from '../../components/expand/expand';
 import HomeCard from '../../components/home_card/home_card';
+import SearchModal from '../../components/search_modal/search_modal';
 import Statistics from '../../components/statistics/statistics';
 import Upcoming from '../../components/upcoming/upcoming';
 import { API_BASE_URL } from '../../utils/consts';
@@ -22,6 +23,9 @@ const AnimeInfo = ({ match }) => {
     information: [],
     relatedAnimes: []
   });
+
+  // will be fetched from API when complete
+  const userServer = 0;
 
   const formatInformation = (information) => {
     return Object.keys(information).map((key) => {
@@ -42,7 +46,7 @@ const AnimeInfo = ({ match }) => {
       .then((response) => {
         setData({
           backgroundImgUrl: response.data.artwork,
-          bannerImgUrl: response.data.wallpaper,
+          bannerImgUrl: response.data.wallpaper ? response.data.wallpaper : response.data.artwork,
           title: response.data.name.primaryName,
           subtitle: response.data.name.nativeName,
           description: response.data.synopsis,
@@ -63,18 +67,36 @@ const AnimeInfo = ({ match }) => {
         <div className='row info__banner'>
           <div className='info__banner__overlay'></div>
 
-          <img src={data.backgroundImgUrl} alt='background' className='info__banner__background' />
+          <img
+            src={data.backgroundImgUrl ? data.backgroundImgUrl : '/assets/img/defualt.png'}
+            alt='background'
+            className='info__banner__background'
+          />
 
           <div className='container-fluid info__banner__content'>
-            <img src={data.bannerImgUrl} alt='banner' className='col-4 col-md-auto info__banner__content__img' />
+            <img
+              src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
+              alt='banner'
+              className='rounded img-thumbnail col-4 col-md-auto info__banner__content__img'
+            />
             <div className='col-6 col-sm-5 info__banner__content__controls'>
               <span className='info__banner__content__controls__title'>{data.title}</span>
               <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
-              <Link to='/eposides'>
-                <button type='button' className='btn btn-primary info__banner__content__controls__link'>
-                  VIEW EPOSIDES
-                </button>
-              </Link>
+              <button
+                type='button'
+                className='btn btn-primary info__banner__content__controls__link'
+                data-bs-toggle='modal'
+                data-bs-target='#sourceSearch'
+              >
+                VIEW EPOSIDES
+              </button>
+
+              <SearchModal
+                searchPathName={`source/anime-search?sourceServer=${userServer}`}
+                detailsPath={`anime-source/${userServer}`}
+                searchQuery={data.title}
+                id='sourceSearch'
+              />
             </div>
           </div>
         </div>

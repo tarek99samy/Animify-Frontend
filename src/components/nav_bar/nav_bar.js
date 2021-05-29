@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { isLoggedIn } from '../../utils/state_manager';
+import { isLoggedIn, getGlobalState } from '../../utils/state_manager';
 import hideBars from '../../utils/hideBars';
 import './nav_bar.scss';
 
@@ -35,7 +35,7 @@ function NavBar() {
         {isLoggedIn() ? (
           <div className='navbar__buttons--login'>
             <Link to='/profile'>
-              <span className='navbar__username'>Eman Othman</span>
+              <span className='navbar__username'>{getGlobalState().username}</span>
             </Link>
             <Link to='/profile'>
               <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>

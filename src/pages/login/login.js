@@ -27,14 +27,22 @@ const Login = () => {
     axios
       .post(`${API_BASE_URL}/auth/login`, data)
       .then((response) => {
-        setGlobalState({
-          info: { userIdentifier: data.userIdentifier },
-          token: response.data.access_token
-        });
-        history.push({ pathname: '/' });
+        axios
+          .get(`${API_BASE_URL}/my/account`, {
+            headers: {
+              Authorization: `Bearer ${response.data.access_token}`
+            }
+          })
+          .then((userData) => {
+            setGlobalState({ ...userData.data, token: response.data.access_token });
+            history.push({ pathname: '/' });
+          })
+          .catch(() => {
+            alert('An error occured, please try again');
+            history.push({ pathname: '/login' });
+          });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         alert('An error occured, please try again');
         history.push({ pathname: '/login' });
       });

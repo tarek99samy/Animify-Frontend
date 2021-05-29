@@ -52,6 +52,7 @@
         height: vars.$width-small;
         object-fit: cover;
         object-position: center;
+        padding: 0;
 
         @media (max-width: 767px) {
           width: vars.$spacing-large-increased;
@@ -103,6 +104,10 @@
           -moz-border-top-right-radius: vars.$spacing-atomic;
         }
         &__link:hover {
+          color: vars.$color-black;
+        }
+
+        &__link:focus {
           color: vars.$color-black;
         }
       }
