@@ -115,24 +115,28 @@
     }
   }
 
-  &__details {
-    &__title {
-      @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-bold, vars.$text-size-small);
-      margin: vars.$spacing-atomic-x 0;
+  &__eposides {
+    &__heading {
+      @include mix.text(vars.$color-neon-blue, vars.$text-size-medium, vars.$text-weight-bold, vars.$text-size-medium);
+      justify-content: center;
     }
 
-    &__row {
-      margin: 0 vars.$spacing-atomic-x;
-      @include mix.flexArea(row, center, space-between);
-
-      &__key {
-        @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-light, vars.$text-size-small);
+    &__eposide {
+      &__title {
+        @include mix.text(vars.$color-white, vars.$text-size-x-small, vars.$text-weight-light, vars.$text-size-x-small);
       }
 
-      &__value {
-        @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-light, vars.$text-size-small);
-        text-align: end;
+      &__link {
+        @include mix.text(vars.$color-white, vars.$text-size-x-small, vars.$text-weight-light, vars.$text-size-x-small);
       }
+
+      &__link:hover {
+        color: vars.$color-neon-blue;
+      }
+    }
+    &__load {
+      background-color: vars.$color-neon-blue;
+      width: 100%;
     }
   }
 }

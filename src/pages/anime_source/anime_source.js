@@ -30,6 +30,11 @@ const AnimeSource = ({ match }) => {
           numberOfEposides: response.data.noOfEpisodes,
           episodeArrayLinks: response.data.episodeArrayLinks
         });
+        setCurrentEposides(
+          response.data.episodeArrayLinks.slice(0, 50).map((link, index) => {
+            return { title: `Eposide ${index + 1}`, link };
+          })
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -59,6 +64,8 @@ const AnimeSource = ({ match }) => {
       })
       .catch((error) => console.log(error));
   };
+
+  const showMoreEposides = () => {};
 
   return (
     <div className='container-fluid source'>
@@ -92,20 +99,27 @@ const AnimeSource = ({ match }) => {
       <Expand text={data.description} />
       <Divider fullWidth={false} />
       <div className='container-fluid source__eposides'>
+        <div className='row source__eposides__heading'>Eposides</div>
+        <Divider fullWidth={false} />
         {currentEposides.map((eposide, index) => (
           <div key={index}>
             <div className='row source__eposides__eposide'>
-              <div className='col-6 text-start'>{eposide.title}</div>
+              <div className='col-6 text-start source__eposides__eposide__title'>{eposide.title}</div>
               <div className='col-6 text-end'>
-                <Link to={`/watch/${eposide.link}`} className=''>
+                <Link to={`/watch/${eposide.link}`} className='source__eposides__eposide__link'>
                   Watch Now
                 </Link>
               </div>
             </div>
-            <Divider fullWidth='true' />
+            <Divider fullWidth={1} />
           </div>
         ))}
       </div>
+      {currentEposides.length !== data.episodeArrayLinks.length ? (
+        <button type='button' className='btn row btn-primary source__eposides__load' onClick={showMoreEposides}>
+          Load more
+        </button>
+      ) : null}
     </div>
   );
 };
