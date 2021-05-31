@@ -24,7 +24,7 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath }) => {
   }, [page, searchQuery, searchPathName]);
 
   return (
-    <div className='modal fade search__modal p-0' id={id} data-bs-backdrop='false'>
+    <div className='modal fade search__modal p-0' id={id} data-bs-backdrop='true'>
       <div className='modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable'>
         <div className='modal-content'>
           <div className='modal-header'>
@@ -33,8 +33,8 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath }) => {
           </div>
           <div className='modal-body search__modal__body row'>
             {data.map((item, index) => (
-              <Link
-                to={`/${detailsPath}${Number.isInteger(item.gotoURL) ? '/' : ''}${item.gotoURL}`}
+              <a
+                href={`/${detailsPath}${Number.isInteger(item.gotoURL) ? '/' : ''}${item.gotoURL}`}
                 className='search__modal__body__card col-12 col-sm-4'
                 key={index}
               >
@@ -44,7 +44,7 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath }) => {
                     <span className='search__modal__body__card__title'>{item.name}</span>
                   </div>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         </div>

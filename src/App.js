@@ -15,17 +15,19 @@ import AnimeSchedule from './pages/anime_schedule/anime_schedule';
 import SearchResult from './pages/search_results/search_results';
 import SideBar from './components/side_bar/side_bar';
 import NavBar from './components/nav_bar/nav_bar';
+import Streaming from './pages/streaming/streaming';
 
 export default function App() {
   return (
     <BrowserRouter>
       <SideBar />
-      <NavBar />
+      {!window.location.pathname.includes('/watch') && <NavBar />}
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/reset-password' component={ResetPassword} />
         <Route exact path='/anime-source/:sourceServer/category/:gotoURL' component={AnimeSource} />
+        <Route exact path='/watch/:totalEposides' component={Streaming} />
         <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
         <Route exact path='/' component={Home} />
         <Route exact path='/trending-anime' component={Trending} />

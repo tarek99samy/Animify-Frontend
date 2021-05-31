@@ -9,6 +9,7 @@ import SearchModal from '../../components/search_modal/search_modal';
 import Statistics from '../../components/statistics/statistics';
 import Upcoming from '../../components/upcoming/upcoming';
 import { API_BASE_URL } from '../../utils/consts';
+import { getUserSource } from '../../utils/state_manager';
 import './anime_info.scss';
 
 const AnimeInfo = ({ match }) => {
@@ -24,8 +25,7 @@ const AnimeInfo = ({ match }) => {
     relatedAnimes: []
   });
 
-  // will be fetched from API when complete
-  const userServer = 0;
+  const userServer = getUserSource();
 
   const formatInformation = (information) => {
     return Object.keys(information).map((key) => {

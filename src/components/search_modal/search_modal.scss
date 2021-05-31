@@ -34,3 +34,7 @@
   top: vars.$spacing-micro-xx;
   height: 93%;
 }
+
+.modal-backdrop.fade.show {
+  z-index: 1;
+}

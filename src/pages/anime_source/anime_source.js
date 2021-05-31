@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Divider from '../../components/divider/divider';
 import Expand from '../../components/expand/expand';
 import { API_BASE_URL } from '../../utils/consts';
-import { getGlobalState } from '../../utils/state_manager';
+import { getUserToken } from '../../utils/state_manager';
 import './anime_source.scss';
 
 const AnimeSource = ({ match }) => {
@@ -31,7 +31,7 @@ const AnimeSource = ({ match }) => {
           episodeArrayLinks: response.data.episodeArrayLinks
         });
         setCurrentEposides(
-          response.data.episodeArrayLinks.slice(0, 50).map((link, index) => {
+          response.data.episodeArrayLinks.slice(0, 10).map((link, index) => {
             return { title: `Eposide ${index + 1}`, link };
           })
         );
@@ -55,7 +55,7 @@ const AnimeSource = ({ match }) => {
         },
         {
           headers: {
-            Authorization: getGlobalState().token
+            Authorization: getUserToken()
           }
         }
       )
@@ -65,7 +65,11 @@ const AnimeSource = ({ match }) => {
       .catch((error) => console.log(error));
   };
 
-  const showMoreEposides = () => {};
+  const showMoreEposides = () => {
+    setCurrentEposides(
+      currentEposides.concat(data.episodeArrayLinks.slice(currentEposides.length, currentEposides.length + 10))
+    );
+  };
 
   return (
     <div className='container-fluid source'>
@@ -106,9 +110,12 @@ const AnimeSource = ({ match }) => {
             <div className='row source__eposides__eposide'>
               <div className='col-6 text-start source__eposides__eposide__title'>{eposide.title}</div>
               <div className='col-6 text-end'>
-                <Link to={`/watch/${eposide.link}`} className='source__eposides__eposide__link'>
+                <a
+                  href={`/watch/${data.episodeArrayLinks.length}?src=${eposide.link}`}
+                  className='source__eposides__eposide__link'
+                >
                   Watch Now
-                </Link>
+                </a>
               </div>
             </div>
             <Divider fullWidth={1} />
