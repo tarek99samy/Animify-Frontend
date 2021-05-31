@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../../utils/consts';
 import './search_modal.scss';
 
-const SearchModal = ({ searchQuery, id, searchPathName, detailsPath }) => {
+const SearchModal = ({ searchQuery, id, searchPathName, detailsPath, title }) => {
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,7 +28,7 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath }) => {
       <div className='modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable'>
         <div className='modal-content'>
           <div className='modal-header'>
-            <h5 className='modal-title'>Search results</h5>
+            <h5 className='modal-title'>{title}</h5>
             <button type='button' className='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
           </div>
           <div className='modal-body search__modal__body row'>

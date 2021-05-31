@@ -89,6 +89,7 @@
         &__link {
           @include mix.text(vars.$color-black, vars.$text-size-x-micro, vars.$text-weight-bold, vars.$text-size-small);
           background-color: vars.$color-neon-blue;
+          margin-bottom: vars.$spacing-atomic-x;
 
           border-bottom-left-radius: vars.$spacing-atomic;
           -webkit-border-bottom-left-radius: vars.$spacing-atomic;
@@ -102,7 +103,12 @@
           border-top-right-radius: vars.$spacing-atomic;
           -webkit-border-top-right-radius: vars.$spacing-atomic;
           -moz-border-top-right-radius: vars.$spacing-atomic;
+
+          @media (max-width: 424px) {
+            font-size: vars.$text-size-atomic-x;
+          }
         }
+
         &__link:hover {
           color: vars.$color-black;
         }

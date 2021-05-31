@@ -96,6 +96,7 @@ const AnimeInfo = ({ match }) => {
                 detailsPath={`anime-source/${userServer}`}
                 searchQuery={data.title}
                 id='sourceSearch'
+                title='Top sources found'
               />
             </div>
           </div>
