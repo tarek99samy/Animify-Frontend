@@ -14,3 +14,9 @@ export const isLoggedIn = () => {
 export const logout = () => {
   localStorage.removeItem('userState');
 };
+
+export const getUserToken = () => {
+  const state = getGlobalState();
+  if (state != null) return state.token;
+  return '';
+};

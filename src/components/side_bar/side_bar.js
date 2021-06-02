@@ -48,7 +48,7 @@ function SideBar() {
         {sideBarList}
         {isLoggedIn() ? (
           <li className='nav-item sidebar__item'>
-            <Link to='/' className='nav-link sidebar__item__link' onClick={()=>logout()}>
+            <Link to='/' className='nav-link sidebar__item__link' onClick={() => logout()}>
               <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
               <span className='sidebar__item__text'>Logout</span>
             </Link>

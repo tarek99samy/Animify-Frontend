@@ -12,6 +12,7 @@ import Trending from './pages/trending_anime/trending_anime';
 import Seasonal from './pages/seasonal_anime/seasonal_anime';
 import AnimeSchedule from './pages/anime_schedule/anime_schedule';
 import SearchResult from './pages/search_results/search_results';
+import RecentSearch from './pages/recent_search/recent_search';
 import SideBar from './components/side_bar/side_bar';
 import NavBar from './components/nav_bar/nav_bar';
 
@@ -30,7 +31,7 @@ export default function App() {
         <Route exact path='/seasonal-anime' component={Seasonal} />
         <Route exact path='/anime-schedule' component={AnimeSchedule} />
         <Route exact path='/search-result/:sourceID/:query' component={SearchResult} />
-
+        <Route exact path='/search' component={RecentSearch} />
         {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
       </Switch>
