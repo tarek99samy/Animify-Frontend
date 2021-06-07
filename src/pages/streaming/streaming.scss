@@ -1,0 +1,23 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.streaming {
+  @include mix.mainContent(vars.$width-small, vars.$spacing-micro-x, vars.$color-gray, vars.$spacing-x-small);
+
+  .video-js {
+    width: 100%;
+    height: vars.$height-player-large;
+
+    @media (max-width: 768px) {
+      height: vars.$height-player-medium;
+    }
+
+    @media (max-width: 576px) {
+      height: vars.$height-player-small;
+    }
+  }
+
+  .disabled {
+    cursor: not-allowed;
+  }
+}

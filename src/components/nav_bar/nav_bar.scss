@@ -4,7 +4,7 @@
 .navbar {
   @include mix.area(flex, fixed, 100%, vars.$spacing-micro-x, 0, vars.$width-small, vars.$color-gray);
   margin: 0 vars.$width-small;
-  z-index: 100;
+  z-index: 3;
 
   &__search {
     @include mix.borderedArea(0, vars.$color-gray-light, vars.$spacing-xxx-atomic);

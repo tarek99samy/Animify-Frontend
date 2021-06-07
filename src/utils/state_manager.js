@@ -11,12 +11,18 @@ export const isLoggedIn = () => {
   return false;
 };
 
-export const logout = () => {
-  localStorage.removeItem('userState');
+export const getUserToken = () => {
+  return isLoggedIn() ? getGlobalState().token : '';
 };
 
-export const getUserToken = () => {
-  const state = getGlobalState();
-  if (state != null) return state.token;
-  return '';
+export const getUserSource = () => {
+  return isLoggedIn() ? getGlobalState().preferred_source : 0;
+};
+
+export const getUserList = () => {
+  return isLoggedIn() ? getGlobalState().preferred_list : 0;
+};
+
+export const logout = () => {
+  localStorage.removeItem('userState');
 };

@@ -6,6 +6,7 @@ import SignUp from './pages/signup/signup';
 import ResetPassword from './pages/reset_password/reset_password';
 import NotFound from './pages/not_found/not_found';
 import AnimeInfo from './pages/anime_info/anime_info';
+import AnimeSource from './pages/anime_source/anime_source';
 import './styles/reset.scss';
 import Home from './pages/home/home';
 import Trending from './pages/trending_anime/trending_anime';
@@ -15,16 +16,19 @@ import SearchResult from './pages/search_results/search_results';
 import RecentSearch from './pages/recent_search/recent_search';
 import SideBar from './components/side_bar/side_bar';
 import NavBar from './components/nav_bar/nav_bar';
+import Streaming from './pages/streaming/streaming';
 
 export default function App() {
   return (
     <BrowserRouter>
       <SideBar />
-      <NavBar />
+      {!window.location.pathname.includes('/watch') && <NavBar />}
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/reset-password' component={ResetPassword} />
+        <Route exact path='/anime-source/:sourceServer/category/:gotoURL' component={AnimeSource} />
+        <Route exact path='/watch/:totalEposides' component={Streaming} />
         <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
         <Route exact path='/' component={Home} />
         <Route exact path='/trending-anime' component={Trending} />
