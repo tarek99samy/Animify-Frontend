@@ -21,6 +21,8 @@ function NavBar() {
   };
   useEffect(() => {
     setHideValue(hideBars(location.pathname));
+  }, [location]);
+  useEffect(() => {
     axios
       .get(`${API_BASE_URL}/user-history/user-search-history?page=1&perPage=5`, {
         headers: {
@@ -29,12 +31,11 @@ function NavBar() {
       })
       .then((response) => {
         setSearchHistory(response.data.items);
-        setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
-  }, [location]);
+  }, []);
   const handleFieldChange = (event) => {
     setSearchQuery(event.target.value);
   };

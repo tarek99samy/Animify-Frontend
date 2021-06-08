@@ -28,8 +28,8 @@ const items = [
   }
 ];
 
-const sideBarList = items.map((item, index) => {
-  return <SideBarElement item={item} key={index} />;
+const sideBarList = items.map((item) => {
+  return <SideBarElement item={item} key={item.name} />;
 });
 function SideBar() {
   const [hideValue, setHideValue] = useState('');

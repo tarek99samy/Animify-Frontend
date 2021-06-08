@@ -14,8 +14,8 @@ const HomeCard = (props) => {
         ) : null}
       </div>
       <div className='row home-cards__wrapper card-group'>
-        {props.list.map((anime, index) => (
-          <Link to={`/anime-info/0/${anime.gotoURL}`} className='home-card card' key={index}>
+        {props.list.map((anime) => (
+          <Link to={`/anime-info/0/${anime.gotoURL}`} className='home-card card' key={anime.gotoURL}>
             <div>
               <img src={anime.artwork} className='home-card__img fluid-img' alt='animeImg' />
               <div>

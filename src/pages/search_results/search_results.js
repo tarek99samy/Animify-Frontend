@@ -21,7 +21,7 @@ function SearchResult() {
         setIsLoading(false);
       })
       .catch((error) => {
-        Console.log(error);
+        console.error(error);
       });
   }, [params]);
   return (

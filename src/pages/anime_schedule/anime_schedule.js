@@ -20,8 +20,8 @@ function AnimeSchedule() {
         setAnimeSchedule(trimName(response.data.items, 20, true));
         setIsLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
   return (
@@ -31,8 +31,8 @@ function AnimeSchedule() {
       <div className='main'>
         <div className='container schedule__cards'>
           <div className='row schedule__cards__row justify-content-center'>
-            {animeList.map((anime, index) => (
-              <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4' key={index}>
+            {animeList.map((anime) => (
+              <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4' key={anime.gotoURL}>
                 <ScheduleCard anime={anime} />
               </div>
             ))}
