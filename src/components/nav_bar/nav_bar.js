@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { isLoggedIn, getGlobalState } from '../../utils/state_manager';
 import hideBars from '../../utils/hideBars';
+import Notifications from '../notifications/notifications';
 import './nav_bar.scss';
 
 function NavBar() {
@@ -9,17 +10,21 @@ function NavBar() {
   const [hideValue, setHideValue] = useState('');
   const history = useHistory();
   const location = useLocation();
-  const handleClickOnSearch = (event) => {
-    if (event.charCode == 13) {
-      history.replace({ pathname: `/search-result/0/${searchQuery}` });
-    }
-  };
+
   useEffect(() => {
     setHideValue(hideBars(location.pathname));
   }, [location]);
+
+  const handleClickOnSearch = (event) => {
+    if (event.charCode === 13) {
+      history.replace({ pathname: `/search-result/0/${searchQuery}` });
+    }
+  };
+
   const handleFieldChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
   return (
     <div className={`${hideValue}`}>
       <nav className='navbar'>
@@ -32,6 +37,7 @@ function NavBar() {
           onKeyPress={handleClickOnSearch}
           onChange={handleFieldChange}
         />
+
         {isLoggedIn() ? (
           <div className='navbar__buttons--login'>
             <Link to='/profile'>
@@ -40,7 +46,8 @@ function NavBar() {
             <Link to='/profile'>
               <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
             </Link>
-            <i className='fa fa-bell navbar__icon fa-lg'></i>
+
+            <Notifications />
           </div>
         ) : (
           <div className='navbar__buttons--logout'>

@@ -43,6 +43,7 @@
   &__icon {
     margin-left: vars.$spacing-x-atomic;
     color: vars.$color-silver;
+    cursor: pointer;
 
     &:hover {
       color: vars.$color-neon-blue;
