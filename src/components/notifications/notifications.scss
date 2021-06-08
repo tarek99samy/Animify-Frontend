@@ -1,0 +1,80 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.notifications {
+  &__bell {
+    &__badge {
+      position: absolute;
+      top: vars.$spacing-xxx-atomic;
+      margin-left: -1 * vars.$spacing-xxx-atomic;
+      padding: vars.$spacing-xxx-atomic vars.$spacing-xx-atomic;
+      color: vars.$color-black;
+      border-radius: 50%;
+    }
+  }
+
+  &__dropdown {
+    @include mix.area(
+      flex,
+      absolute,
+      vars.$width-medium-x,
+      vars.$width-large,
+      vars.$spacing-x-atomic 0,
+      0,
+      vars.$color-gray-light
+    );
+    overflow-y: auto;
+    flex-direction: column;
+    right: 20%;
+    top: 100%;
+    @media (max-width: 768px) {
+      right: 10%;
+    }
+    @media (max-width: 576px) {
+      right: 0;
+    }
+
+    &__item {
+      padding: 0 vars.$spacing-x-atomic;
+      cursor: pointer;
+
+      &__content {
+        @include mix.flexArea(column, baseline, flex-start);
+
+        &__title {
+          @include mix.text(vars.$color-silver, vars.$text-size-micro-x, vars.$text-weight-bold, unset);
+        }
+        &__body {
+          @include mix.text(vars.$color-white, vars.$text-size-x-micro, vars.$text-weight-light, unset);
+        }
+      }
+
+      &--unread {
+        color: vars.$color-neon-blue;
+        font-size: vars.$text-size-atomic;
+      }
+
+      &--read {
+        font-size: vars.$text-size-x-micro;
+      }
+    }
+
+    &__item:hover {
+      background-color: vars.$color-transparent-1;
+    }
+
+    &__loadmore {
+      @include mix.flexArea(row, center, center);
+
+      &__text {
+        @include mix.text(vars.$color-green, vars.$text-size-x-micro, vars.$text-weight-light, unset);
+        cursor: pointer;
+      }
+
+      &__text--empty {
+        @include mix.text(vars.$color-silver, vars.$text-size-x-micro, vars.$text-weight-light, unset);
+        padding: 0 vars.$spacing-atomic;
+      }
+    }
+  }
+}

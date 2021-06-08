@@ -4,6 +4,7 @@ import axios from 'axios';
 import { isLoggedIn, getGlobalState, getUserToken } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import hideBars from '../../utils/hideBars';
+import Notifications from '../notifications/notifications';
 import './nav_bar.scss';
 
 function NavBar() {
@@ -14,6 +15,11 @@ function NavBar() {
 
   const history = useHistory();
   const location = useLocation();
+
+  useEffect(() => {
+    setHideValue(hideBars(location.pathname));
+  }, [location]);
+
   const handleClickOnSearch = (event) => {
     if (event.charCode === 13) {
       history.replace({ pathname: `/search-result/0/${searchQuery}` });
@@ -75,7 +81,7 @@ function NavBar() {
             <Link to='/profile'>
               <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
             </Link>
-            <i className='fa fa-bell navbar__icon fa-lg'></i>
+            <Notifications />
           </div>
         ) : (
           <div className='navbar__buttons--logout'>

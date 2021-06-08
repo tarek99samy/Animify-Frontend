@@ -3,9 +3,16 @@
 
 .divider {
   @include mix.divider(1px, vars.$color-silver, 96%);
-  margin: vars.$spacing-atomic 0;
 
   &--100 {
     width: 100%;
+  }
+
+  &--mt__full {
+    margin: vars.$spacing-atomic 0;
+  }
+
+  &--mt__half {
+    margin: vars.$spacing-xx-atomic 0;
   }
 }
