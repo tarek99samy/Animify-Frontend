@@ -1,0 +1,14 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.library__logout {
+  text-align: center;
+  &__img {
+    margin: vars.$spacing-small 0 vars.$spacing-micro 0;
+    width: vars.$width-small;
+    height: vars.$width-small;
+  }
+  &__text {
+    @include mix.text(vars.$color-white, vars.$text-size-small-x, normal, vars.$spacing-atomic-increased);
+  }
+}
