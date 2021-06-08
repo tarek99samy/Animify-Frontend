@@ -1,0 +1,34 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.library__login {
+  &__text {
+    margin-left: 10px;
+    @include mix.text(vars.$color-white, vars.$text-size-small-x, bold, vars.$spacing-atomic-increased);
+  }
+
+  &__card {
+    @include mix.area(
+      flex,
+      relative,
+      vars.$width-small,
+      vars.$width-small-x,
+      vars.$spacing-xx-atomic,
+      vars.$spacing-x-atomic,
+      vars.$color-gray
+    );
+    color: vars.$color-white;
+    overflow: hidden;
+
+    &:hover {
+      background-color: vars.$color-gray-light;
+    }
+
+    &__img {
+      border-radius: vars.$spacing-xx-atomic;
+      height: vars.$spacing-large;
+      width: 100px;
+      margin: 10px 0 10px 40px;
+    }
+  }
+}
