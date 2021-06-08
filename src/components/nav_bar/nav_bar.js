@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { isLoggedIn, getGlobalState } from '../../utils/state_manager';
+import axios from 'axios';
+import { isLoggedIn, getGlobalState, getUserToken } from '../../utils/state_manager';
+import { API_BASE_URL } from '../../utils/consts';
 import hideBars from '../../utils/hideBars';
 import './nav_bar.scss';
 
@@ -8,6 +10,7 @@ function NavBar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [hideValue, setHideValue] = useState('');
   const [searchFoucs, setSearchFocus] = useState('');
+  const [searchHistory, setSearchHistory] = useState([]);
 
   const history = useHistory();
   const location = useLocation();
@@ -18,6 +21,19 @@ function NavBar() {
   };
   useEffect(() => {
     setHideValue(hideBars(location.pathname));
+    axios
+      .get(`${API_BASE_URL}/user-history/user-search-history?page=1&perPage=5`, {
+        headers: {
+          Authorization: `Bearer ${getUserToken()}`
+        }
+      })
+      .then((response) => {
+        setSearchHistory(response.data.items);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [location]);
   const handleFieldChange = (event) => {
     setSearchQuery(event.target.value);
@@ -40,11 +56,15 @@ function NavBar() {
           onBlur={() => inputSearchFoucs('')}
         />
         <ul className={`list-group navbar__search__list ${searchFoucs}`}>
-          <li className='list-group-item navbar__search__list__item'>An item</li>
-          <li className='list-group-item navbar__search__list__item'>A second item</li>
-          <li className='list-group-item navbar__search__list__item'>A third item</li>
-          <li className='list-group-item navbar__search__list__item'>A fourth item</li>
-          <li className='list-group-item navbar__search__list__item'>And a fifth one</li>
+          {searchHistory.map((search) => (
+            <Link
+              to={`/search-result/0/${search.query}`}
+              className='list-group-item navbar__search__list__item'
+              key={search.id}
+            >
+              <li> {search.query} </li>
+            </Link>
+          ))}
         </ul>
         {isLoggedIn() ? (
           <div className='navbar__buttons--login'>

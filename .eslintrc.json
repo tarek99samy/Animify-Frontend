@@ -64,6 +64,7 @@
     "react/no-array-index-key": "warn",
     "object-shorthand": "warn",
     "import/prefer-default-export": "warn",
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }

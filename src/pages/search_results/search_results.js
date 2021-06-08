@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import SideBar from '../../components/side_bar/side_bar';
-import NavBar from '../../components/nav_bar/nav_bar';
 import SeeMore from '../../components/see_more/see_more';
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
@@ -23,7 +21,7 @@ function SearchResult() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        Console.log(error);
       });
   }, [params]);
   return (
