@@ -54,6 +54,7 @@
     "no-unreachable": "warn",
     "no-unused-vars": "warn",
     "react/prop-types": "off",
+    "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
     "arrow-body-style": "off",
     "react/no-unknown-property": "warn",
@@ -63,6 +64,7 @@
     "react/no-array-index-key": "warn",
     "object-shorthand": "warn",
     "import/prefer-default-export": "warn",
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
   }
 }

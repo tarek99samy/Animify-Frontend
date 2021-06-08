@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SeeMore from '../../components/see_more/see_more';
 import trimName from '../../utils/trim_name';
+import { getUserToken } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
-import './search_results.scss';
+import './recent_search.scss';
 
-function SearchResult() {
-  const [result, setResult] = useState([]);
+function RecentSearch() {
+  const [recentSearch, setRecentSearch] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const params = useParams();
 
   useEffect(() => {
     axios
-      .get(
-        `${API_BASE_URL}/source/anime-search?sourceServer=${params.sourceID}&page=1&perPage=12&query=${params.query}`
-      )
+      .get(`${API_BASE_URL}/user-history/user-clicked-history?page=1&limit=10`, {
+        headers: {
+          Authorization: `Bearer ${getUserToken()}`
+        }
+      })
       .then((response) => {
-        setResult(trimName(response.data.items));
+        setRecentSearch(trimName(response.data.items, 20));
         setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [params]);
+  }, []);
   return (
     <div className='main'>
-      <SeeMore list={result} base='/anime-source/0' />
+      <SeeMore list={recentSearch} base='/anime-source/0' />
     </div>
   );
 }
 
-export default SearchResult;
+export default RecentSearch;

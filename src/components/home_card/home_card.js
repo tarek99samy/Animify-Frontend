@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LibraryCard from '../library_card/library_card';
 import './home_card.scss';
 
 const HomeCard = (props) => {
@@ -14,15 +15,8 @@ const HomeCard = (props) => {
         ) : null}
       </div>
       <div className='row home-cards__wrapper card-group'>
-        {props.list.map((anime, index) => (
-          <Link to={`/anime-info/0/${anime.gotoURL}`} className='home-card card' key={index}>
-            <div>
-              <img src={anime.artwork} className='home-card__img fluid-img' alt='animeImg' />
-              <div>
-                <span className='home-card__txt'>{anime.name}</span>
-              </div>
-            </div>
-          </Link>
+        {props.list.map((anime) => (
+          <LibraryCard anime={anime} base='/anime-info' showNumber={false} key={anime.gotoURL} />
         ))}
       </div>
     </div>

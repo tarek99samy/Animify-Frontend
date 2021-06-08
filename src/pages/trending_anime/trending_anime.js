@@ -17,12 +17,12 @@ function Trending() {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }, []);
   return (
     <div className='main'>
-      <SeeMore list={trendingAnime} />
+      <SeeMore list={trendingAnime} base='/anime-info/0/' />
     </div>
   );
 }

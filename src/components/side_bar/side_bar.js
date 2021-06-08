@@ -23,8 +23,8 @@ const items = [
   }
 ];
 
-const sideBarList = items.map((item, index) => {
-  return <SideBarElement item={item} key={index} />;
+const sideBarList = items.map((item) => {
+  return <SideBarElement item={item} key={item.name} />;
 });
 function SideBar() {
   const [hideValue, setHideValue] = useState('');
@@ -51,7 +51,7 @@ function SideBar() {
               }}
             />
             <li className='nav-item sidebar__item'>
-              <Link to='/' className='nav-link sidebar__item__link' onClick={logout}>
+              <Link to='/' className='nav-link sidebar__item__link' onClick={() => logout()}>
                 <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
                 <span className='sidebar__item__text'>Logout</span>
               </Link>

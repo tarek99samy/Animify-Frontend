@@ -26,11 +26,24 @@
     &:focus {
       outline: none;
     }
+
+    &__list {
+      display: none;
+      width: vars.$width-large;
+      margin:vars.$spacing-x-micro 0 0  vars.$spacing-xx-atomic;
+      &__item {
+        background-color: vars.$color-gray-light;
+        color: vars.$color-silver;
+      }
+    }
   }
 
   &__buttons--login,
   &__buttons--logout {
     margin-left: 65vw;
+    position: fixed;
+    top: vars.$spacing-atomic;
+    right: vars.$spacing-atomic-xx;
   }
 
   &__username {
@@ -55,6 +68,7 @@
   }
 
   &__loginbtn {
+
     color: vars.$color-neon-blue;
     &:hover {
       color: vars.$color-neon-blue;
@@ -73,6 +87,9 @@
     margin: 0 vars.$spacing-x-small;
     &__search {
       width: vars.$width-medium;
+      &__list {
+        width: vars.$width-medium;
+      }
     }
   }
 }
@@ -82,6 +99,9 @@
     margin: 0;
     &__search {
       width: vars.$width-small;
+      &__list {
+        width: vars.$width-small;
+      }
     }
   }
 }
@@ -91,6 +111,9 @@
     margin: 0;
     &__search {
       width: vars.$spacing-large-increased-x;
+      &__list {
+        width: vars.$spacing-large-increased-x;
+      }
     }
     &__buttons--login {
       margin-left: 70vw;
@@ -109,4 +132,8 @@
 
 .hide {
   display: none;
+}
+
+.focused {
+  display: inline-block;
 }

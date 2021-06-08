@@ -13,8 +13,8 @@ const ScrollableSchedule = (props) => {
         </Link>
       </div>
       <div className='schedule__content'>
-        {props.list.map((anime, index) => (
-          <ScheduleCard anime={anime} key={index} />
+        {props.list.map((anime) => (
+          <ScheduleCard anime={anime} key={anime.gotoURL} />
         ))}
       </div>
     </div>

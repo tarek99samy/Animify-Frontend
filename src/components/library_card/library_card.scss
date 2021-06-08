@@ -1,0 +1,32 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.card {
+  @include mix.flexArea(column, start, center);
+  @include mix.borderedArea(0, vars.$color-gray-dark, 0);
+  @include mix.area(
+    flex,
+    relative,
+    vars.$width-medium,
+    vars.$width-small-x,
+    vars.$spacing-xx-atomic,
+    vars.$spacing-xxx-atomic,
+    vars.$color-gray
+  );
+  color: vars.$color-white;
+  overflow: hidden;
+
+  &:hover {
+    background-color: vars.$color-gray-light;
+  }
+
+  &__img {
+    border-radius: vars.$spacing-xx-atomic;
+    height: vars.$spacing-large;
+    width: 100%;
+  }
+
+  &__txt {
+    margin: vars.$spacing-xxx-atomic;
+  }
+}
