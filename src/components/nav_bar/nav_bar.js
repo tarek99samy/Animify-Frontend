@@ -22,6 +22,22 @@ function NavBar() {
 
   const handleClickOnSearch = (event) => {
     if (event.charCode === 13) {
+      if (isLoggedIn()) {
+        axios
+          .post(
+            `${API_BASE_URL}/user-history/user-search-history?query=${searchQuery}`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${getUserToken()}`
+              }
+            }
+          )
+          .then(() => {})
+          .catch((error) => {
+            console.error(error);
+          });
+      }
       history.replace({ pathname: `/search-result/0/${searchQuery}` });
     }
   };
