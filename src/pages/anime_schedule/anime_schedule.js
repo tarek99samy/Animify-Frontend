@@ -4,6 +4,7 @@ import SideBar from '../../components/side_bar/side_bar';
 import NavBar from '../../components/nav_bar/nav_bar';
 import trimName from '../../utils/trim_name';
 import ScheduleCard from '../../components/schedule_card/schedule_card';
+import { API_BASE_URL } from '../../utils/consts';
 
 function AnimeSchedule() {
   const [animeList, setAnimeSchedule] = useState([]);
@@ -13,9 +14,7 @@ function AnimeSchedule() {
 
   useEffect(() => {
     axios
-      .get(
-        `http://cmp306-api.us-east-1.elasticbeanstalk.com/listings/anime-schedule?listingServer=0&page=1&perPage=12&date=${timestamp}`
-      )
+      .get(`${API_BASE_URL}/listings/anime-schedule?listingServer=0&page=1&perPage=12&date=${timestamp}`)
       .then((response) => {
         setAnimeSchedule(trimName(response.data.items, 20, true));
         setIsLoading(false);

@@ -141,8 +141,15 @@
       }
     }
     &__load {
-      background-color: vars.$color-neon-blue;
       width: 100%;
+      display: flex;
+      padding: vars.$spacing-atomic;
+
+      &__btn {
+        margin: auto;
+        background-color: vars.$color-gray-light;
+        color: vars.$color-white;
+      }
     }
   }
 }

@@ -5,7 +5,7 @@ import Divider from '../../components/divider/divider';
 import Expand from '../../components/expand/expand';
 import SearchModal from '../../components/search_modal/search_modal';
 import { API_BASE_URL } from '../../utils/consts';
-import { getUserList, getUserToken } from '../../utils/state_manager';
+import { getUserList, getUserToken, isLoggedIn } from '../../utils/state_manager';
 import './anime_source.scss';
 
 const AnimeSource = ({ match }) => {
@@ -17,6 +17,7 @@ const AnimeSource = ({ match }) => {
     episodeArrayLinks: []
   });
   const [currentEposides, setCurrentEposides] = useState([]);
+  const [isSubscribed, setIsSubscribed] = useState(false);
   const {
     params: { sourceServer, gotoURL }
   } = match;
@@ -40,6 +41,27 @@ const AnimeSource = ({ match }) => {
           episodeArrayLinks: response.data.episodeArrayLinks
         });
         setCurrentEposides(formatEposides(response.data.episodeArrayLinks.slice(0, 10)));
+        if (isLoggedIn()) {
+          axios
+            .post(
+              `${API_BASE_URL}/source/check-anime-subscribe`,
+              {
+                sourceServer,
+                anime: {
+                  artwork: response.data.bannerImgUrl,
+                  name: response.data.title,
+                  gotoURL: `/category/${gotoURL}`
+                }
+              },
+              {
+                headers: {
+                  Authorization: `Bearer ${getUserToken()}`
+                }
+              }
+            )
+            .then((responseFlag) => setIsSubscribed(responseFlag.data))
+            .catch((error) => console.log(error));
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -68,7 +90,7 @@ const AnimeSource = ({ match }) => {
         },
         {
           headers: {
-            Authorization: getUserToken()
+            Authorization: `Bearer ${getUserToken()}`
           }
         }
       )
@@ -97,13 +119,15 @@ const AnimeSource = ({ match }) => {
           />
           <div className='col-6 col-sm-5 source__banner__content__controls'>
             <span className='source__banner__content__controls__title'>{data.title}</span>
-            <button
-              type='button'
-              className='btn btn-primary source__banner__content__controls__link'
-              onClick={handleSubscribe}
-            >
-              SUBSCRIBE
-            </button>
+            {!isSubscribed ? (
+              <button
+                type='button'
+                className='btn btn-primary source__banner__content__controls__link'
+                onClick={handleSubscribe}
+              >
+                SUBSCRIBE
+              </button>
+            ) : null}
             <button
               type='button'
               className='btn btn-primary source__banner__content__controls__link'
@@ -146,9 +170,15 @@ const AnimeSource = ({ match }) => {
         ))}
       </div>
       {currentEposides.length !== data.episodeArrayLinks.length ? (
-        <button type='button' className='btn row btn-primary source__eposides__load' onClick={showMoreEposides}>
-          Load more
-        </button>
+        <div className='source__eposides__load'>
+          <button
+            type='button'
+            className='btn col-12 btn-dark col-sm-5 source__eposides__load__btn'
+            onClick={showMoreEposides}
+          >
+            Load more
+          </button>
+        </div>
       ) : null}
     </div>
   );
