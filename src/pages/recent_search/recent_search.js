@@ -27,7 +27,7 @@ function RecentSearch() {
   }, []);
   return (
     <div className='main'>
-      <SeeMore list={recentSearch} />
+      <SeeMore list={recentSearch} base='/anime-source/0' />
     </div>
   );
 }

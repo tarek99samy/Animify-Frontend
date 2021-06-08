@@ -54,6 +54,7 @@
     "no-unreachable": "warn",
     "no-unused-vars": "warn",
     "react/prop-types": "off",
+    "import/no-unresolved": "off",
     "react/jsx-props-no-spreading": "off",
     "arrow-body-style": "off",
     "react/no-unknown-property": "warn",

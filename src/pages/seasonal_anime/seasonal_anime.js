@@ -22,7 +22,7 @@ function Seasonal() {
   }, []);
   return (
     <div className='main'>
-      <SeeMore list={seasonalAnime} />
+      <SeeMore list={seasonalAnime} base='/anime-info/0/' />
     </div>
   );
 }

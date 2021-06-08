@@ -22,7 +22,7 @@ function Trending() {
   }, []);
   return (
     <div className='main'>
-      <SeeMore list={trendingAnime} />
+      <SeeMore list={trendingAnime} base='/anime-info/0/' />
     </div>
   );
 }
