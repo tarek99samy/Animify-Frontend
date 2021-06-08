@@ -9,6 +9,7 @@ import { isLoggedIn, getUserToken } from '../../utils/state_manager';
 
 function Home() {
   const [subscribedAnime, setSubscribedAnime] = useState([]);
+  const [showSeeMore, setShowSeeMore] = useState(true);
   const [seasonalAnime, setSeasonalAnime] = useState([]);
   const [trendingAnime, setTrendingAnime] = useState([]);
   const [animeSchedule, setAnimeSchedule] = useState([]);
@@ -25,6 +26,7 @@ function Home() {
         })
         .then((response) => {
           setSubscribedAnime(trimName(response.data.items));
+          setShowSeeMore(response.data.meta.totalItems > 9);
         })
         .catch((err) => {
           console.error(err);
@@ -62,7 +64,13 @@ function Home() {
     <div className='main'>
       <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
       {isLoggedIn() ? (
-        <HomeCard name='Subscriptions' list={subscribedAnime} route='/library/subscribed' base='/anime-source/0' />
+        <HomeCard
+          name='Subscriptions'
+          list={subscribedAnime}
+          route='/library/subscribed'
+          base='/anime-source/0'
+          showSeeMore={showSeeMore}
+        />
       ) : null}
       <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' base='/anime-info/0/' />
       <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime' base='/anime-info/0/' />
