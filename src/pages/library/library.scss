@@ -1,0 +1,10 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.main {
+  @include mix.mainContent(vars.$width-small, vars.$spacing-micro-x, vars.$color-gray-dark, vars.$spacing-x-small);
+
+  &__title {
+    @include mix.text(vars.$color-white, vars.$text-size-small-x, bold, vars.$spacing-atomic-increased);
+  }
+}
