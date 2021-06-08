@@ -27,12 +27,6 @@
       width: vars.$spacing-x-atomic;
     }
 
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 2px vars.$color-transparent-1;
-      box-shadow: inset 0 0 2px vars.$color-transparent-1;
-      border-radius: vars.$spacing-xx-atomic;
-    }
-
     &::-webkit-scrollbar {
       height: vars.$spacing-xx-atomic;
     }

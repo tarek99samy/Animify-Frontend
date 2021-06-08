@@ -2,12 +2,10 @@
 @use '../../styles/mixins' as mix;
 
 .card {
-  @include mix.flexArea(column, start, center);
-  @include mix.borderedArea(0, vars.$color-gray-dark, 0);
   @include mix.area(
     flex,
     relative,
-    vars.$width-medium,
+    vars.$spacing-large-increased-x,
     vars.$width-small-x,
     vars.$spacing-xx-atomic,
     vars.$spacing-xxx-atomic,

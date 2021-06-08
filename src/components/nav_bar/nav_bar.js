@@ -46,7 +46,7 @@ function NavBar() {
   }, [location]);
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/user-history/user-search-history?page=1&perPage=5`, {
+      .get(`${API_BASE_URL}/user-history/user-search-history?page=1&&limit=5`, {
         headers: {
           Authorization: `Bearer ${getUserToken()}`
         }
