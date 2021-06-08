@@ -5,8 +5,10 @@ import ScrollableSchedule from '../../components/scrollable_schedule/scrollable_
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
 import './home.scss';
+import { isLoggedIn, getUserToken } from '../../utils/state_manager';
 
 function Home() {
+  const [subscribedAnime, setSubscribedAnime] = useState([]);
   const [seasonalAnime, setSeasonalAnime] = useState([]);
   const [trendingAnime, setTrendingAnime] = useState([]);
   const [animeSchedule, setAnimeSchedule] = useState([]);
@@ -14,6 +16,21 @@ function Home() {
   const timestamp = Math.floor(date.getTime() / 1000.0);
 
   useEffect(() => {
+    if (isLoggedIn) {
+      axios
+        .get(`${API_BASE_URL}/source/get-subscribed-anime?page=1&limit=8'`, {
+          headers: {
+            Authorization: `Bearer ${getUserToken()}`
+          }
+        })
+        .then((response) => {
+          setSubscribedAnime(trimName(response.data.items));
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
     axios
       .get(`${API_BASE_URL}/listings/anime-trending?listingServer=0&page=1&perPage=8`)
       .then((response) => {
@@ -44,8 +61,11 @@ function Home() {
   return (
     <div className='main'>
       <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
-      <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' />
-      <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime' />
+      {isLoggedIn() ? (
+        <HomeCard name='Subscriptions' list={subscribedAnime} route='/library/subscribed' base='/anime-source/0' />
+      ) : null}
+      <HomeCard name='Seasonal Anime' list={seasonalAnime} route='seasonal-anime' base='/anime-info/0/' />
+      <HomeCard name='Trending Anime' list={trendingAnime} route='trending-anime' base='/anime-info/0/' />
     </div>
   );
 }

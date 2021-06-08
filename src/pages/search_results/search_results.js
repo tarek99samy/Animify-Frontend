@@ -26,7 +26,7 @@ function SearchResult() {
   }, [params]);
   return (
     <div className='main'>
-      <SeeMore list={result} base='/anime-source/0' />
+      <SeeMore list={result} base='/anime-source' />
     </div>
   );
 }

@@ -68,7 +68,7 @@ const AnimeSource = ({ match }) => {
         },
         {
           headers: {
-            Authorization: getUserToken()
+            Authorization: `Bearer ${getUserToken()}`
           }
         }
       )
