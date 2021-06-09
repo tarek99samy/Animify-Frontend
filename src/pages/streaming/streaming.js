@@ -1,8 +1,9 @@
 import axios from 'axios';
+import qs from 'qs';
 import React, { useEffect, useState } from 'react';
 import VideoPlayer from 'react-video-js-player';
 import { API_BASE_URL } from '../../utils/consts';
-import { getUserSource } from '../../utils/state_manager';
+import { getUserSource, getUserToken } from '../../utils/state_manager';
 import './streaming.scss';
 
 const Streaming = ({ match, location }) => {
@@ -14,14 +15,36 @@ const Streaming = ({ match, location }) => {
   } = match;
 
   useEffect(() => {
-    const gotoURL = location.search.split('src=')[1];
+    const urlParams = location.search.slice(1).split('&');
+    const eposideLink = qs.parse(urlParams[0]).src;
+    const eposideNumber = +eposideLink.split('-').pop();
+
+    const addWatchedData = {
+      sourceServer: getUserSource(),
+      anime: {
+        artwork: qs.parse(urlParams[1]).artwork,
+        name: qs.parse(urlParams[2]).name,
+        gotoURL: qs.parse(urlParams[3]).gotoURL
+      },
+      episodeLink: eposideLink,
+      episodeNumber: eposideNumber
+    };
+
     axios
-      .get(`${API_BASE_URL}/source/anime-episode-url?sourceServer=${getUserSource()}&episodeLink=${gotoURL}`)
+      .get(`${API_BASE_URL}/source/anime-episode-url?sourceServer=${getUserSource()}&episodeLink=${eposideLink}`)
       .then((response) => {
-        setCurrentEposideSrc(response.data);
-        const eposideNumber = +gotoURL.split('-').pop();
-        if (eposideNumber > 1) setPreviousVideoURL(gotoURL.replace(/.$/, `${eposideNumber - 1}`));
-        if (eposideNumber < totalEposides) setNextVideoURL(gotoURL.replace(/.$/, `${eposideNumber + 1}`));
+        axios
+          .post(`${API_BASE_URL}/user-history/user-watched-history`, addWatchedData, {
+            headers: {
+              Authorization: `Bearer ${getUserToken()}`
+            }
+          })
+          .then(() => {
+            setCurrentEposideSrc(response.data);
+            if (eposideNumber > 1) setPreviousVideoURL(eposideLink.replace(/.$/, `${eposideNumber - 1}`));
+            if (eposideNumber < totalEposides) setNextVideoURL(eposideLink.replace(/.$/, `${eposideNumber + 1}`));
+          })
+          .catch((error) => console.log(error));
       })
       .catch((error) => {
         console.log(error);

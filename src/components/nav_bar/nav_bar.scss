@@ -30,7 +30,7 @@
     &__list {
       display: none;
       width: vars.$width-large;
-      margin:vars.$spacing-x-micro 0 0  vars.$spacing-xx-atomic;
+      margin: vars.$spacing-x-micro 0 0 vars.$spacing-xx-atomic;
       &__item {
         background-color: vars.$color-gray-light;
         color: vars.$color-silver;
@@ -40,10 +40,9 @@
 
   &__buttons--login,
   &__buttons--logout {
-    margin-left: 65vw;
     position: fixed;
     top: vars.$spacing-atomic;
-    right: vars.$spacing-atomic-xx;
+    right: vars.$spacing-micro-increased;
   }
 
   &__username {
@@ -68,7 +67,6 @@
   }
 
   &__loginbtn {
-
     color: vars.$color-neon-blue;
     &:hover {
       color: vars.$color-neon-blue;
@@ -103,6 +101,10 @@
         width: vars.$width-small;
       }
     }
+
+    &__buttons--login {
+      right: vars.$spacing-atomic-xx;
+    }
   }
 }
 
@@ -114,9 +116,6 @@
       &__list {
         width: vars.$spacing-large-increased-x;
       }
-    }
-    &__buttons--login {
-      margin-left: 70vw;
     }
     &__buttons--logout {
       margin-left: 50vw;
