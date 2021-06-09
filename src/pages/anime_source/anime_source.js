@@ -10,7 +10,7 @@ import './anime_source.scss';
 
 const AnimeSource = ({ match }) => {
   const [data, setData] = useState({
-    name: '',
+    title: '',
     bannerImgUrl: '',
     description: '',
     numberOfEposides: 0,
@@ -158,7 +158,7 @@ const AnimeSource = ({ match }) => {
               <div className='col-6 text-start source__eposides__eposide__title'>{eposide.title}</div>
               <div className='col-6 text-end'>
                 <a
-                  href={`/watch/${data.episodeArrayLinks.length}?src=${eposide.link}`}
+                  href={`/watch/${data.episodeArrayLinks.length}?src=${eposide.link}&artwork=${data.bannerImgUrl}&name=${data.title}&gotoURL=${gotoURL}`}
                   className='source__eposides__eposide__link'
                 >
                   Watch Now
