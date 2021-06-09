@@ -24,10 +24,15 @@ const Notifications = ({ initialCount }) => {
         }
       })
       .then((response) => {
+        let tempCount = 0;
+        response.data.items.forEach((element) => {
+          tempCount += element.read === false;
+        });
+        setNotificatiosUnreadCount(tempCount);
         setNotificationsTotlaPages(response.data.meta.totalPages);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [showNotifications]);
 
   useEffect(() => {
     axios
@@ -67,6 +72,7 @@ const Notifications = ({ initialCount }) => {
           if (response.status === 201) {
             setNotificatiosUnreadCount(notificatiosUnreadCount - 1);
             setShowNotifications(!showNotifications);
+            window.location.reload();
           }
         })
         .catch((error) => console.log(error));
