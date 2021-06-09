@@ -13,13 +13,23 @@ const Streaming = ({ match, location }) => {
   const {
     params: { totalEposides }
   } = match;
+  const [addWatchedData, setAddWatchedData] = useState({
+    sourceServer: 0,
+    anime: {
+      artwork: '',
+      name: '',
+      gotoURL: ''
+    },
+    episodeLink: '',
+    episodeNumber: ''
+  });
 
   useEffect(() => {
     const urlParams = location.search.slice(1).split('&');
     const eposideLink = qs.parse(urlParams[0]).src;
     const eposideNumber = +eposideLink.split('-').pop();
 
-    const addWatchedData = {
+    const tempAddWatch = {
       sourceServer: getUserSource(),
       anime: {
         artwork: qs.parse(urlParams[1]).artwork,
@@ -29,12 +39,13 @@ const Streaming = ({ match, location }) => {
       episodeLink: eposideLink,
       episodeNumber: eposideNumber
     };
+    setAddWatchedData(tempAddWatch);
 
     axios
       .get(`${API_BASE_URL}/source/anime-episode-url?sourceServer=${getUserSource()}&episodeLink=${eposideLink}`)
       .then((response) => {
         axios
-          .post(`${API_BASE_URL}/user-history/user-watched-history`, addWatchedData, {
+          .post(`${API_BASE_URL}/user-history/user-watched-history`, tempAddWatch, {
             headers: {
               Authorization: `Bearer ${getUserToken()}`
             }
@@ -71,14 +82,17 @@ const Streaming = ({ match, location }) => {
               <li className={`page-item ${previousVideoURL.length === 0 ? 'disabled' : ''}`}>
                 <a
                   className='page-link'
-                  href={`/watch/${totalEposides}?src=${previousVideoURL}`}
+                  href={`/watch/${totalEposides}?src=${previousVideoURL}&artwork=${addWatchedData.anime.artwork}&name=${addWatchedData.anime.name}&gotoURL=${addWatchedData.anime.gotoURL}`}
                   aria-disabled={previousVideoURL.length === 0}
                 >
                   Previous
                 </a>
               </li>
               <li className={`page-item ${nextVideoURL.length === 0 ? 'disabled' : ''}`}>
-                <a className='page-link' href={`/watch/${totalEposides}?src=${nextVideoURL}`}>
+                <a
+                  className='page-link'
+                  href={`/watch/${totalEposides}?src=${nextVideoURL}&artwork=${addWatchedData.anime.artwork}&name=${addWatchedData.anime.name}&gotoURL=${addWatchedData.anime.gotoURL}`}
+                >
                   Next
                 </a>
               </li>
