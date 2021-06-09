@@ -9,33 +9,38 @@ import { API_BASE_URL } from '../../utils/consts';
 import { getUserToken, isLoggedIn } from '../../utils/state_manager';
 import './notifications.scss';
 
-const Notifications = () => {
+const Notifications = ({ initialCount }) => {
   const [notifications, setNotifications] = useState([]);
-  const [notificatiosUnreadCount, setNotificatiosUnreadCount] = useState(0);
+  const [notificatiosUnreadCount, setNotificatiosUnreadCount] = useState(initialCount);
   const [notificationsCurrentPage, setNotificationsCurrentPage] = useState(1);
   const [notificationsTotlaPages, setNotificationsTotlaPages] = useState(0);
   const [showNotifications, setShowNotifications] = useState(false);
 
   useEffect(() => {
-    if (isLoggedIn() && showNotifications) {
-      axios
-        .get(`${API_BASE_URL}/notification/get-user-notifications?page=${notificationsCurrentPage}&limit=5`, {
-          headers: {
-            Authorization: `Bearer ${getUserToken()}`
-          }
-        })
-        .then((response) => {
-          let tempCount = 0;
-          response.data.items.forEach((element) => {
-            tempCount += element.read === false;
-          });
-          setNotificatiosUnreadCount(tempCount);
-          setNotifications(notifications.concat(response.data.items));
-          setNotificationsTotlaPages(response.data.meta.totalPages);
-        })
-        .catch((error) => console.log(error));
-    }
-  }, [notificationsCurrentPage, showNotifications]);
+    axios
+      .get(`${API_BASE_URL}/notification/get-user-notifications?page=${notificationsCurrentPage}&limit=5`, {
+        headers: {
+          Authorization: `Bearer ${getUserToken()}`
+        }
+      })
+      .then((response) => {
+        setNotificationsTotlaPages(response.data.meta.totalPages);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(`${API_BASE_URL}/notification/get-user-notifications?page=${notificationsCurrentPage}&limit=5`, {
+        headers: {
+          Authorization: `Bearer ${getUserToken()}`
+        }
+      })
+      .then((response) => {
+        setNotifications(response.data.items);
+      })
+      .catch((error) => console.log(error));
+  }, [notificationsCurrentPage]);
 
   const handleShowNotifications = () => {
     if (showNotifications) setNotificationsCurrentPage(1);
@@ -99,7 +104,7 @@ const Notifications = () => {
             </div>
           ))}
           <div className='notifications__dropdown__loadmore'>
-            {notificationsCurrentPage <= notificationsTotlaPages ? (
+            {notificationsCurrentPage + 1 <= notificationsTotlaPages ? (
               <span
                 className='notifications__dropdown__loadmore__text'
                 role='presentation'

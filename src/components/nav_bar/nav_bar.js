@@ -12,9 +12,27 @@ function NavBar() {
   const [hideValue, setHideValue] = useState('');
   const [searchFoucs, setSearchFocus] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
+  const [notificatiosUnreadCount, setNotificatiosUnreadCount] = useState(0);
 
   const history = useHistory();
   const location = useLocation();
+
+  useEffect(() => {
+    axios
+      .get(`${API_BASE_URL}/notification/get-user-notifications?page=1&limit=5`, {
+        headers: {
+          Authorization: `Bearer ${getUserToken()}`
+        }
+      })
+      .then((response) => {
+        let tempCount = 0;
+        response.data.items.forEach((element) => {
+          tempCount += element.read === false;
+        });
+        setNotificatiosUnreadCount(tempCount);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     setHideValue(hideBars(location.pathname));
@@ -99,7 +117,7 @@ function NavBar() {
           <div className='navbar__buttons--login'>
             <span className='navbar__username'>{getGlobalState().username}</span>
             <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
-            <Notifications />
+            <Notifications initialCount={notificatiosUnreadCount} />
           </div>
         ) : (
           <div className='navbar__buttons--logout'>
