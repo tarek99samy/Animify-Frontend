@@ -15,11 +15,6 @@ const items = [
     name: 'Search',
     icon: 'fa fa-search sidebar__item__icon',
     route: '/search'
-  },
-  {
-    name: 'Library',
-    icon: 'fa fa-bookmark sidebar__item__icon',
-    route: '/library'
   }
 ];
 
@@ -43,6 +38,13 @@ function SideBar() {
         {sideBarList}
         {isLoggedIn() ? (
           <>
+            <SideBarElement
+              item={{
+                name: 'Library',
+                icon: 'fa fa-bookmark sidebar__item__icon',
+                route: '/library'
+              }}
+            />
             <SideBarElement
               item={{
                 name: 'Settings',

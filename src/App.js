@@ -38,10 +38,10 @@ export default function App() {
         <Route exact path='/seasonal-anime' component={Seasonal} />
         <Route exact path='/anime-schedule' component={AnimeSchedule} />
         <Route exact path='/search-result/:sourceID/:query' component={SearchResult} />
-        <PrivateRoute exact path='/settings' component={Settings} />
         <Route exact path='/search' component={RecentSearch} />
-        <Route exact path='/library' component={Library} />
-        <Route exact path='/library/subscribed' component={Subscriptions} />
+        <PrivateRoute exact path='/settings' component={Settings} />
+        <PrivateRoute exact path='/library' component={Library} />
+        <PrivateRoute exact path='/library/subscribed' component={Subscriptions} />
         {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
       </Switch>

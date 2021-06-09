@@ -112,6 +112,26 @@
         &__link:hover {
           color: vars.$color-black;
         }
+
+        &__dropdown {
+          background-color: vars.$color-gray-light;
+
+          &__item {
+            @include mix.text(
+              vars.$color-black,
+              vars.$text-size-x-micro,
+              vars.$text-weight-bold,
+              vars.$text-size-small
+            );
+
+            transition: all 0.3s ease-in-out;
+          }
+
+          &__item:hover {
+            background-color: vars.$color-gray-dark;
+            color: vars.$color-white;
+          }
+        }
       }
 
       @media (max-width: 767px) {

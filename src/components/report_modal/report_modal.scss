@@ -1,0 +1,36 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.report {
+  &__header {
+    background-color: vars.$color-gray-light;
+    &__title {
+      @include mix.text(vars.$color-white, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$text-size-micro-x);
+    }
+  }
+
+  &__body {
+    background-color: vars.$color-gray-light;
+
+    &__field {
+      background-color: vars.$color-gray-light;
+      color: vars.$color-white;
+      border-color: vars.$color-gray;
+      resize: none;
+    }
+
+    &__field:focus {
+      background-color: unset;
+      color: vars.$color-white;
+    }
+
+    &__label {
+      @include mix.text(vars.$color-silver, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$text-size-micro-x);
+    }
+
+    &__button {
+      background-color: vars.$color-neon-blue;
+      color: vars.$color-white;
+    }
+  }
+}

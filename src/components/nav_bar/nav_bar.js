@@ -133,13 +133,8 @@ function NavBar() {
         ) : (
           <div className='navbar__buttons--logout'>
             <Link to='/login'>
-              <button type='button' className='btn navbar__loginbtn'>
-                Log in
-              </button>
-            </Link>
-            <Link to='/signup'>
               <button type='button' className='btn navbar__signbtn'>
-                Sign Up
+                Log In
               </button>
             </Link>
           </div>
