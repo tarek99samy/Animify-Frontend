@@ -16,22 +16,26 @@
 
 ### Installation
 
-_Clone the project repo_
+1. _Clone the project repo_
 
-    $ git clone https://github.com/tarek99samy/Animify-Frontend.git
+        $ git clone https://github.com/tarek99samy/Animify-Frontend.git
 
-_Navigate to project folder_
+2. _Navigate to project folder_
 
-    cd Animify-Frontend/
+        cd Animify-Frontend/
 
-_Install project dependencies_
-    
-    npm i
+3. _Install project dependencies_
+   
+        npm i
 
-### Run for development
+### Running
+
+_run in development enviroment_
+
     npm start
 
-### Run for production
+_run in production enviroment_
+
     npm run build
 
 ## Screenshots
