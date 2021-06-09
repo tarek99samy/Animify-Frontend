@@ -116,15 +116,11 @@ function NavBar() {
               key={index}
             >
               <span>{search.query}</span>
-              <button
-                type='button'
-                onClick={(e) => {
+                <i className='fa fa-trash navbar__search__list__item__icon'
+                  onClick={(e) => {
                   e.stopPropagation();
                   removeHistory(search.id);
-                }}
-              >
-                <i className='fa fa-trash sidebar__item__icon'></i>
-              </button>
+                }}></i>
             </li>
           ))}
         </ul>

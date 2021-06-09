@@ -34,6 +34,9 @@
       &__item {
         background-color: vars.$color-gray-light;
         color: vars.$color-silver;
+        &__icon {
+          margin-left: vars.$spacing-large-increased-xx;
+        }
       }
     }
   }
