@@ -3,8 +3,7 @@ import axios from 'axios';
 import LibraryCard from '../../components/library_card/library_card';
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
-import { getUserToken } from '../../utils/state_manager';
-// import './trending_anime.scss';
+import { getUserToken, getUserSource } from '../../utils/state_manager';
 
 function Subscriptions() {
   const [subscribedAnime, setSubscribedAnime] = useState([]);
@@ -27,7 +26,7 @@ function Subscriptions() {
     <div className='main'>
       <div className='row g-1 cards__row justify-content-center'>
         {subscribedAnime.map((anime) => (
-          <LibraryCard anime={anime} base='/anime-source/0' showNumber={false} key={anime.gotoURL} />
+          <LibraryCard anime={anime} base={`/anime-source/${getUserSource()}`} showNumber={false} key={anime.id} />
         ))}
       </div>
     </div>

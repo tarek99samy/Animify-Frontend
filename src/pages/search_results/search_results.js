@@ -4,6 +4,7 @@ import axios from 'axios';
 import SeeMore from '../../components/see_more/see_more';
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
+import { getUserSource } from '../../utils/state_manager';
 import './search_results.scss';
 
 function SearchResult() {
@@ -26,7 +27,7 @@ function SearchResult() {
   }, [params]);
   return (
     <div className='main'>
-      <SeeMore list={result} base='/anime-source/0' />
+      <SeeMore list={result} base={`/anime-source/${getUserSource()}`} />
     </div>
   );
 }

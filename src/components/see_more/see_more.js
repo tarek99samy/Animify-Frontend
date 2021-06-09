@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { isLoggedIn, getUserToken } from '../../utils/state_manager';
+import { isLoggedIn, getUserToken, getUserSource } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './see_more.scss';
 
@@ -12,7 +12,7 @@ function SeeMore(props) {
         .post(
           `${API_BASE_URL}/user-history/user-clicked-history`,
           {
-            sourceServer: 0,
+            sourceServer: getUserSource(),
             anime: {
               artwork: anime.artwork,
               name: anime.name,
@@ -38,7 +38,7 @@ function SeeMore(props) {
           <Link
             to={`${props.base}${anime.gotoURL}`}
             className='col-6 col-md-4 seemore__card'
-            key={anime.id}
+            key={anime.gotoURL}
             onClick={() => addClickedHistory(anime)}
           >
             <div className='row'>

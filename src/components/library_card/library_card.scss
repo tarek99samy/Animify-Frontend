@@ -34,8 +34,8 @@
       0,
       vars.$color-gray-light
     );
-    left: 50px;
-    top: 125px;
+    left: vars.$spacing-micro;
+    top: vars.$spacing-medium-xx;
     border-radius: vars.$spacing-xx-atomic;
   }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import LibraryCard from '../library_card/library_card';
-import { getUserToken } from '../../utils/state_manager';
+import { getUserToken, getUserSource } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './library_login.scss';
 
@@ -18,7 +18,6 @@ function LibraryLogin() {
       })
       .then((response) => {
         setRecentlyWatched(response.data.items);
-        console.log(recentlyWatched);
       })
       .catch((error) => {
         console.error(error);
@@ -40,7 +39,7 @@ function LibraryLogin() {
             </div>
           </Link>
           {recentlyWatched.map((anime) => (
-            <LibraryCard anime={anime} base='/anime-source' showNumber />
+            <LibraryCard anime={anime} base={`/anime-source/${getUserSource()}/category/`} showNumber />
           ))}
         </div>
       </div>

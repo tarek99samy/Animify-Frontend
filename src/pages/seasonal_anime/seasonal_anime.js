@@ -3,6 +3,7 @@ import axios from 'axios';
 import SeeMore from '../../components/see_more/see_more';
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
+import { getUserList } from '../../utils/state_manager';
 import './seasonal_anime.scss';
 
 function Seasonal() {
@@ -11,7 +12,9 @@ function Seasonal() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/listings/anime-seasonal?listingServer=0&page=1&perPage=12&seasonYear=2021&season=0`)
+      .get(
+        `${API_BASE_URL}/listings/anime-seasonal?listingServer=${getUserList()}&page=1&perPage=12&seasonYear=2021&season=0`
+      )
       .then((response) => {
         setSeasonalAnime(trimName(response.data.items, 20));
         setIsLoading(false);
@@ -22,7 +25,7 @@ function Seasonal() {
   }, []);
   return (
     <div className='main'>
-      <SeeMore list={seasonalAnime} base='/anime-info/0/' />
+      <SeeMore list={seasonalAnime} base={`/anime-info/${getUserList()}/`} />
     </div>
   );
 }

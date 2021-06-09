@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SeeMore from '../../components/see_more/see_more';
 import trimName from '../../utils/trim_name';
-import { getUserToken } from '../../utils/state_manager';
+import { getUserToken, getUserSource } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './recent_search.scss';
 
@@ -27,7 +27,7 @@ function RecentSearch() {
   }, []);
   return (
     <div className='main'>
-      <SeeMore list={recentSearch} base='/anime-source/0' />
+      <SeeMore list={recentSearch} base={`/anime-source/${getUserSource()}`} />
     </div>
   );
 }
