@@ -13,12 +13,15 @@ function NavBar() {
   const [hideValue, setHideValue] = useState('');
   const [searchFoucs, setSearchFocus] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
-
+  
   const history = useHistory();
   const location = useLocation();
 
   useEffect(() => {
     setHideValue(hideBars(location.pathname));
+    if(!(location.pathname.includes( '/search-result'))) {
+      setSearchQuery('');
+    }
   }, [location]);
 
   const handleClickOnSearch = (event) => {
