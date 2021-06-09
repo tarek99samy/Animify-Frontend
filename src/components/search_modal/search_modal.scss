@@ -6,26 +6,54 @@
 
   &__body {
     @include mix.flexArea(row, center, space-evenly);
+    margin: 0;
     padding: vars.$spacing-atomic-x;
+    background-color: vars.$color-gray-light;
 
     &__card {
       border-color: vars.$color-black;
-      margin: vars.$spacing-atomic;
+      margin: 0;
       padding: 0;
       transition: transform 0.4s ease-in-out;
+      height: vars.$width-medium-xx;
+      width: vars.$width-medium-xx;
 
       &__img {
         max-height: vars.$width-medium;
       }
 
       &__title {
-        @include mix.text(vars.$color-black, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$text-size-micro-x);
+        @include mix.text(
+          vars.$color-neon-blue,
+          vars.$text-size-micro-x,
+          vars.$text-weight-bold,
+          vars.$text-size-micro-x
+        );
+      }
+
+      &__wrapper {
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        display: flex;
+
+        @media (max-width: 1200px) {
+          margin: vars.$spacing-atomic 0;
+        }
       }
     }
 
     &__card:hover {
       transform: scale(1.02);
       box-shadow: 0 0 vars.$spacing-atomic-increased vars.$spacing-xxx-atomic vars.$color-neon-blue;
+    }
+  }
+
+  &__header {
+    background-color: vars.$color-gray-light;
+
+    &__title {
+      color: vars.$color-white;
     }
   }
 }

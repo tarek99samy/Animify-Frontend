@@ -1,0 +1,38 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.settings {
+  padding: 0;
+  width: auto;
+  @include mix.mainContent(vars.$width-small, vars.$spacing-micro-x, vars.$color-gray, vars.$spacing-x-small);
+
+  &__row {
+    align-items: center;
+    justify-content: center;
+    @include mix.text(vars.$color-white, vars.$text-size-x-small, vars.$text-weight-light, vars.$text-size-x-small);
+    margin: vars.$spacing-atomic 0;
+
+    &--title {
+      @include mix.text(
+        vars.$color-neon-blue,
+        vars.$text-size-small-x,
+        vars.$text-weight-bold,
+        vars.$text-size-small-x
+      );
+      // padding-top: vars.$spacing-atomic;
+    }
+
+    &--submit {
+      padding: vars.$spacing-atomic-xxx 0;
+      margin: 0;
+    }
+  }
+
+  &__section {
+    padding-top: 7%;
+  }
+
+  &__disabled__field {
+    background-image: none;
+  }
+}

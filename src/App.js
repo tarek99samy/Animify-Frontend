@@ -17,6 +17,7 @@ import RecentSearch from './pages/recent_search/recent_search';
 import SideBar from './components/side_bar/side_bar';
 import NavBar from './components/nav_bar/nav_bar';
 import Streaming from './pages/streaming/streaming';
+import Settings from './pages/settings/settings';
 import Library from './pages/library/library';
 import Subscriptions from './pages/subscriptions/subscriptions';
 
@@ -37,6 +38,7 @@ export default function App() {
         <Route exact path='/seasonal-anime' component={Seasonal} />
         <Route exact path='/anime-schedule' component={AnimeSchedule} />
         <Route exact path='/search-result/:sourceID/:query' component={SearchResult} />
+        <PrivateRoute exact path='/settings' component={Settings} />
         <Route exact path='/search' component={RecentSearch} />
         <Route exact path='/library' component={Library} />
         <Route exact path='/library/subscribed' component={Subscriptions} />

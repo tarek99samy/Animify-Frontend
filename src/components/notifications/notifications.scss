@@ -5,7 +5,7 @@
   &__bell {
     &__badge {
       position: absolute;
-      top: vars.$spacing-xxx-atomic;
+      top: -1 * vars.$spacing-xx-atomic;
       margin-left: -1 * vars.$spacing-xxx-atomic;
       padding: vars.$spacing-xxx-atomic vars.$spacing-xx-atomic;
       color: vars.$color-black;
@@ -25,14 +25,8 @@
     );
     overflow-y: auto;
     flex-direction: column;
-    right: 20%;
+    right: -35%;
     top: 100%;
-    @media (max-width: 768px) {
-      right: 10%;
-    }
-    @media (max-width: 576px) {
-      right: 0;
-    }
 
     &__item {
       padding: 0 vars.$spacing-x-atomic;

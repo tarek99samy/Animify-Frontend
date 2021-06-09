@@ -20,11 +20,6 @@ const items = [
     name: 'Library',
     icon: 'fa fa-bookmark sidebar__item__icon',
     route: '/library'
-  },
-  {
-    name: 'Settings',
-    icon: 'fa fa-cog sidebar__item__icon',
-    route: '/settings'
   }
 ];
 
@@ -47,12 +42,21 @@ function SideBar() {
       <ul className='nav flex-column sidebar__list'>
         {sideBarList}
         {isLoggedIn() ? (
-          <li className='nav-item sidebar__item'>
-            <Link to='/' className='nav-link sidebar__item__link' onClick={() => logout()}>
-              <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
-              <span className='sidebar__item__text'>Logout</span>
-            </Link>
-          </li>
+          <>
+            <SideBarElement
+              item={{
+                name: 'Settings',
+                icon: 'fa fa-cog sidebar__item__icon',
+                route: '/settings'
+              }}
+            />
+            <li className='nav-item sidebar__item'>
+              <Link to='/' className='nav-link sidebar__item__link' onClick={() => logout()}>
+                <i className='fa fa-sign-out-alt sidebar__item__icon'></i>
+                <span className='sidebar__item__text'>Logout</span>
+              </Link>
+            </li>
+          </>
         ) : null}
       </ul>
     </div>
