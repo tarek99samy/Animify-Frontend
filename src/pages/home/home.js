@@ -17,7 +17,7 @@ function Home() {
   const timestamp = Math.floor(date.getTime() / 1000.0);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn()) {
       axios
         .get(`${API_BASE_URL}/source/get-subscribed-anime?page=1&limit=8'`, {
           headers: {
@@ -62,6 +62,7 @@ function Home() {
         console.error(err);
       });
   }, []);
+
   return (
     <div className='main'>
       <ScrollableSchedule list={animeSchedule} route='anime-schedule' />

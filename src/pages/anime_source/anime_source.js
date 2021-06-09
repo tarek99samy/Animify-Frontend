@@ -19,7 +19,7 @@ const AnimeSource = ({ match }) => {
     episodeArrayLinks: []
   });
   const [currentEposides, setCurrentEposides] = useState([]);
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(true);
   const {
     params: { sourceServer, gotoURL }
   } = match;
@@ -143,16 +143,18 @@ const AnimeSource = ({ match }) => {
                     Show Information
                   </button>
                 </li>
-                <li>
-                  <button
-                    type='button'
-                    className='dropdown-item source__banner__content__controls__dropdown__item'
-                    data-bs-toggle='modal'
-                    data-bs-target='#reportToAdmin'
-                  >
-                    Report anime
-                  </button>
-                </li>
+                {isLoggedIn() ? (
+                  <li>
+                    <button
+                      type='button'
+                      className='dropdown-item source__banner__content__controls__dropdown__item'
+                      data-bs-toggle='modal'
+                      data-bs-target='#reportToAdmin'
+                    >
+                      Report anime
+                    </button>
+                  </li>
+                ) : null}
                 {!isSubscribed ? (
                   <li>
                     <button

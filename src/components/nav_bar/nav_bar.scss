@@ -38,8 +38,13 @@
     }
   }
 
-  &__buttons--login,
   &__buttons--logout {
+    position: fixed;
+    right: vars.$spacing-atomic-increased;
+    top: vars.$spacing-x-atomic;
+  }
+
+  &__buttons--login {
     position: fixed;
     top: vars.$spacing-atomic;
     right: vars.$spacing-micro-increased;
@@ -118,7 +123,7 @@
       }
     }
     &__buttons--logout {
-      margin-left: 50vw;
+      right: vars.$spacing-atomic;
     }
     &__username {
       display: none;

@@ -44,26 +44,32 @@ function NavBar() {
   useEffect(() => {
     setHideValue(hideBars(location.pathname));
   }, [location]);
+
   useEffect(() => {
-    axios
-      .get(`${API_BASE_URL}/user-history/user-search-history?page=1&&limit=5`, {
-        headers: {
-          Authorization: `Bearer ${getUserToken()}`
-        }
-      })
-      .then((response) => {
-        setSearchHistory(response.data.items);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (isLoggedIn()) {
+      axios
+        .get(`${API_BASE_URL}/user-history/user-search-history?page=1&&limit=5`, {
+          headers: {
+            Authorization: `Bearer ${getUserToken()}`
+          }
+        })
+        .then((response) => {
+          setSearchHistory(response.data.items);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }, []);
+
   const handleFieldChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
   const inputSearchFoucs = (val) => {
     setSearchFocus(val);
   };
+
   return (
     <div className={`${hideValue}`}>
       <nav className='navbar'>
@@ -98,13 +104,8 @@ function NavBar() {
         ) : (
           <div className='navbar__buttons--logout'>
             <Link to='/login'>
-              <button type='button' className='btn navbar__loginbtn'>
-                Log in
-              </button>
-            </Link>
-            <Link to='/signup'>
               <button type='button' className='btn navbar__signbtn'>
-                Sign Up
+                Log In
               </button>
             </Link>
           </div>
