@@ -1,8 +1,10 @@
+/* eslint no-restricted-globals:0 */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Divider from '../../components/divider/divider';
 import Expand from '../../components/expand/expand';
+import ReportModal from '../../components/report_modal/report_modal';
 import SearchModal from '../../components/search_modal/search_modal';
 import { API_BASE_URL } from '../../utils/consts';
 import { getUserList, getUserToken, isLoggedIn } from '../../utils/state_manager';
@@ -119,23 +121,51 @@ const AnimeSource = ({ match }) => {
           />
           <div className='col-6 col-sm-5 source__banner__content__controls'>
             <span className='source__banner__content__controls__title'>{data.title}</span>
-            {!isSubscribed ? (
+
+            <div className='dropdown'>
               <button
+                className='btn btn-primary btn-sm source__banner__content__controls__link'
                 type='button'
-                className='btn btn-primary source__banner__content__controls__link'
-                onClick={handleSubscribe}
+                id='actionMenu'
+                data-bs-toggle='dropdown'
+                aria-expanded='false'
               >
-                SUBSCRIBE
+                Actions
               </button>
-            ) : null}
-            <button
-              type='button'
-              className='btn btn-primary source__banner__content__controls__link'
-              data-bs-toggle='modal'
-              data-bs-target='#listingSearch'
-            >
-              Show Information
-            </button>
+              <ul className='dropdown-menu source__banner__content__controls__dropdown' aria-labelledby='actionMenu'>
+                <li>
+                  <button
+                    type='button'
+                    className='dropdown-item source__banner__content__controls__dropdown__item'
+                    data-bs-toggle='modal'
+                    data-bs-target='#listingSearch'
+                  >
+                    Show Information
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type='button'
+                    className='dropdown-item source__banner__content__controls__dropdown__item'
+                    data-bs-toggle='modal'
+                    data-bs-target='#reportToAdmin'
+                  >
+                    Report anime
+                  </button>
+                </li>
+                {!isSubscribed ? (
+                  <li>
+                    <button
+                      type='button'
+                      className='dropdown-item source__banner__content__controls__dropdown__item'
+                      onClick={handleSubscribe}
+                    >
+                      SUBSCRIBE
+                    </button>
+                  </li>
+                ) : null}
+              </ul>
+            </div>
 
             <SearchModal
               searchPathName={`listings/anime-search?listingServer=${userListing}`}
@@ -144,6 +174,8 @@ const AnimeSource = ({ match }) => {
               id='listingSearch'
               title='Top listings found'
             />
+
+            <ReportModal id='reportToAdmin' url={location.href} />
           </div>
         </div>
       </div>
