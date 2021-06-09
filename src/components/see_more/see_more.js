@@ -38,7 +38,7 @@ function SeeMore(props) {
           <Link
             to={`${props.base}${anime.gotoURL}`}
             className='col-6 col-md-4 seemore__card'
-            key={anime.gotoURL}
+            key={anime.id}
             onClick={() => addClickedHistory(anime)}
           >
             <div className='row'>

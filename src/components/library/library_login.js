@@ -18,7 +18,7 @@ function LibraryLogin() {
       })
       .then((response) => {
         setRecentlyWatched(response.data.items);
-        // console.log(recentlyWatched);
+        console.log(recentlyWatched);
       })
       .catch((error) => {
         console.error(error);
@@ -27,15 +27,23 @@ function LibraryLogin() {
   return (
     <div className='library__login'>
       <span className='library__login__text'>You Library</span> <br />
-      <Link to='/library/subscribed' className='card library__login__card'>
-        <img src='/assets/img/notification.svg' className='library__login__card__img fluid-img' alt='subscribed bell' />
-        <div>
-          <span>Subscribed</span>
+      <div className='container cards'>
+        <div className='row g-1 cards__row'>
+          <Link to='/library/subscribed' className='card library__login__card'>
+            <img
+              src='/assets/img/notification.svg'
+              className='library__login__card__img fluid-img'
+              alt='subscribed bell'
+            />
+            <div>
+              <span>Subscribed</span>
+            </div>
+          </Link>
+          {recentlyWatched.map((anime) => (
+            <LibraryCard anime={anime} base='/anime-source' showNumber />
+          ))}
         </div>
-      </Link>
-      {recentlyWatched.map((anime) => (
-        <LibraryCard anime={anime} base='/anime-source' showNumber />
-      ))}
+      </div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ const LibraryCard = (props) => {
         <img src={props.anime.artwork} className='card__img fluid-img' alt='props.animeImg' />
         {props.showNumber ? (
           <div className='card__eposide row'>
-            <span className='text-center'>Ep.{props.anime.episodeNumber}</span>
+            <span className='card__eposide__num text-center'>Ep.{props.anime.episodeNumber}</span>
           </div>
         ) : null}
         <div>

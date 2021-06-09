@@ -12,7 +12,7 @@ function RecentSearch() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/user-history/user-clicked-history?page=1&limit=10`, {
+      .get(`${API_BASE_URL}/user-history/user-clicked-history?page=1&limit=16`, {
         headers: {
           Authorization: `Bearer ${getUserToken()}`
         }

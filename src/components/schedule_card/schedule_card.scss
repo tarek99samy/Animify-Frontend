@@ -30,7 +30,7 @@
     @include mix.area(
       inline-block,
       absolute,
-      vars.$spacing-x-small,
+      auto,
       vars.$spacing-atomic-xx,
       0,
       0,
