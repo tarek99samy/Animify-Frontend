@@ -48,6 +48,10 @@ function NavBar() {
   }, [location]);
 
   useEffect(() => {
+    getSearchHistory();
+  }, []);
+
+  const getSearchHistory = () => {
     axios
       .get(`${API_BASE_URL}/user-history/user-search-history?page=1&&limit=5`, {
         headers: {
@@ -60,8 +64,7 @@ function NavBar() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
-
+  };
   const handleFieldChange = (event) => {
     setSearchQuery(event.target.value);
   };
@@ -77,8 +80,19 @@ function NavBar() {
     history.replace({ pathname: `/search-result/${getUserSource()}/${query}` });
   };
 
-  const removeHistory = (val) => {
-    console.log(val);
+  const removeHistory = (id) => {
+    axios
+      .delete(`${API_BASE_URL}/user-history/user-search-history?historyId=${id}`, {
+        headers: {
+          Authorization: `Bearer ${getUserToken()}`
+        }
+      })
+      .then(() => {
+        getSearchHistory();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
