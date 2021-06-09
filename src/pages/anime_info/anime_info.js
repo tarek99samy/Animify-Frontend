@@ -119,7 +119,7 @@ const AnimeInfo = ({ match }) => {
             </div>
           ))}
         </div>
-        <HomeCard name='Related Animes' list={data.relatedAnimes} route='anime-schedule' showSeeMore={false} />
+        <HomeCard name='Related Animes' list={data.relatedAnimes} route='' showSeeMore={false} base='/anime-info' />
       </div>
     </div>
   );

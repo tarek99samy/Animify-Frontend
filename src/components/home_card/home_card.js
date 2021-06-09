@@ -16,7 +16,7 @@ const HomeCard = (props) => {
       </div>
       <div className='row home-cards__wrapper card-group'>
         {props.list.map((anime) => (
-          <LibraryCard anime={anime} base='/anime-info' showNumber={false} key={anime.gotoURL} />
+          <LibraryCard anime={anime} base={props.base} showNumber={false} key={anime.gotoURL} />
         ))}
       </div>
     </div>

@@ -2,12 +2,10 @@
 @use '../../styles/mixins' as mix;
 
 .card {
-  @include mix.flexArea(column, start, center);
-  @include mix.borderedArea(0, vars.$color-gray-dark, 0);
   @include mix.area(
     flex,
     relative,
-    vars.$width-medium,
+    vars.$spacing-large-increased-x,
     vars.$width-small-x,
     vars.$spacing-xx-atomic,
     vars.$spacing-xxx-atomic,
@@ -26,7 +24,22 @@
     width: 100%;
   }
 
+  &__eposide {
+    @include mix.area(
+      inline-block,
+      absolute,
+      auto,
+      vars.$spacing-atomic-xx,
+      0,
+      0,
+      vars.$color-gray-light
+    );
+    left: vars.$spacing-micro;
+    top: vars.$spacing-medium-xx;
+    border-radius: vars.$spacing-xx-atomic;
+  }
+
   &__txt {
-    margin: vars.$spacing-xxx-atomic;
+    padding: vars.$spacing-xxx-atomic;
   }
 }

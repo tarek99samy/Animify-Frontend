@@ -19,6 +19,7 @@ import NavBar from './components/nav_bar/nav_bar';
 import Streaming from './pages/streaming/streaming';
 import Settings from './pages/settings/settings';
 import Library from './pages/library/library';
+import Subscriptions from './pages/subscriptions/subscriptions';
 
 export default function App() {
   return (
@@ -40,7 +41,7 @@ export default function App() {
         <PrivateRoute exact path='/settings' component={Settings} />
         <Route exact path='/search' component={RecentSearch} />
         <Route exact path='/library' component={Library} />
-
+        <Route exact path='/library/subscribed' component={Subscriptions} />
         {/* <Route exact path='/notfound' component={NotFound} />
           <Redirect to='/notfound' /> */}
       </Switch>

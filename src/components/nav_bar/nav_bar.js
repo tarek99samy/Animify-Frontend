@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { isLoggedIn, getGlobalState, getUserToken } from '../../utils/state_manager';
+import { isLoggedIn, getGlobalState, getUserToken, getUserSource } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import hideBars from '../../utils/hideBars';
 import Notifications from '../notifications/notifications';
@@ -22,7 +22,23 @@ function NavBar() {
 
   const handleClickOnSearch = (event) => {
     if (event.charCode === 13) {
-      history.replace({ pathname: `/search-result/0/${searchQuery}` });
+      if (isLoggedIn()) {
+        axios
+          .post(
+            `${API_BASE_URL}/user-history/user-search-history?query=${searchQuery}`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${getUserToken()}`
+              }
+            }
+          )
+          .then(() => {})
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+      history.replace({ pathname: `/search-result/${getUserSource()}/${searchQuery}` });
     }
   };
   useEffect(() => {
@@ -30,7 +46,7 @@ function NavBar() {
   }, [location]);
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/user-history/user-search-history?page=1&perPage=5`, {
+      .get(`${API_BASE_URL}/user-history/user-search-history?page=1&&limit=5`, {
         headers: {
           Authorization: `Bearer ${getUserToken()}`
         }
@@ -65,7 +81,7 @@ function NavBar() {
         <ul className={`list-group navbar__search__list ${searchFoucs}`}>
           {searchHistory.map((search) => (
             <Link
-              to={`/search-result/0/${search.query}`}
+              to={`/search-result/${getUserSource()}/${search.query}`}
               className='list-group-item navbar__search__list__item'
               key={search.id}
             >
@@ -75,12 +91,8 @@ function NavBar() {
         </ul>
         {isLoggedIn() ? (
           <div className='navbar__buttons--login'>
-            <Link to='/profile'>
-              <span className='navbar__username'>{getGlobalState().username}</span>
-            </Link>
-            <Link to='/profile'>
-              <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
-            </Link>
+            <span className='navbar__username'>{getGlobalState().username}</span>
+            <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
             <Notifications />
           </div>
         ) : (
