@@ -1,3 +1,4 @@
+/* eslint-disable  */
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -41,9 +42,11 @@ function NavBar() {
       history.replace({ pathname: `/search-result/${getUserSource()}/${searchQuery}` });
     }
   };
+
   useEffect(() => {
     setHideValue(hideBars(location.pathname));
   }, [location]);
+
   useEffect(() => {
     axios
       .get(`${API_BASE_URL}/user-history/user-search-history?page=1&&limit=5`, {
@@ -58,12 +61,26 @@ function NavBar() {
         console.error(error);
       });
   }, []);
+
   const handleFieldChange = (event) => {
     setSearchQuery(event.target.value);
   };
+
   const inputSearchFoucs = (val) => {
     setSearchFocus(val);
   };
+
+  const handleSuggestionCLick = (query, val) => {
+    console.log(val);
+    inputSearchFoucs('');
+    setSearchQuery(val);
+    history.replace({ pathname: `/search-result/${getUserSource()}/${query}` });
+  };
+
+  const removeHistory = (val) => {
+    console.log(val);
+  };
+
   return (
     <div className={`${hideValue}`}>
       <nav className='navbar'>
@@ -76,17 +93,25 @@ function NavBar() {
           onKeyPress={handleClickOnSearch}
           onChange={handleFieldChange}
           onFocus={() => inputSearchFoucs('focused')}
-          onBlur={() => inputSearchFoucs('')}
         />
         <ul className={`list-group navbar__search__list ${searchFoucs}`}>
-          {searchHistory.map((search) => (
-            <Link
-              to={`/search-result/${getUserSource()}/${search.query}`}
+          {searchHistory.map((search, index) => (
+            <li
               className='list-group-item navbar__search__list__item'
-              key={search.id}
+              onClick={() => handleSuggestionCLick(search.query, search.id)}
+              key={index}
             >
-              <li> {search.query} </li>
-            </Link>
+              <span>{search.query}</span>
+              <button
+                type='button'
+                onClick={(e) => {
+                  e.stopPropagation();
+                  removeHistory(search.id);
+                }}
+              >
+                <i className='fa fa-trash sidebar__item__icon'></i>
+              </button>
+            </li>
           ))}
         </ul>
         {isLoggedIn() ? (
