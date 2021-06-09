@@ -66,7 +66,7 @@ function Home() {
   return (
     <div className='main'>
       <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
-      {isLoggedIn() ? (
+      {isLoggedIn() && subscribedAnime.length ? (
         <HomeCard
           name='Subscriptions'
           list={subscribedAnime}
