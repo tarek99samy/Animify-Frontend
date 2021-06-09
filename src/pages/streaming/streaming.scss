@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .streaming {
-  @include mix.mainContent(vars.$width-small, vars.$spacing-micro-x, vars.$color-gray, vars.$spacing-x-small);
+  @include mix.mainContent(vars.$width-small, vars.$spacing-micro-xxx, vars.$color-gray, vars.$spacing-x-small);
 
   .video-js {
     width: 100%;

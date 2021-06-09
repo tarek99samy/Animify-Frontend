@@ -25,7 +25,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <SideBar />
-      {!window.location.pathname.includes('/watch') && <NavBar />}
+      <NavBar />
       <Switch>
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={SignUp} />
@@ -42,8 +42,8 @@ export default function App() {
         <PrivateRoute exact path='/settings' component={Settings} />
         <PrivateRoute exact path='/library' component={Library} />
         <PrivateRoute exact path='/library/subscribed' component={Subscriptions} />
-        {/* <Route exact path='/notfound' component={NotFound} />
-          <Redirect to='/notfound' /> */}
+        <Route exact path='/notfound' component={NotFound} />
+        <Redirect to='/notfound' />
       </Switch>
     </BrowserRouter>
   );

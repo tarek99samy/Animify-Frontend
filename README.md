@@ -3,19 +3,48 @@
 
 ## About the project
 
-The client source code of the Animify online streamer
+> The client source code of the Animify online streamer
 
-## How to run
+### Built with
+- React JS
+- React Router
+- Bootstrap
+- Axios
+- qs
 
-open new terminal and run following commands
+## Getting Started
 
-    	git clone https://github.com/tarek99samy/Animify-Frontend.git
+### Installation
 
-    	cd Animify-Frontend/
+1. _Clone the project repo_
 
-    	npm i
+        $ git clone https://github.com/tarek99samy/Animify-Frontend.git
 
-    	npm start
+2. _Navigate to project folder_
+
+        cd Animify-Frontend/
+
+3. _Install project dependencies_
+   
+        npm i
+
+### Running
+
+_run in development enviroment_
+
+    npm start
+
+_run in production enviroment_
+
+    npm run build
+
+## Screenshots
+
+TODO
+
+## Folder Structure
+
+TODO
 
 ## Contributors
 
@@ -33,3 +62,7 @@ open new terminal and run following commands
     </td>    
   </tr>
  </table>
+
+## Acknowledgement
+> Big thanks to all people in this team for the great effortsa and wish them all the best in there career ISA
+
