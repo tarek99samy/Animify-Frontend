@@ -78,13 +78,13 @@ function Home() {
       <HomeCard
         name='Seasonal Anime'
         list={seasonalAnime}
-        route='seasonal-anime'
+        route='listing/seasonal-anime'
         base={`/anime-info/${getUserList()}/`}
       />
       <HomeCard
         name='Trending Anime'
         list={trendingAnime}
-        route='trending-anime'
+        route='listing/trending-anime'
         base={`/anime-info/${getUserList()}/`}
       />
     </div>

@@ -9,8 +9,6 @@ import AnimeInfo from './pages/anime_info/anime_info';
 import AnimeSource from './pages/anime_source/anime_source';
 import './styles/reset.scss';
 import Home from './pages/home/home';
-import Trending from './pages/trending_anime/trending_anime';
-import Seasonal from './pages/seasonal_anime/seasonal_anime';
 import AnimeSchedule from './pages/anime_schedule/anime_schedule';
 import SearchResult from './pages/search_results/search_results';
 import RecentSearch from './pages/recent_search/recent_search';
@@ -20,6 +18,7 @@ import Streaming from './pages/streaming/streaming';
 import Settings from './pages/settings/settings';
 import Library from './pages/library/library';
 import Subscriptions from './pages/subscriptions/subscriptions';
+import SeeMoreResults from './pages/see_more_results/see_more_results';
 
 export default function App() {
   return (
@@ -34,8 +33,6 @@ export default function App() {
         <Route exact path='/watch/:totalEposides' component={Streaming} />
         <Route exact path='/anime-info/:listingId/:animeId' component={AnimeInfo} />
         <Route exact path='/' component={Home} />
-        <Route exact path='/trending-anime' component={Trending} />
-        <Route exact path='/seasonal-anime' component={Seasonal} />
         <Route exact path='/anime-schedule' component={AnimeSchedule} />
         <Route exact path='/search-result/:sourceID/:query' component={SearchResult} />
         <Route exact path='/search' component={RecentSearch} />
@@ -43,6 +40,7 @@ export default function App() {
         <PrivateRoute exact path='/library' component={Library} />
         <PrivateRoute exact path='/library/subscribed' component={Subscriptions} />
         <Route exact path='/notfound' component={NotFound} />
+        <Route exact path='/listing/:type' component={SeeMoreResults}/>
         <Redirect to='/notfound' />
       </Switch>
     </BrowserRouter>
