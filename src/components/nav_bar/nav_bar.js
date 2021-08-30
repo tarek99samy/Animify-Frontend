@@ -118,18 +118,21 @@ function NavBar() {
 
   return (
     <div className={`${hideValue}`}>
-      <nav className='navbar'>
-        <input
-          type='search'
-          className='navbar__search dropdown-toggle'
-          placeholder='Search for animes'
-          name='searchQuery'
-          autoComplete='off'
-          onKeyPress={handleClickOnSearch}
-          onChange={handleFieldChange}
-          onFocus={() => inputSearchFoucs('focused')}
-        />
-        <ul className={`list-group navbar__search__list ${searchFoucs}`}>
+      <div className='navbar d-flex'>
+        <div className='mr-auto p-2'>
+          <input
+            type='search'
+            className='navbar__search dropdown-toggle'
+            placeholder='Search for animes hi'
+            name='searchQuery'
+            autoComplete='off'
+            onKeyPress={handleClickOnSearch}
+            onChange={handleFieldChange}
+            onFocus={() => inputSearchFoucs('focused')}
+          />
+        </div>
+
+        {/* <ul className={`list-group navbar__search__list ${searchFoucs}`}>
           {searchHistory.map((search, index) => (
             <li
               className='list-group-item navbar__search__list__item'
@@ -146,15 +149,15 @@ function NavBar() {
               ></i>
             </li>
           ))}
-        </ul>
+        </ul> */}
         {isLoggedIn() ? (
-          <div className='navbar__buttons--login'>
+          <div className='navbar__buttons--login p-2'>
             <span className='navbar__username'>{getGlobalState().username}</span>
             <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
             <Notifications initialCount={notificatiosUnreadCount} />
           </div>
         ) : (
-          <div className='navbar__buttons--logout'>
+          <div className='navbar__buttons--logout p-2'>
             <Link to='/login'>
               <button type='button' className='btn navbar__signbtn'>
                 Log In
@@ -162,7 +165,7 @@ function NavBar() {
             </Link>
           </div>
         )}
-      </nav>
+      </div>
     </div>
   );
 }

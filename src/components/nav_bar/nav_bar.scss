@@ -1,24 +1,31 @@
 @use '../../styles/variables' as vars;
 @use '../../styles/mixins' as mix;
 
+.navbar div.mr-auto.p-2 {
+  width: 70%;
+}
 .navbar {
-  @include mix.area(flex, fixed, 100%, vars.$spacing-micro-x, 0, vars.$width-small, vars.$color-gray);
-  margin: 0 vars.$width-small;
+  @include mix.area(inherit, inherit, inherit, vars.$spacing-micro-x, 0, inherit, vars.$color-gray);
+  // margin: 0 vars.$width-small;
   z-index: 3;
+  width: 100vw;
+  padding: 0 10px;
 
   &__search {
     @include mix.borderedArea(0, vars.$color-gray-light, vars.$spacing-xxx-atomic);
     @include mix.area(
-      flex,
-      fixed,
-      vars.$width-large,
+      inherit,
+      inherit,
+      inherit,
       vars.$spacing-atomic-increased,
       vars.$spacing-xxx-atomic,
       0,
       vars.$color-gray-light
     );
-    margin: 0 vars.$spacing-xx-atomic;
+    // margin: 0 vars.$spacing-xx-atomic;
     color: vars.$color-silver;
+    display: inline-block;
+    width: 100%;
 
     &::-webkit-search-cancel-button {
       -webkit-appearance: none;
@@ -39,18 +46,6 @@
         }
       }
     }
-  }
-
-  &__buttons--logout {
-    position: fixed;
-    right: vars.$spacing-atomic-increased;
-    top: vars.$spacing-x-atomic;
-  }
-
-  &__buttons--login {
-    position: fixed;
-    top: vars.$spacing-atomic;
-    right: vars.$spacing-micro-increased;
   }
 
   &__username {
@@ -90,9 +85,8 @@
 
 @media screen and (max-width: 1000px) {
   .navbar {
-    margin: 0 vars.$spacing-x-small;
+    //margin: 0 vars.$spacing-x-small;
     &__search {
-      width: vars.$width-medium;
       &__list {
         width: vars.$width-medium;
       }
@@ -104,35 +98,35 @@
   .navbar {
     margin: 0;
     &__search {
-      width: vars.$width-small;
+      // width: vars.$width-large;
       &__list {
         width: vars.$width-small;
       }
-    }
-
-    &__buttons--login {
-      right: vars.$spacing-atomic-xx;
     }
   }
 }
 
 @media screen and (max-width: 510px) {
+  .navbar div.p-2.mr-auto {
+    width: 100vw;
+  }
   .navbar {
-    margin: 0;
     &__search {
-      width: vars.$spacing-large-increased-x;
+      margin: auto;
+      width: 90%;
+      display: block;
       &__list {
         width: vars.$spacing-large-increased-x;
       }
     }
     &__buttons--logout {
-      right: vars.$spacing-atomic;
+      display: none;
     }
     &__username {
       display: none;
     }
     &__usericon {
-      display: inline;
+      display: none;
     }
   }
 }
