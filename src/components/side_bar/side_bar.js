@@ -1,4 +1,21 @@
 import React, { useState, useEffect } from 'react';
+
+import { alpha, makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import Badge from '@material-ui/core/Badge';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import MenuIcon from '@material-ui/icons/Menu';
+import SearchIcon from '@material-ui/icons/Search';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import MoreIcon from '@material-ui/icons/MoreVert';
+
 import { Link, useLocation } from 'react-router-dom';
 import { isLoggedIn, logout } from '../../utils/state_manager';
 import SideBarElement from './side_bar_element';
@@ -21,12 +38,20 @@ const items = [
 const sideBarList = items.map((item) => {
   return <SideBarElement item={item} key={item.name} />;
 });
+
 function SideBar() {
   const [hideValue, setHideValue] = useState('');
+  const [isToggled, setToggleValue] = useState(false);
   const location = useLocation();
-  useEffect(() => {
-    setHideValue(hideBars(location.pathname));
-  }, [location]);
+
+  // return (
+
+  // );
+
+  // useEffect(() => {
+  //   setHideValue(hideBars(location.pathname));
+  // }, [location]);
+  /*
   return (
     <div className={`sidebar flex-column ${hideValue}`}>
       <div>
@@ -63,6 +88,8 @@ function SideBar() {
       </ul>
     </div>
   );
+  */
+  return 'hi';
 }
 
 export default SideBar;
