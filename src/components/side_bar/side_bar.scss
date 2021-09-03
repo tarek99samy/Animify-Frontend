@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .sidebar {
-  @include mix.area(flex, fixed, vars.$width-small, 100vh, 0, 0, vars.$color-gray);
+  // @include mix.area(flex, fixed, vars.$width-small, 100vh, 0, 0, vars.$color-gray);
   z-index: 1;
 
   &__title {
@@ -11,7 +11,7 @@
   }
 
   &__item {
-    color: vars.$color-silver;
+    color: white;
     width: 100%;
     padding: vars.$spacing-xxx-atomic;
 
@@ -26,33 +26,8 @@
 
     &__icon {
       margin-right: vars.$spacing-atomic;
+      color: vars.$color-neon-blue;
     }
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .sidebar {
-    @include mix.area(flex, fixed, vars.$spacing-x-small, 100vh, 0, 0, vars.$color-gray);
-    padding-top: vars.$spacing-x-medium;
-
-    &__title {
-      display: none;
-    }
-
-    &__item {
-      &__icon {
-        margin: 0 vars.$spacing-xx-atomic;
-      }
-      &__text {
-        display: none;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .sidebar {
-    display: none;
   }
 }
 

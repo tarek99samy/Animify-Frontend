@@ -39,7 +39,9 @@ export const getSideBarState = () => {
 export const setSideBarState = () => {
   localStorage.setItem('sideBarState', 1);
 };
-
+export const resetSideBarState = () => {
+  localStorage.setItem('sideBarState', 0);
+};
 export const getSideBarWidth = () => {
   return 250;
 };

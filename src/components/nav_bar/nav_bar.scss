@@ -8,8 +8,8 @@
   @include mix.area(inherit, inherit, inherit, vars.$spacing-micro-x, 0, inherit, vars.$color-gray);
   // margin: 0 vars.$width-small;
   z-index: 3;
-  width: 100vw;
-  padding: 0 10px;
+  flex-grow: 1;
+  margin-left: 250px;
 
   &__search {
     @include mix.borderedArea(0, vars.$color-gray-light, vars.$spacing-xxx-atomic);
@@ -80,53 +80,36 @@
     background-color: vars.$color-neon-blue;
     padding: vars.$spacing-xxx-atomic vars.$spacing-xxx-atomic;
     color: vars.$color-white;
+    border-radius: 0%;
+  }
+  &__menubar {
+    display: none !important;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .navbar {
-    //margin: 0 vars.$spacing-x-small;
-    &__search {
-      &__list {
-        width: vars.$width-medium;
-      }
+    margin-left: 0;
+    &__menubar {
+      display: inline-block !important;
     }
   }
 }
 
 @media screen and (max-width: 700px) {
   .navbar {
-    margin: 0;
-    &__search {
-      // width: vars.$width-large;
-      &__list {
-        width: vars.$width-small;
-      }
+    margin-left: 0;
+    &__menubar {
+      display: inline-block !important;
     }
   }
 }
 
 @media screen and (max-width: 510px) {
-  .navbar div.p-2.mr-auto {
-    width: 100vw;
-  }
   .navbar {
-    &__search {
-      margin: auto;
-      width: 90%;
-      display: block;
-      &__list {
-        width: vars.$spacing-large-increased-x;
-      }
-    }
-    &__buttons--logout {
-      display: none;
-    }
-    &__username {
-      display: none;
-    }
-    &__usericon {
-      display: none;
+    margin-left: 0;
+    &__menubar {
+      display: inline-block !important;
     }
   }
 }

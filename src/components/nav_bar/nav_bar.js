@@ -17,6 +17,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
+
 import {
   isLoggedIn,
   getGlobalState,
@@ -34,8 +35,7 @@ import './nav_bar.scss';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1,
-    marginLeft: getSideBarWidth()
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -106,7 +106,6 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [marginLeftWidth, setMarginLeft] = useState(250);
   const [hideValue, setHideValue] = useState('');
   const [searchFoucs, setSearchFocus] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
@@ -146,10 +145,6 @@ function NavBar() {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -163,13 +158,9 @@ function NavBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  window.addEventListener('storage', () => {
-    if (getSideBarState()) {
-      setMarginLeft(getSideBarWidth);
-    } else {
-      setMarginLeft(0);
-    }
-  });
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -350,12 +341,12 @@ function NavBar() {
   );
   */
   return (
-    <div style={{ flexGrow: 1, marginLeft: marginLeftWidth }}>
+    <div className='navbar'>
       <AppBar position='static' className={classes.appBar}>
         <Toolbar>
           <IconButton
             edge='start'
-            className={`${classes.menuButton} ${classes.purpleColor}`}
+            className={`${classes.menuButton} ${classes.purpleColor} navbar__menubar`}
             color='inherit'
             aria-label='open drawer'
             onClick={() => toggleSideBarState()}
@@ -378,8 +369,8 @@ function NavBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton className={classes.purpleColor} aria-label='show 17 new notifications' color='inherit'>
-              <Badge badgeContent={17} color='secondary'>
+            {/* <IconButton className={classes.purpleColor} color='inherit'>
+              <Badge badgeContent={1} color='secondary'>
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -393,7 +384,22 @@ function NavBar() {
               color='inherit'
             >
               <AccountCircle />
-            </IconButton>
+            </IconButton> */}
+            {isLoggedIn() ? (
+              <div className='navbar__buttons--login'>
+                <span className='navbar__username'>{getGlobalState().username}</span>
+                <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
+                <Notifications initialCount={notificatiosUnreadCount} />
+              </div>
+            ) : (
+              <div className='navbar__buttons--logout'>
+                <Link to='/login'>
+                  <button type='button' className='btn navbar__signbtn'>
+                    Log In
+                  </button>
+                </Link>
+              </div>
+            )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
