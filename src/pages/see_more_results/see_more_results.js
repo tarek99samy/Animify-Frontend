@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SeeMore from '../../components/see_more/see_more';
 import trimName from '../../utils/trim_name';
+import calculateSeason from '../../utils/calculate_season';
 import { getUserList } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './see_more_results.scss';
@@ -26,7 +27,7 @@ function SeeMoreResults({ match }) {
     } else {
       axios
         .get(
-          `${API_BASE_URL}/listings/anime-seasonal?listingServer=${getUserList()}&page=1&perPage=12&seasonYear=2021&season=0`
+          `${API_BASE_URL}/listings/anime-seasonal?listingServer=${getUserList()}&page=1&perPage=12&seasonYear=${new Date().getFullYear()}&season=${calculateSeason()}`
         )
         .then((response) => {
           setAnimeList(trimName(response.data.items, 20));
