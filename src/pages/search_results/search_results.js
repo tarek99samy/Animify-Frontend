@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SeeMore from '../../components/see_more/see_more';
+import EmptyResults from '../../components/empty_results/empty_results';
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
 import { getUserSource } from '../../utils/state_manager';
@@ -27,7 +28,11 @@ function SearchResult() {
   }, [params]);
   return (
     <div className='main'>
-      <SeeMore list={result} base={`/anime-source/${getUserSource()}`} />
+      {result.length ? (
+        <SeeMore list={result} base={`/anime-source/${getUserSource()}`} />
+      ) : (
+        <EmptyResults search='true' />
+      )}
     </div>
   );
 }

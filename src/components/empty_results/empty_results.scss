@@ -1,0 +1,17 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mix;
+
+.search {
+  color: vars.$color-white;
+  margin-top: 30vh;
+  margin-left: -5vw;
+  text-align: center;
+
+  &__text {
+    @include mix.text(vars.$color-white, vars.$text-size-x-medium, vars.$text-weight-bold, vars.$text-size-small);
+  }
+
+  &__info {
+    @include mix.text(vars.$color-white, vars.$text-size-small, vars.$text-weight-light, vars.$text-size-small);
+  }
+}
