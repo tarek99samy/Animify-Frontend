@@ -3,6 +3,7 @@ import axios from 'axios';
 import HomeCard from '../../components/home_card/home_card';
 import ScrollableSchedule from '../../components/scrollable_schedule/scrollable_schedule';
 import trimName from '../../utils/trim_name';
+import calculateSeason from '../../utils/calculate_season';
 import { API_BASE_URL } from '../../utils/consts';
 import './home.scss';
 import { isLoggedIn, getUserToken, getUserSource, getUserList } from '../../utils/state_manager';
@@ -44,7 +45,7 @@ function Home() {
 
     axios
       .get(
-        `${API_BASE_URL}/listings/anime-seasonal?listingServer=${getUserList()}&page=1&perPage=8&seasonYear=2021&season=0`
+        `${API_BASE_URL}/listings/anime-seasonal?listingServer=${getUserList()}&page=1&perPage=8&seasonYear=${new Date().getFullYear()}&season=${calculateSeason()}`
       )
       .then((response) => {
         setSeasonalAnime(trimName(response.data.items));
