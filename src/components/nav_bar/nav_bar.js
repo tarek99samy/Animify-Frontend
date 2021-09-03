@@ -17,7 +17,16 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { isLoggedIn, getGlobalState, getUserToken, getUserSource } from '../../utils/state_manager';
+import {
+  isLoggedIn,
+  getGlobalState,
+  getUserToken,
+  getUserSource,
+  toggleSideBarState,
+  setSideBarState,
+  getSideBarWidth,
+  getSideBarState
+} from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import hideBars from '../../utils/hideBars';
 import Notifications from '../notifications/notifications';
@@ -25,7 +34,8 @@ import './nav_bar.scss';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
+    marginLeft: getSideBarWidth()
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -87,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   appBar: {
-    backgroundColor: '#292929'
+    backgroundColor: '#222222'
   },
   purpleColor: {
     color: '#8d5af6'
@@ -96,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
 
 function NavBar() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [marginLeftWidth, setMarginLeft] = useState(250);
   const [hideValue, setHideValue] = useState('');
   const [searchFoucs, setSearchFocus] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
@@ -151,6 +162,14 @@ function NavBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  window.addEventListener('storage', () => {
+    if (getSideBarState()) {
+      setMarginLeft(getSideBarWidth);
+    } else {
+      setMarginLeft(0);
+    }
+  });
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -331,7 +350,7 @@ function NavBar() {
   );
   */
   return (
-    <div className={classes.grow}>
+    <div style={{ flexGrow: 1, marginLeft: marginLeftWidth }}>
       <AppBar position='static' className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -339,6 +358,7 @@ function NavBar() {
             className={`${classes.menuButton} ${classes.purpleColor}`}
             color='inherit'
             aria-label='open drawer'
+            onClick={() => toggleSideBarState()}
           >
             <MenuIcon />
           </IconButton>

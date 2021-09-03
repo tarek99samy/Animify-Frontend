@@ -26,3 +26,20 @@ export const getUserList = () => {
 export const logout = () => {
   localStorage.removeItem('userState');
 };
+
+export const toggleSideBarState = () => {
+  localStorage.setItem('sideBarState', (Number(localStorage.getItem('sideBarState')) + 1) % 2);
+  window.dispatchEvent(new Event('storage'));
+};
+
+export const getSideBarState = () => {
+  return Boolean(Number(localStorage.getItem('sideBarState')));
+};
+
+export const setSideBarState = () => {
+  localStorage.setItem('sideBarState', 1);
+};
+
+export const getSideBarWidth = () => {
+  return 250;
+};

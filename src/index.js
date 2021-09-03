@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 import App from './App';
-
+import { setSideBarState } from '../src/utils/state_manager';
+setSideBarState();
 ReactDOM.render(
   <React.StrictMode>
     <App />

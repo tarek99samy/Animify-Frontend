@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import clsx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import MoreIcon from '@material-ui/icons/MoreVert';
-
 import { Link, useLocation } from 'react-router-dom';
-import { isLoggedIn, logout } from '../../utils/state_manager';
+import { isLoggedIn, logout, getSideBarState, getSideBarWidth } from '../../utils/state_manager';
 import SideBarElement from './side_bar_element';
 import hideBars from '../../utils/hideBars';
 import './side_bar.scss';
@@ -39,21 +34,68 @@ const sideBarList = items.map((item) => {
   return <SideBarElement item={item} key={item.name} />;
 });
 
+const useStyles = makeStyles({
+  list: {
+    width: getSideBarWidth(),
+
+    minHeight: '100vh',
+    color: 'white'
+  },
+  drawer: {},
+  purpleColor: {
+    color: '#8d5af6'
+  }
+});
+
 function SideBar() {
+  const classes = useStyles();
+
   const [hideValue, setHideValue] = useState('');
-  const [isToggled, setToggleValue] = useState(false);
+  const [isToggled, setToggleValue] = useState(true);
   const location = useLocation();
 
+  window.addEventListener('storage', () => {
+    setToggleValue(getSideBarState());
+    // console.log('isToggled ', isToggled);
+  });
   // return (
 
   // );
+  // useEffect(() => {
 
+  // });
   // useEffect(() => {
   //   setHideValue(hideBars(location.pathname));
   // }, [location]);
-  /*
+
+  const list = () => (
+    <div className={classes.list} role='presentation'>
+      <h1 className='text-center p-2'>Animify</h1>
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon className={classes.purpleColor}>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon className={classes.purpleColor}>
+              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+            </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
   return (
-    <div className={`sidebar flex-column ${hideValue}`}>
+    /*  <div className={`sidebar flex-column ${hideValue}`}>
       <div>
         <Link to='/'>
           <h4 className='sidebar__title'>Animify</h4>
@@ -86,10 +128,17 @@ function SideBar() {
           </>
         ) : null}
       </ul>
+            </div>  */
+    <div>
+      {
+        <React.Fragment key='left'>
+          <Drawer anchor='left' className={classes.drawer} open={isToggled} variant='persistent'>
+            {list()}
+          </Drawer>
+        </React.Fragment>
+      }
     </div>
   );
-  */
-  return 'hi';
 }
 
 export default SideBar;

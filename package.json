@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+    "clsx": "^1.1.1",
     "framer-motion": "^4.1.17",
     "qs": "^6.10.1",
     "react": "^17.0.2",
@@ -21,7 +22,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "format": "prettier \"src/**\" --write",
