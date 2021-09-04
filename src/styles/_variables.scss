@@ -9,9 +9,9 @@ $color-green: #fe9f06;
 
 $color-neon-blue: #8d5af6;
 
-$color-gray-light: #3b3b3d;
-$color-gray: #292929;
-$color-gray-dark: #222222;
+$color-gray-light: hsl(240, 1%, 17%);
+$color-gray: hsl(0, 0, 16);
+$color-gray-dark: hsl(0, 0, 13);
 
 $color-transparent-1: rgba(0, 0, 0, 0.25);
 $color-transparent-2: rgba(0, 0, 0, 0.5);
@@ -105,3 +105,6 @@ $sidebar-width: 250px;
 
 // ========= Cards ==========
 $library-card-height: 240px;
+$scheduler-card-height: 240px;
+$scheduler-card-episode-top: 190px;
+$scheduler-card-episode-left: 32%;

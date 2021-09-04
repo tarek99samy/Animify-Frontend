@@ -1,19 +1,11 @@
 @use '../../styles/variables' as vars;
 @use '../../styles/mixins' as mix;
 
-.cards {
-  margin: vars.$spacing-atomic-x;
-}
+// .cards {
+//   margin: vars.$spacing-atomic-x;
+// }
 .schedule__card {
-  @include mix.area(
-    flex,
-    relative,
-    vars.$width-medium-xxx,
-    vars.$spacing-large-increased,
-    vars.$spacing-xx-atomic,
-    vars.$spacing-xxx-atomic,
-    vars.$color-gray
-  );
+  @include mix.area(flex, relative, 100%, vars.$scheduler-card-height, 0, vars.$spacing-xx-atomic, vars.$color-gray);
   color: vars.$color-white;
 
   &:hover {
@@ -21,15 +13,25 @@
   }
 
   &__img {
-    height: vars.$spacing-x-large;
-    width: vars.$spacing-medium;
+    height: vars.$scheduler-card-height;
+    width: 100%;
     background-size: cover;
   }
 
   &__eposide {
-    @include mix.area(inline-block, absolute, auto, vars.$spacing-atomic-xx, 0, 0, vars.$color-gray-light);
-    left: vars.$spacing-atomic-xxx;
-    top: vars.$spacing-medium-xx;
+    // @include mix.area(inline-block, absolute, auto, vars.$spacing-atomic-xx, 0, 0, vars.$color-gray-light);
+    //left:  calc();// vars.$scheduler-card-episode-left;
+    top: vars.$scheduler-card-episode-top;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    position: absolute;
+    margin: 0;
+  }
+  &__eposide span {
+    @include mix.area(inline-block, static, auto, 40px, 10px, 0, vars.$color-gray-light);
     border-radius: vars.$spacing-xx-atomic;
   }
 
@@ -56,14 +58,17 @@
 a:hover {
   color: vars.$color-white;
 }
-@media screen and (max-width: 1000px) {
-  .cards {
-    margin: 0 vars.$spacing-x-small;
-  }
+.schedule__card__col {
+  position: relative;
 }
+// @media screen and (max-width: 1000px) {
+//   .cards {
+//     margin: 0 vars.$spacing-x-small;
+//   }
+// }
 
-@media screen and (max-width: 700px) {
-  .cards {
-    margin: 0;
-  }
-}
+// @media screen and (max-width: 700px) {
+//   .cards {
+//     margin: 0;
+//   }
+// }

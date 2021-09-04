@@ -32,7 +32,7 @@ function AnimeSchedule() {
         <div className='container schedule__cards'>
           <div className='row schedule__cards__row justify-content-center'>
             {animeList.map((anime) => (
-              <div className='col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4' key={anime.name}>
+              <div className='col-12 col-sm-12 col-md-6 col-lg-6 ' key={anime.name}>
                 <ScheduleCard anime={anime} />
               </div>
             ))}

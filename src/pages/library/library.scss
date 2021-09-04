@@ -2,7 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .main {
-  @include mix.mainContent(vars.$sidebar-width, vars.$spacing-micro-x, vars.$color-gray-dark, 0);
+  @include mix.mainContent(vars.$sidebar-width, 0, vars.$color-gray-dark, 0);
 
   &__title {
     @include mix.text(vars.$color-white, vars.$text-size-small-x, bold, vars.$spacing-atomic-increased);

@@ -3,6 +3,7 @@
 
 .expand {
   padding: vars.$spacing-atomic 0;
+  padding-top: 150px;
 
   &__header {
     @include mix.flexArea(row, center, space-between);

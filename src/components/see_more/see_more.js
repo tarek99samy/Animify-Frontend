@@ -37,16 +37,16 @@ function SeeMore(props) {
         {props.list.map((anime) => (
           <Link
             to={`${props.base}${anime.gotoURL}`}
-            className='col-6 col-md-4 seemore__card'
+            className='col-12 col-sm-6 col-md-4  seemore__card'
             key={anime.gotoURL}
             onClick={() => addClickedHistory(anime)}
           >
             <div className='row'>
-              <div className='col-6'>
+              <div className='col-5'>
                 <img src={anime.artwork} alt='animeimage' className='seemore__card__img' />
               </div>
-              <div className='col-6'>
-                <div className='card-body'>
+              <div className='col-7 row align-items-center'>
+                <div className='card-body col-12'>
                   <span className='seemore__card__text'>{anime.name}</span>
                 </div>
               </div>

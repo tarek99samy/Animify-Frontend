@@ -62,7 +62,7 @@ const AnimeInfo = ({ match }) => {
   }, [match.params]);
 
   return (
-    <div className='container-fluid info'>
+    <div className='container-fluid info main'>
       <div className='info__wrapper'>
         <div className='row info__banner'>
           <div className='info__banner__overlay'></div>
@@ -73,31 +73,38 @@ const AnimeInfo = ({ match }) => {
             className='info__banner__background'
           />
 
-          <div className='container-fluid info__banner__content'>
-            <img
-              src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
-              alt='banner'
-              className='rounded img-thumbnail col-4 col-md-auto info__banner__content__img'
-            />
-            <div className='col-6 col-sm-5 info__banner__content__controls'>
-              <span className='info__banner__content__controls__title'>{data.title}</span>
-              <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
-              <button
-                type='button'
-                className='btn btn-primary info__banner__content__controls__link'
-                data-bs-toggle='modal'
-                data-bs-target='#sourceSearch'
-              >
-                VIEW EPOSIDES
-              </button>
-
-              <SearchModal
-                searchPathName={`source/anime-search?sourceServer=${userServer}`}
-                detailsPath={`anime-source/${userServer}`}
-                searchQuery={data.title}
-                id='sourceSearch'
-                title='Top sources found'
+          <div className='container-fluid row info__banner__content'>
+            <div className='col-4'>
+              <img
+                src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
+                alt='banner'
+                className='rounded img-thumbnail col-4 col-md-auto info__banner__content__img'
               />
+            </div>
+
+            <div className='col-8 info__banner__content__controls row  align-items-center'>
+              <div className='col '>
+                <span className='info__banner__content__controls__title'>{data.title}</span>
+                <br></br>
+                <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
+                <br></br>
+                <button
+                  type='button'
+                  className='btn btn-primary info__banner__content__controls__link'
+                  data-bs-toggle='modal'
+                  data-bs-target='#sourceSearch'
+                >
+                  VIEW EPOSIDES
+                </button>
+
+                <SearchModal
+                  searchPathName={`source/anime-search?sourceServer=${userServer}`}
+                  detailsPath={`anime-source/${userServer}`}
+                  searchQuery={data.title}
+                  id='sourceSearch'
+                  title='Top sources found'
+                />
+              </div>
             </div>
           </div>
         </div>

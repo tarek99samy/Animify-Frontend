@@ -97,7 +97,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   appBar: {
-    backgroundColor: '#222222'
+    backgroundColor: '#222222',
+    zIndex: 99,
+    position: 'relative'
   },
   purpleColor: {
     color: '#8d5af6'

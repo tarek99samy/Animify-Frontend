@@ -1,24 +1,24 @@
 @use '../../styles/variables' as vars;
 @use '../../styles/mixins' as mix;
 
-.cards {
-  margin: 0 vars.$spacing-atomic-x;
-}
+// .cards {
+//   margin: 0 vars.$spacing-atomic-x;
+// }
 .seemore__card {
   @include mix.area(
     flex,
     relative,
     vars.$width-medium,
     vars.$spacing-large-increased,
-    vars.$spacing-x-atomic,
-    vars.$spacing-xxx-atomic,
+    0,
+    vars.$spacing-xx-atomic,
     vars.$color-gray-light
   );
   color: vars.$color-white;
 
   &__img {
-    height: vars.$spacing-xx-large;
-    width: vars.$spacing-x-large;
+    height: 160px;
+    width: 100%;
   }
 
   &__text {
@@ -26,14 +26,14 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .cards {
-    margin: 0 vars.$spacing-atomic-x 0 vars.$spacing-x-small;
-  }
-}
+// @media screen and (max-width: 1000px) {
+//   .cards {
+//     margin: 0 vars.$spacing-atomic-x 0 vars.$spacing-x-small;
+//   }
+// }
 
-@media screen and (max-width: 700px) {
-  .cards {
-    margin: 0;
-  }
-}
+// @media screen and (max-width: 700px) {
+//   .cards {
+//     margin: 0;
+//   }
+// }

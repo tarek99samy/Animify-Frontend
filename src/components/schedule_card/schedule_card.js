@@ -9,13 +9,13 @@ function ScheduleCard({ anime }) {
     <Link to={`/anime-info/${getUserList()}/${anime.gotoURL}`} className='card schedule__card col'>
       <div>
         <div className='row g-0'>
-          <div className='col-4 schedule__card__col'>
+          <div className='col-5 schedule__card__col'>
             <img src={anime.artwork} alt='animeimage' className='schedule__card__img' />
             <div className='schedule__card__eposide row'>
               <span className='text-center'>Ep.{anime.episodeNumber}</span>
             </div>
           </div>
-          <div className='col-8 schedule__card__col'>
+          <div className='col-7 schedule__card__col'>
             <div className='card-body'>
               <span className='schedule__card__date'>{epochTimeConverter(anime.airingDate)}</span>
               <br />
