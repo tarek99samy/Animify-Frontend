@@ -27,15 +27,7 @@
   }
 
   &__eposide {
-    @include mix.area(
-      inline-block,
-      absolute,
-      auto,
-      vars.$spacing-atomic-xx,
-      0,
-      0,
-      vars.$color-gray-light
-    );
+    @include mix.area(inline-block, absolute, auto, vars.$spacing-atomic-xx, 0, 0, vars.$color-gray-light);
     left: vars.$spacing-atomic-xxx;
     top: vars.$spacing-medium-xx;
     border-radius: vars.$spacing-xx-atomic;
@@ -50,6 +42,7 @@
     &:hover {
       color: vars.$color-white;
     }
+    font-weight: bold;
   }
 
   &__synopsis {

@@ -8,3 +8,23 @@
     @include mix.text(vars.$color-white, vars.$text-size-small-x, bold, vars.$spacing-atomic-increased);
   }
 }
+
+.library_card {
+  padding: 0;
+  width: 130px;
+  text-align: center;
+  &__img {
+    width: 130px;
+    height: 150px;
+    border-radius: 0%;
+    margin: 0;
+  }
+
+  &__txt_div {
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+  }
+}

@@ -13,13 +13,13 @@
   &__wrapper {
     @include mix.gridArea(
       column,
-      vars.$spacing-x-atomic,
+      vars.$spacing-xx-atomic,
       vars.$spacing-large-x,
       vars.$spacing-large-x,
       vars.$spacing-xxx-atomic
     );
     overflow-x: scroll;
-    padding: vars.$spacing-xx-atomic;
+    padding: vars.$spacing-atomic;
 
     &:before,
     &:after {

@@ -4,9 +4,9 @@
 .card {
   @include mix.area(
     flex,
-    relative,
+    static,
     vars.$spacing-large-increased-x,
-    vars.$width-small-x,
+    vars.$library-card-height,
     vars.$spacing-xx-atomic,
     vars.$spacing-xxx-atomic,
     vars.$color-gray
@@ -25,15 +25,7 @@
   }
 
   &__eposide {
-    @include mix.area(
-      inline-block,
-      absolute,
-      auto,
-      vars.$spacing-atomic-xx,
-      0,
-      0,
-      vars.$color-gray-light
-    );
+    @include mix.area(inline-block, absolute, auto, vars.$spacing-atomic-xx, 0, 0, vars.$color-gray-light);
     left: vars.$spacing-micro;
     top: vars.$spacing-medium-xx;
     border-radius: vars.$spacing-xx-atomic;

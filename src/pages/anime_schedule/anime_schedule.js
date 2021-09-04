@@ -26,8 +26,8 @@ function AnimeSchedule() {
   }, []);
   return (
     <div>
-      <SideBar />
-      <NavBar />
+      {/* <SideBar />
+      <NavBar /> */}
       <div className='main'>
         <div className='container schedule__cards'>
           <div className='row schedule__cards__row justify-content-center'>
