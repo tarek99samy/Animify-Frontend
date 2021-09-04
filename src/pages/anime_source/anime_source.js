@@ -103,7 +103,7 @@ const AnimeSource = ({ match }) => {
   };
 
   return (
-    <div className='container-fluid source'>
+    <div className='container-fluid source main'>
       <div className='row source__banner'>
         <div className='source__banner__overlay'></div>
 
@@ -113,60 +113,64 @@ const AnimeSource = ({ match }) => {
           className='source__banner__background'
         />
 
-        <div className='container-fluid source__banner__content'>
-          <img
-            src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
-            alt='banner'
-            className='col-4 col-md-auto source__banner__content__img'
-          />
-          <div className='col-6 col-sm-5 source__banner__content__controls'>
-            <span className='source__banner__content__controls__title'>{data.title}</span>
+        <div className='container-fluid source__banner__content row'>
+          <div className='col-4'>
+            <img
+              src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
+              alt='banner'
+              className='col-4 col-md-auto source__banner__content__img'
+            />
+          </div>
+          <div className='col-8 source__banner__content__controls row align-items-center'>
+            <div className='col '>
+              <span className='source__banner__content__controls__title'>{data.title}</span>
 
-            <div className='dropdown'>
-              <button
-                className='btn btn-primary btn-sm source__banner__content__controls__link'
-                type='button'
-                id='actionMenu'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
-              >
-                Actions
-              </button>
-              <ul className='dropdown-menu source__banner__content__controls__dropdown' aria-labelledby='actionMenu'>
-                <li>
-                  <button
-                    type='button'
-                    className='dropdown-item source__banner__content__controls__dropdown__item'
-                    data-bs-toggle='modal'
-                    data-bs-target='#listingSearch'
-                  >
-                    Show Information
-                  </button>
-                </li>
-                {isLoggedIn() ? (
+              <div className='dropdown'>
+                <button
+                  className='btn btn-primary btn-sm source__banner__content__controls__link'
+                  type='button'
+                  id='actionMenu'
+                  data-bs-toggle='dropdown'
+                  aria-expanded='false'
+                >
+                  Actions
+                </button>
+                <ul className='dropdown-menu source__banner__content__controls__dropdown' aria-labelledby='actionMenu'>
                   <li>
                     <button
                       type='button'
                       className='dropdown-item source__banner__content__controls__dropdown__item'
                       data-bs-toggle='modal'
-                      data-bs-target='#reportToAdmin'
+                      data-bs-target='#listingSearch'
                     >
-                      Report anime
+                      Show Information
                     </button>
                   </li>
-                ) : null}
-                {!isSubscribed ? (
-                  <li>
-                    <button
-                      type='button'
-                      className='dropdown-item source__banner__content__controls__dropdown__item'
-                      onClick={handleSubscribe}
-                    >
-                      SUBSCRIBE
-                    </button>
-                  </li>
-                ) : null}
-              </ul>
+                  {isLoggedIn() ? (
+                    <li>
+                      <button
+                        type='button'
+                        className='dropdown-item source__banner__content__controls__dropdown__item'
+                        data-bs-toggle='modal'
+                        data-bs-target='#reportToAdmin'
+                      >
+                        Report anime
+                      </button>
+                    </li>
+                  ) : null}
+                  {!isSubscribed ? (
+                    <li>
+                      <button
+                        type='button'
+                        className='dropdown-item source__banner__content__controls__dropdown__item'
+                        onClick={handleSubscribe}
+                      >
+                        SUBSCRIBE
+                      </button>
+                    </li>
+                  ) : null}
+                </ul>
+              </div>
             </div>
 
             <SearchModal
