@@ -26,11 +26,13 @@
       @include mix.flexArea(row, flex-end, space-between);
 
       .rating {
+        overflow: hidden;
         &__label {
           @include mix.text(vars.$color-silver, vars.$text-size-micro, vars.$text-weight-bold, vars.$text-size-small);
         }
 
         &__value {
+          transform-origin: bottom;
           width: vars.$spacing-x-atomic;
           background-color: vars.$color-silver;
           border-radius: vars.$spacing-x-atomic;

@@ -17,6 +17,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 import {
   isLoggedIn,
@@ -356,10 +357,11 @@ function NavBar() {
             <MenuIcon />
           </IconButton>
 
-          <div className={classes.search}>
+          <motion.div className={classes.search} whileTap={{ scale: 1.1 }}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+
             <InputBase
               placeholder='Search…'
               classes={{
@@ -368,7 +370,7 @@ function NavBar() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </motion.div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton className={classes.purpleColor} color='inherit'>

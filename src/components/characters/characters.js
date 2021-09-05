@@ -1,5 +1,6 @@
 import React from 'react';
 import './characters.scss';
+import { motion } from 'framer-motion';
 
 const Characters = ({ actors }) => {
   return (
@@ -8,7 +9,13 @@ const Characters = ({ actors }) => {
       <div className='characters__content'>
         {actors.map((actor, index) => (
           <div className='characters__content__actor' key={index}>
-            <img src={actor.avatar} alt='' className='characters__content__actor__img' />
+            <motion.img
+              src={actor.avatar}
+              alt=''
+              className='characters__content__actor__img'
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+            />
             <span className='col-2 characters__content__actor__name'>{`${actor.charachterName.first} ${actor.charachterName.last}`}</span>
           </div>
         ))}

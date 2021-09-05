@@ -128,13 +128,11 @@ function SideBar() {
   );
   return (
     <div>
-      {
-        <React.Fragment key='left'>
-          <Drawer anchor='left' className={classes.drawer} open={isToggled} variant={sideBarVarient}>
-            {list()}
-          </Drawer>
-        </React.Fragment>
-      }
+      <React.Fragment key='left'>
+        <Drawer anchor='left' className={classes.drawer} open={isToggled} variant={sideBarVarient}>
+          {list()}
+        </Drawer>
+      </React.Fragment>
     </div>
   );
 }

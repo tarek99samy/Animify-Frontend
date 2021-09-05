@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as mix;
 
 .expand {
+  transition: ease-in-out all 0.5s;
   padding: vars.$spacing-atomic 0;
   padding-top: 150px;
 

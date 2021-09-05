@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import { getUserList } from '../../utils/state_manager';
 import epochTimeConverter from '../../utils/epoch_time_converter';
 import './schedule_card.scss';
@@ -7,7 +9,7 @@ import './schedule_card.scss';
 function ScheduleCard({ anime }) {
   return (
     <Link to={`/anime-info/${getUserList()}/${anime.gotoURL}`} className='card schedule__card col'>
-      <div>
+      <motion.div whileHover={{ scale: 1.1 }}>
         <div className='row g-0'>
           <div className='col-5 schedule__card__col'>
             <img src={anime.artwork} alt='animeimage' className='schedule__card__img' />
@@ -25,7 +27,7 @@ function ScheduleCard({ anime }) {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </Link>
   );
 }

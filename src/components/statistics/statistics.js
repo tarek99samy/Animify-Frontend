@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './statistics.scss';
+import { motion } from 'framer-motion';
 
 const Statistics = ({ statistics }) => {
   const [average, setAverage] = useState(0);
@@ -56,10 +57,15 @@ const Statistics = ({ statistics }) => {
         </div>
         <div className='col-12 col-md-6 col-xl-4 statistics__content__ratings'>
           {rates.map((rating, index) => (
-            <div className='rating' key={index}>
-              <div className={`rating__value rating__value--${rating.value}`}></div>
+            <motion.div className='rating' key={index}>
+              <motion.div
+                className={`rating__value rating__value--${rating.value}`}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.75 }}
+              ></motion.div>
               <span className='rating__label'>{rating.label}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
