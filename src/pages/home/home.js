@@ -5,6 +5,8 @@ import ScrollableSchedule from '../../components/scrollable_schedule/scrollable_
 import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
 import './home.scss';
+import { Player } from '@lottiefiles/react-lottie-player';
+import * as loadingAnimation from '../../lottie-animations/lf30_editor_wdtotvax.json';
 import { isLoggedIn, getUserToken, getUserSource, getUserList } from '../../utils/state_manager';
 
 function Home() {
@@ -65,7 +67,17 @@ function Home() {
 
   return (
     <div className='main'>
-      <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
+      {animeSchedule.length == 0 ? (
+        <Player
+          autoplay={true}
+          loop={true}
+          style={{ height: '100px', width: '100px' }}
+          src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+        ></Player>
+      ) : (
+        <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
+      )}
+
       {isLoggedIn() ? (
         <HomeCard
           name='Subscriptions'
@@ -75,18 +87,36 @@ function Home() {
           showSeeMore={showSeeMore}
         />
       ) : null}
-      <HomeCard
-        name='Seasonal Anime'
-        list={seasonalAnime}
-        route='seasonal-anime'
-        base={`/anime-info/${getUserList()}/`}
-      />
-      <HomeCard
-        name='Trending Anime'
-        list={trendingAnime}
-        route='trending-anime'
-        base={`/anime-info/${getUserList()}/`}
-      />
+      {seasonalAnime.length == 0 ? (
+        <Player
+          autoplay={true}
+          loop={true}
+          style={{ height: '100px', width: '100px' }}
+          src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+        ></Player>
+      ) : (
+        <HomeCard
+          name='Seasonal Anime'
+          list={seasonalAnime}
+          route='seasonal-anime'
+          base={`/anime-info/${getUserList()}/`}
+        />
+      )}
+      {trendingAnime.length == 0 ? (
+        <Player
+          autoplay={true}
+          loop={true}
+          style={{ height: '100px', width: '100px' }}
+          src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+        ></Player>
+      ) : (
+        <HomeCard
+          name='Trending Anime'
+          list={trendingAnime}
+          route='trending-anime'
+          base={`/anime-info/${getUserList()}/`}
+        />
+      )}
     </div>
   );
 }

@@ -110,7 +110,7 @@ const AnimeSource = ({ match }) => {
         <img
           src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
           alt='background'
-          className='source__banner__background'
+          className='source__banner__background skeleton'
         />
 
         <div className='container-fluid source__banner__content row'>
@@ -118,7 +118,7 @@ const AnimeSource = ({ match }) => {
             <img
               src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
               alt='banner'
-              className='col-4 col-md-auto source__banner__content__img'
+              className='col-4 col-md-auto source__banner__content__img skeleton'
             />
           </div>
           <div className='col-8 source__banner__content__controls row align-items-center'>

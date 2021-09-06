@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   isLoggedIn,
   logout,
@@ -11,6 +12,7 @@ import {
   resetSideBarState,
   setSideBarState
 } from '../../utils/state_manager';
+
 import SideBarElement from './side_bar_element';
 import hideBars from '../../utils/hideBars';
 import './side_bar.scss';

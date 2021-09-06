@@ -12,7 +12,7 @@ const Characters = ({ actors }) => {
             <motion.img
               src={actor.avatar}
               alt=''
-              className='characters__content__actor__img'
+              className='characters__content__actor__img skeleton'
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
             />

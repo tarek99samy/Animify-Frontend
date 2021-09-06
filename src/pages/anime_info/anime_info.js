@@ -9,7 +9,7 @@ import SearchModal from '../../components/search_modal/search_modal';
 import Statistics from '../../components/statistics/statistics';
 import Upcoming from '../../components/upcoming/upcoming';
 import { API_BASE_URL } from '../../utils/consts';
-import { getUserSource } from '../../utils/state_manager';
+import { getUserSource, getUserList } from '../../utils/state_manager';
 import './anime_info.scss';
 
 const AnimeInfo = ({ match }) => {
@@ -70,21 +70,21 @@ const AnimeInfo = ({ match }) => {
           <img
             src={data.backgroundImgUrl ? data.backgroundImgUrl : '/assets/img/defualt.png'}
             alt='background'
-            className='info__banner__background'
+            className='info__banner__background skeleton'
           />
 
           <div className='container-fluid row info__banner__content'>
-            <div className='col-4'>
+            <div className='col-4' style={{ minWidth: '200px' }}>
               <img
                 src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
                 alt='banner'
-                className='rounded img-thumbnail col-4 col-md-auto info__banner__content__img'
+                className='rounded img-thumbnail col-4 col-md-auto info__banner__content__img  skeleton'
               />
             </div>
 
             <div className='col-8 info__banner__content__controls row  align-items-center'>
               <div className='col '>
-                <span className='info__banner__content__controls__title'>{data.title}</span>
+                <span className='info__banner__content__controls__title '>{data.title}</span>
                 <br></br>
                 <span className='info__banner__content__controls__subtitle'>{data.subtitle}</span>
                 <br></br>
@@ -126,7 +126,13 @@ const AnimeInfo = ({ match }) => {
             </div>
           ))}
         </div>
-        <HomeCard name='Related Animes' list={data.relatedAnimes} route='' showSeeMore={false} base='/anime-info' />
+        <HomeCard
+          name='Related Animes'
+          list={data.relatedAnimes}
+          route=''
+          showSeeMore={false}
+          base={`/anime-info/${getUserList()}/`}
+        />
       </div>
     </div>
   );

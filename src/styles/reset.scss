@@ -24,3 +24,17 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+.skeleton {
+  opacity: 0.9;
+  animation: skeleton-loading 1s ease-in-out infinite alternate;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(260, 90, 66);
+  }
+
+  100% {
+    background-color: hsl(240, 1%, 17%);
+  }
+}
