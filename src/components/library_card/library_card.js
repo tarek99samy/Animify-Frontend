@@ -5,13 +5,13 @@ import './library_card.scss';
 
 const LibraryCard = (props) => {
   return (
-    <motion.div whileHover={{ scale: 1.1 }}>
+    <motion.div className='col'>
       <Link to={`${props.base}${props.anime.gotoURL}`} className='card library_card' key={props.anime.gotoURL}>
         <motion.div
+          whileHover={{ scale: 1.1 }}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          whileTap={{ scale: 1.2 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.2 }}
         >
           <img src={props.anime.artwork} className='library_card__img fluid-img' alt='props.animeImg' />
           {props.showNumber ? (

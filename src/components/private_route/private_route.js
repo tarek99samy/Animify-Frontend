@@ -15,8 +15,8 @@ export default function PrivateRoute({ children, ...rest }) {
 
   return (
     <>
-      <NavBar />
-      <SideBar />
+      {/* <NavBar /> */}
+      {/* <SideBar /> */}
       <Route {...rest} render={() => children} />
     </>
   );

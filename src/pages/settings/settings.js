@@ -197,7 +197,7 @@ const Settings = () => {
         </div>
 
         <div className='row settings__row settings__row--submit'>
-          <button type='submit' className='col-9 col-sm-5 col-lg-3 btn btn-primary'>
+          <button type='submit' className='col-9 col-sm-5 col-lg-3 btn '>
             Apply Changes
           </button>
         </div>

@@ -121,3 +121,8 @@
 .focused {
   display: inline-block;
 }
+
+.MuiPaper-root {
+  box-shadow: none !important;
+  background-color: vars.$color-gray-dark !important;
+}

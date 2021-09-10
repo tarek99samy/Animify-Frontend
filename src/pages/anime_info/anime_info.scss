@@ -4,6 +4,7 @@
 .info {
   padding: 0;
   width: auto;
+  padding-top: 0 !important;
   @include mix.mainContent(auto, 0, vars.$color-gray-dark, vars.$spacing-x-small);
 
   &__wrapper {

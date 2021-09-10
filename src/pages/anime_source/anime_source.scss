@@ -3,6 +3,7 @@
 
 .source {
   padding: 0;
+  padding-top: 0 !important;
   width: auto;
   @include mix.mainContent(auto, 0, vars.$color-gray-dark, vars.$spacing-x-small);
 

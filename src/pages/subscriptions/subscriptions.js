@@ -24,7 +24,7 @@ function Subscriptions() {
   }, []);
   return (
     <div className='main'>
-      <div className='row g-1 cards__row justify-content-center'>
+      <div className='row g-1 cards__row justify-content-center' style={{ padding: '30px' }}>
         {subscribedAnime.map((anime) => (
           <LibraryCard anime={anime} base={`/anime-source/${getUserSource()}`} showNumber={false} key={anime.id} />
         ))}

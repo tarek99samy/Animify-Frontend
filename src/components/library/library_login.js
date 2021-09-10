@@ -5,6 +5,7 @@ import LibraryCard from '../library_card/library_card';
 import { getUserToken, getUserSource } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './library_login.scss';
+import { motion } from 'framer-motion';
 
 function LibraryLogin() {
   const [recentlyWatched, setRecentlyWatched] = useState([]);
@@ -25,19 +26,27 @@ function LibraryLogin() {
   }, []);
   return (
     <div className='library__login'>
-      <span className='library__login__text'>You Library</span> <br />
       <div className='container cards'>
+        <h2 className='library__login__text'>Your Library</h2>
+
         <div className='row g-1 cards__row'>
-          <Link to='/library/subscribed' className='card library__login__card'>
-            <img
-              src='/assets/img/notification.svg'
-              className='library__login__card__img fluid-img'
-              alt='subscribed bell'
-            />
-            <div>
-              <span>Subscribed</span>
-            </div>
-          </Link>
+          <motion.div whileHover={{ scale: 1.01 }}>
+            <Link to='/library/subscribed' className='card library__login__card'>
+              <motion.img
+                src='/assets/img/notification.svg'
+                className='library__login__card__img fluid-img'
+                alt='subscribed bell'
+                whileHover={{ rotate: '360deg' }}
+                transition={{ duration: 1 }}
+              />
+              <div className='text-center'>
+                <span style={{ fontWeight: 'bold' }}>Subscribed</span>
+              </div>
+            </Link>
+          </motion.div>
+
+          <h2 className='library__login__text'>Recently Watched</h2>
+
           {recentlyWatched.map((anime) => (
             <LibraryCard anime={anime} base={`/anime-source/${getUserSource()}/category/`} showNumber />
           ))}

@@ -1,5 +1,5 @@
 function hideBars(currentPath) {
-  const hidePaths = ['/login', '/signup', '/reset-password'];
+  const hidePaths = [];
   for (let i = 0; i < hidePaths.length; i += 1) {
     if (hidePaths[i] === currentPath) {
       return 'hide';

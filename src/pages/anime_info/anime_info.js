@@ -74,7 +74,7 @@ const AnimeInfo = ({ match }) => {
           />
 
           <div className='container-fluid row info__banner__content'>
-            <div className='col-4' style={{ minWidth: '200px' }}>
+            <div className='col-4'>
               <img
                 src={data.bannerImgUrl ? data.bannerImgUrl : '/assets/img/defualt.png'}
                 alt='banner'

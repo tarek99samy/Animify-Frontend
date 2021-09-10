@@ -31,7 +31,7 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const emailRegExp = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/);
-    const passwordRegExp = new RegExp(/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{8,50}$/);
+    const passwordRegExp = new RegExp(/^(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{1,50}$/);
     const validation = [
       !emailRegExp.test(data.email),
       !passwordRegExp.test(data.password),

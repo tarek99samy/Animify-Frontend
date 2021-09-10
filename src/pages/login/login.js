@@ -94,16 +94,6 @@ const Login = () => {
             now
           </span>
         </div>
-
-        <div className='row login__form__row'>
-          <span className='col-9 login__info'>
-            Forgot your password?{' '}
-            <Link to='/reset-password' className='login__redirection'>
-              reset it
-            </Link>{' '}
-            now
-          </span>
-        </div>
       </form>
     </div>
   );

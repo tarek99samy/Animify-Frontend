@@ -1,7 +1,9 @@
 // this is a resetting to the styling of whole site, it shouldn't be readable
 
 * {
-  font-family: 'Fira Code';
+}
+body {
+  overflow-x: hidden;
 }
 
 *,

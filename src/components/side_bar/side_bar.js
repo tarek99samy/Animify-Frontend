@@ -38,7 +38,7 @@ const useStyles = makeStyles({
   list: {
     width: getSideBarWidth(),
 
-    minHeight: '100vh',
+    minHeight: '100%',
     color: 'white'
   },
   drawer: {},

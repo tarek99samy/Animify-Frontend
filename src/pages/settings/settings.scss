@@ -4,7 +4,7 @@
 .settings {
   padding: 0;
   width: auto;
-  @include mix.mainContent(vars.$width-small, vars.$spacing-micro-x, vars.$color-gray, vars.$spacing-x-small);
+  @include mix.mainContent(vars.$sidebar-width, vars.$spacing-micro-x, vars.$color-gray-dark, 0);
 
   &__row {
     align-items: center;
@@ -25,6 +25,11 @@
     &--submit {
       padding: vars.$spacing-atomic-xxx 0;
       margin: 0;
+      .btn {
+        background-color: vars.$color-neon-blue;
+        color: white;
+        border-radius: 0;
+      }
     }
   }
 

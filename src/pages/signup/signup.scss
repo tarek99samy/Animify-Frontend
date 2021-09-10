@@ -2,11 +2,16 @@
 @use '../../styles/mixins' as mix;
 
 .signup {
-  @include mix.area(block, absolute, 100%, 100%, vars.$spacing-atomic 0, 0, vars.$color-gray);
+  @include mix.area(block, static, auto, 100%, vars.$spacing-atomic 0, 0, vars.$color-gray-dark);
   @include mix.flexArea(column, center, center);
+  margin-left: vars.$sidebar-width;
+  min-height: 100vh;
 
+  @media screen and (max-width: 1000px) {
+    margin-left: 0;
+  }
   &__title {
-    @include mix.text(vars.$color-red-light, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$spacing-atomic-x);
+    @include mix.text(vars.$color-neon-blue, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$spacing-atomic-x);
     text-align: center;
     word-wrap: break-word;
     white-space: pre-wrap;
@@ -23,7 +28,7 @@
 
     &__submit {
       background-color: vars.$color-neon-blue;
-      color: vars.$color-black;
+      color: vars.$color-white;
       font-weight: vars.$text-weight-bold;
       border: none;
     }
@@ -44,7 +49,12 @@
 
     &__redirection {
       margin-top: vars.$spacing-xxx-atomic;
-      @include mix.text(vars.$color-silver, vars.$text-size-micro-x, vars.$text-weight-light, vars.$spacing-atomic-x);
+      @include mix.text(
+        vars.$color-neon-blue,
+        vars.$text-size-micro-x,
+        vars.$text-weight-light,
+        vars.$spacing-atomic-x
+      );
     }
 
     &__redirection:hover {

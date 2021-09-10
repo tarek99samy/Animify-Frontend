@@ -10,7 +10,7 @@
   &__card {
     @include mix.area(
       flex,
-      relative,
+      static,
       vars.$width-small,
       vars.$width-small-x,
       vars.$spacing-xx-atomic,
@@ -31,4 +31,7 @@
       margin: 10px 0 10px 40px;
     }
   }
+}
+.cards {
+  padding-left: 20px;
 }

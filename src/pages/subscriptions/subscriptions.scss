@@ -2,5 +2,5 @@
 @use '../../styles/mixins' as mix;
 
 .main {
-  @include mix.mainContent(vars.$sidebar-width, 0, vars.$color-gray-dark, 0);
+  @include mix.mainContent(vars.$sidebar-width, 40px, vars.$color-gray-dark, 0);
 }

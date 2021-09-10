@@ -73,7 +73,8 @@ const useStyles = makeStyles((theme) => ({
     color: '#8d5af6'
   },
   inputRoot: {
-    color: 'inherit'
+    color: 'inherit',
+    width: '100%'
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -192,25 +193,22 @@ function NavBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton className={classes.purpleColor} aria-label='show 11 new notifications' color='inherit'>
-          <Badge badgeContent={11} color='secondary'>
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          className={classes.purpleColor}
-          aria-label='account of current user'
-          aria-controls='primary-search-account-menu'
-          aria-haspopup='true'
-          color='inherit'
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
+        {isLoggedIn() ? (
+          <div className='navbar__buttons--login'>
+            <span className='navbar__username'>{getGlobalState().username}</span>
+            <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
+            {/* <Notifications initialCount={notificatiosUnreadCount} /> */}
+          </div>
+        ) : (
+          <div className='navbar__buttons--logout'>
+            <Link to='/login'>
+              <button type='button' className='btn navbar__signbtn'>
+                Log In
+              </button>
+            </Link>
+          </div>
+        )}
       </MenuItem>
     </Menu>
   );
@@ -357,7 +355,7 @@ function NavBar() {
             <MenuIcon />
           </IconButton>
 
-          <motion.div className={classes.search} whileTap={{ scale: 1.1 }}>
+          <motion.div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -369,6 +367,11 @@ function NavBar() {
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
+              name='searchQuery'
+              autoComplete='off'
+              onKeyPress={handleClickOnSearch}
+              onChange={handleFieldChange}
+              onFocus={() => inputSearchFoucs('focused')}
             />
           </motion.div>
           <div className={classes.grow} />
@@ -393,7 +396,7 @@ function NavBar() {
               <div className='navbar__buttons--login'>
                 <span className='navbar__username'>{getGlobalState().username}</span>
                 <i className='fa fa-user navbar__icon fa-lg navbar__usericon'></i>
-                <Notifications initialCount={notificatiosUnreadCount} />
+                {/* <Notifications initialCount={notificatiosUnreadCount} /> */}
               </div>
             ) : (
               <div className='navbar__buttons--logout'>

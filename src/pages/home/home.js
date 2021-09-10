@@ -71,8 +71,9 @@ function Home() {
         <Player
           autoplay={true}
           loop={true}
-          style={{ height: '100px', width: '100px' }}
+          style={{ height: '150px', width: '150px', paddingTop: '50px' }}
           src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+          speed={2}
         ></Player>
       ) : (
         <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
@@ -91,8 +92,9 @@ function Home() {
         <Player
           autoplay={true}
           loop={true}
-          style={{ height: '100px', width: '100px' }}
+          style={{ height: '150px', width: '150px', paddingTop: '50px' }}
           src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+          speed={1}
         ></Player>
       ) : (
         <HomeCard
@@ -106,8 +108,9 @@ function Home() {
         <Player
           autoplay={true}
           loop={true}
-          style={{ height: '100px', width: '100px' }}
+          style={{ height: '150px', width: '150px', paddingTop: '50px' }}
           src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+          speed={1.75}
         ></Player>
       ) : (
         <HomeCard
