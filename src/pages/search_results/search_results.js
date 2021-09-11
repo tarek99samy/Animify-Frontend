@@ -6,6 +6,7 @@ import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
 import { getUserSource } from '../../utils/state_manager';
 import './search_results.scss';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 function SearchResult() {
   const [result, setResult] = useState([]);
@@ -27,7 +28,30 @@ function SearchResult() {
   }, [params]);
   return (
     <div className='main'>
-      <SeeMore list={result} base={`/anime-source/${getUserSource()}`} />
+      {isLoading ? (
+        <Player
+          autoplay={true}
+          loop={true}
+          style={{ height: '150px', width: '150px', paddingTop: '50px' }}
+          src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+          speed={2}
+        ></Player>
+      ) : result.length == 0 ? (
+        <div>
+          <Player
+            autoplay={true}
+            loop={true}
+            style={{ height: '300px', width: '300px', paddingTop: '50px' }}
+            src={require('../../lottie-animations/earch_not_found.json')}
+            speed={2}
+          ></Player>
+          <h1 className='text-center' style={{ color: 'white' }}>
+            Sorry no results were found!
+          </h1>
+        </div>
+      ) : (
+        <SeeMore list={result} base={`/anime-source/${getUserSource()}`} />
+      )}
     </div>
   );
 }

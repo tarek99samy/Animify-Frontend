@@ -3,32 +3,27 @@
 
 .search__modal {
   margin: 0;
-
+  margin-left: vars.$sidebar-width;
   &__body {
     @include mix.flexArea(row, center, space-evenly);
     margin: 0;
     padding: vars.$spacing-atomic-x;
-    background-color: vars.$color-gray-light;
+    background-color: vars.$color-gray-dark;
 
     &__card {
-      border-color: vars.$color-black;
+      border: none;
       margin: 0;
       padding: 0;
       transition: transform 0.4s ease-in-out;
-      height: vars.$width-medium-xx;
-      width: vars.$width-medium-xx;
+      text-align: center;
 
       &__img {
-        max-height: vars.$width-medium;
+        height: vars.$spacing-large;
+        width: 100%;
       }
 
       &__title {
-        @include mix.text(
-          vars.$color-neon-blue,
-          vars.$text-size-micro-x,
-          vars.$text-weight-bold,
-          vars.$text-size-micro-x
-        );
+        @include mix.text(vars.$color-white, vars.$text-size-micro-x, vars.$text-weight-bold, vars.$text-size-micro-x);
       }
 
       &__wrapper {
@@ -37,20 +32,15 @@
         justify-content: center;
         display: flex;
 
-        @media (max-width: 1200px) {
-          margin: vars.$spacing-atomic 0;
+        @media (max-width: 1000px) {
+          margin-left: 0;
         }
       }
-    }
-
-    &__card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 vars.$spacing-atomic-increased vars.$spacing-xxx-atomic vars.$color-neon-blue;
     }
   }
 
   &__header {
-    background-color: vars.$color-gray-light;
+    background-color: vars.$color-gray-dark;
 
     &__title {
       color: vars.$color-white;
@@ -66,3 +56,7 @@
 .modal-backdrop.fade.show {
   z-index: 1;
 }
+// .modal-dialog {
+//   margin: 0 !important;
+//   margin-left: 50% !important;
+// }

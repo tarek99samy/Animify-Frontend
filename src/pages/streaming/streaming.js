@@ -5,7 +5,8 @@ import VideoPlayer from 'react-video-js-player';
 import { API_BASE_URL } from '../../utils/consts';
 import { getUserSource, getUserToken } from '../../utils/state_manager';
 import './streaming.scss';
-
+import { Player } from '@lottiefiles/react-lottie-player';
+import { motion } from 'framer-motion';
 const Streaming = ({ match, location }) => {
   const [currentEposideSrc, setCurrentEposideSrc] = useState('');
   const [previousVideoURL, setPreviousVideoURL] = useState('');
@@ -56,7 +57,7 @@ const Streaming = ({ match, location }) => {
     <div className='streaming'>
       <div className='container'>
         {currentEposideSrc.length ? (
-          <>
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
             <VideoPlayer
               autoplay={false}
               src={currentEposideSrc}
@@ -83,11 +84,15 @@ const Streaming = ({ match, location }) => {
                 </a>
               </li>
             </ul>
-          </>
+          </motion.div>
         ) : (
-          <div className='row justify-content-center m-5'>
-            <div className='spinner-grow text-primary' role='status'></div>
-          </div>
+          <Player
+            autoplay={true}
+            loop={true}
+            style={{ height: '150px', width: '150px', paddingTop: '50px' }}
+            src={require('../../lottie-animations/lf30_editor_wdtotvax.json')}
+            speed={2}
+          ></Player>
         )}
       </div>
     </div>

@@ -3,6 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../../utils/consts';
 import './search_modal.scss';
+import { motion, AnimatePresence } from 'framer-motion';
+const backdrop = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 }
+};
+
+const modal = {
+  hidden: { y: '-100vh', opacity: 0 },
+  visible: {
+    y: '200px',
+    opacity: 1,
+    transition: { delay: 0.5 }
+  }
+};
 
 const SearchModal = ({ searchQuery, id, searchPathName, detailsPath, title }) => {
   const [page, setPage] = useState(1);
@@ -24,7 +38,13 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath, title }) =>
   }, [page, searchQuery, searchPathName]);
 
   return (
-    <div className='modal fade search__modal p-0' id={id} data-bs-backdrop='true'>
+    <motion.div
+      className='modal fade search__modal p-0'
+      id={id}
+      data-bs-backdrop='true'
+      animate={{ scale: 1 }}
+      initial={{ scale: 0 }}
+    >
       <div className='modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable'>
         <div className='modal-content rounded-3'>
           <div className='modal-header search__modal__header'>
@@ -37,10 +57,10 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath, title }) =>
               data.map((item, index) => (
                 <a
                   href={`/${detailsPath}${Number.isInteger(item.gotoURL) ? '/' : ''}${item.gotoURL}`}
-                  className='col-12 col-lg-6 col-xl-4 search__modal__body__card__wrapper'
+                  className='col search__modal__body__card__wrapper'
                   key={index}
                 >
-                  <div className='card search__modal__body__card'>
+                  <motion.div className='card search__modal__body__card' whileHover={{ scale: 1.05 }}>
                     <img src={item.artwork} className='card-img-top search__modal__body__card__img' alt='artwork' />
                     <div className='card-body'>
                       <span className='search__modal__body__card__title'>
@@ -48,7 +68,7 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath, title }) =>
                         {item.name.length > 25 ? '...' : ''}
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
                 </a>
               ))
             ) : (
@@ -57,7 +77,7 @@ const SearchModal = ({ searchQuery, id, searchPathName, detailsPath, title }) =>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
