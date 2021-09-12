@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../../utils/consts';
 import { getUserList } from '../../utils/state_manager';
 import './seasonal_anime.scss';
 
-function Seasonal() {
+function Seasonal(props) {
   const [seasonalAnime, setSeasonalAnime] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +25,11 @@ function Seasonal() {
   }, []);
   return (
     <div className='main'>
-      <SeeMore list={seasonalAnime} base={`/anime-info/${getUserList()}/`} />
+      <SeeMore
+        url={`${API_BASE_URL}/listings/anime-seasonal?listingServer=${getUserList()}&seasonYear=2021&season=0`}
+        list={seasonalAnime}
+        base={`/anime-info/${getUserList()}/`}
+      />
     </div>
   );
 }

@@ -6,7 +6,6 @@ import trimName from '../../utils/trim_name';
 import { API_BASE_URL } from '../../utils/consts';
 import './home.scss';
 import { Player } from '@lottiefiles/react-lottie-player';
-import * as loadingAnimation from '../../lottie-animations/lf30_editor_wdtotvax.json';
 import { isLoggedIn, getUserToken, getUserSource, getUserList } from '../../utils/state_manager';
 
 function Home() {
@@ -76,7 +75,11 @@ function Home() {
           speed={2}
         ></Player>
       ) : (
-        <ScrollableSchedule list={animeSchedule} route='anime-schedule' />
+        <ScrollableSchedule
+          list={animeSchedule}
+          route='anime-schedule'
+          url={`${API_BASE_URL}/listings/anime-schedule?listingServer=${getUserList()}&page=1&perPage=8&date=${timestamp}`}
+        />
       )}
 
       {isLoggedIn() ? (
@@ -102,6 +105,7 @@ function Home() {
           list={seasonalAnime}
           route='seasonal-anime'
           base={`/anime-info/${getUserList()}/`}
+          url={`${API_BASE_URL}/listings/anime-seasonal?listingServer=${getUserList()}&seasonYear=2021&season=0`}
         />
       )}
       {trendingAnime.length == 0 ? (
@@ -118,6 +122,7 @@ function Home() {
           list={trendingAnime}
           route='trending-anime'
           base={`/anime-info/${getUserList()}/`}
+          url={`${API_BASE_URL}/listings/anime-trending?listingServer=${getUserList()}`}
         />
       )}
     </div>

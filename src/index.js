@@ -6,8 +6,8 @@ import { setSideBarState } from './utils/state_manager';
 
 setSideBarState();
 ReactDOM.render(
-  <React.StrictMode>
+  <React>
     <App />
-  </React.StrictMode>,
+  </React>,
   document.getElementById('root')
 );

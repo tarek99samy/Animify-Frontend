@@ -23,7 +23,6 @@ function ScheduleCard({ anime }) {
               <br />
               <span className='schedule__card__text'>{anime.name}</span>
               <br />
-              <span className='schedule__card__synopsis'>{anime.synopsis}</span>
             </div>
           </div>
         </div>

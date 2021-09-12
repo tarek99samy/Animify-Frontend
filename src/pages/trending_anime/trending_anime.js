@@ -6,24 +6,16 @@ import { getUserList } from '../../utils/state_manager';
 import { API_BASE_URL } from '../../utils/consts';
 import './trending_anime.scss';
 
-function Trending() {
+function Trending(props) {
   const [trendingAnime, setTrendingAnime] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get(`${API_BASE_URL}/listings/anime-trending?listingServer=${getUserList()}&page=1&perPage=12`)
-      .then((response) => {
-        setTrendingAnime(trimName(response.data.items));
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
   return (
     <div className='main'>
-      <SeeMore list={trendingAnime} base={`/anime-info/${getUserList()}/`} />
+      <SeeMore
+        url={`${API_BASE_URL}/listings/anime-trending?listingServer=${getUserList()}`}
+        base={`/anime-info/${getUserList()}/`}
+      />
     </div>
   );
 }

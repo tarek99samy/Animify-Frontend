@@ -19,7 +19,7 @@ const HomeCard = (props) => {
       </div>
       <div className='row home-cards__wrapper card-group'>
         {props.list.map((anime) => (
-          <LibraryCard anime={anime} base={props.base} showNumber={false} key={anime.gotoURL} />
+          <LibraryCard url={props.url} anime={anime} base={props.base} showNumber={false} key={anime.gotoURL} />
         ))}
       </div>
     </div>
