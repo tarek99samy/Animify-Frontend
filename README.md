@@ -1,20 +1,17 @@
 # Animify-Frontend
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8767f77dcd26434eaa3115164833e282)](https://www.codacy.com?utm_source=github.com&utm_medium=referral&utm_content=tarek99samy/Animify-Frontend&utm_campaign=Badge_Grade)
 
 ## About the project
 
-> The client source code of the Animify online streamer
+> Animify is an anime-streaming-application for anime series. It has many features like makig user able subscribe to any anime series, receive notifications when new updates on any subscribed series is published. It was built to be mobile-first responsive to make it easy to watch even on mobile/tablets small screens.
 
-### Built with
+## Built with
 - React JS
-- React Router
+- SaaS (with BEM methodology)
 - Bootstrap
-- Axios
-- qs
 
-## Getting Started
+### Getting Started
 
-### Installation
+## Installation
 
 1. _Clone the project repo_
 
@@ -28,23 +25,15 @@
    
         npm i
 
-### Running
+## Running
 
 _run in development enviroment_
 
     npm start
 
-_run in production enviroment_
+_build for production_
 
     npm run build
-
-## Screenshots
-
-TODO
-
-## Folder Structure
-
-TODO
 
 ## Contributors
 
@@ -64,5 +53,5 @@ TODO
  </table>
 
 ## Acknowledgement
-> Big thanks to all people in this team for the great effortsa and wish them all the best in there career ISA
+> Big thanks to all people in this team for the great efforts and amazing work done.
 
